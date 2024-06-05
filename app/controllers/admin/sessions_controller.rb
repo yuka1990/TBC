@@ -6,12 +6,15 @@ class Admin::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   # def new
   #   super
+  
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+   def create
+     super do |resource|
+      flash[:error]  if resource.errors.any?
+     end
+   end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -24,4 +27,13 @@ class Admin::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def after_sign_in_path_for(resource)
+    admin_root_path
+  end
+
+  def after_sign_out_path_for(resource)
+    new_admin_session_path
+  end
+  
 end
