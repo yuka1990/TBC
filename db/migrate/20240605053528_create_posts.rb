@@ -3,8 +3,8 @@ class CreatePosts < ActiveRecord::Migration[6.1]
     create_table :posts do |t|
 
       t.timestamps
-      t.integer :user_id, null: false
-      t.integer :genre_id, null: false
+      t.references :user, foreign_key: true
+      t.references :genre, foreign_key: true
       t.string :title, null: false
       t.text :body, null: false
       t.text :ingredient, null: false

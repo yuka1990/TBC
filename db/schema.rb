@@ -27,16 +27,20 @@ ActiveRecord::Schema.define(version: 2024_06_05_053654) do
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.integer "genre_id", null: false
+    t.integer "user_id"
+    t.integer "post_id"
     t.text "body", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favoreites", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.integer "genre_id", null: false
+    t.integer "user_id"
+    t.integer "post_id"
+    t.index ["post_id"], name: "index_favoreites_on_post_id"
+    t.index ["user_id"], name: "index_favoreites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -48,8 +52,10 @@ ActiveRecord::Schema.define(version: 2024_06_05_053654) do
   create_table "group_users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
+    t.integer "user_id"
+    t.integer "group_id"
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -69,20 +75,22 @@ ActiveRecord::Schema.define(version: 2024_06_05_053654) do
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.integer "genre_id", null: false
+    t.integer "user_id"
+    t.integer "genre_id"
     t.string "title", null: false
     t.text "body", null: false
     t.text "ingredient", null: false
     t.text "method", null: false
     t.integer "level", null: false
     t.integer "originality", null: false
+    t.index ["genre_id"], name: "index_posts_on_genre_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "home_country_id", null: false
+    t.integer "home_country_id"
     t.string "name", null: false
     t.string "nickname", null: false
     t.boolean "is_active", default: true, null: false
@@ -92,7 +100,17 @@ ActiveRecord::Schema.define(version: 2024_06_05_053654) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["home_country_id"], name: "index_users_on_home_country_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "favoreites", "posts"
+  add_foreign_key "favoreites", "users"
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
+  add_foreign_key "posts", "genres"
+  add_foreign_key "posts", "users"
+  add_foreign_key "users", "home_countries"
 end
