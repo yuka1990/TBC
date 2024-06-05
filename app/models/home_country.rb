@@ -1,0 +1,2 @@
+class HomeCountry < ApplicationRecord
+end
