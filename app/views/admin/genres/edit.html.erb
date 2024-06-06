@@ -1,9 +1,7 @@
-<h1>Genres<br>edit</h1>
+<h1>Genres<br>Rdit</h1>
 
-
-<%= form_with model: @genre, url: admin_genre_path(@genre) do |f| %>
-<%= render 'public/shared/error_messages', resource: @genre %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.submit 'Save',class:"btn btn-success" %>
-<% end %>
+  <%= form_with model: @genre, url: admin_genre_path(@genre) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit 'Save',class:"btn btn-success" %>
+  <% end %>

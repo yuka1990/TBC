@@ -1,2 +1,9 @@
-<h1>Admin::HomeCountries#edit</h1>
-<p>Find me in app/views/admin/home_countries/edit.html.erb</p>
+<h1>Home Country<br>Edit</h1>
+
+  <%= form_with model: @home_country, url: admin_home_country_path(@home_country) do |f| %>
+    <%= f.label :image, "Flag image" %>
+    <%= f.file_field :image,  accept:'image/*' %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit 'Save',class:"btn btn-success" %>
+  <% end %>
