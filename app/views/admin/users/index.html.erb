@@ -1,2 +1,32 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<h1>Users List</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Nickname</td>
+      <td>Detail&Posts</td>
+      <td>Comment</td>
+      <td>Status</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.nickname %></td>
+      <td><%= link_to 'click' , admin_user_path(user), data: {"turbolinks" => false} %></td>
+      <td><%= link_to 'click' , admin_comments_path(user) %></td>
+      <td>
+        <% if user.is_active %>
+        <strong class="text-success">Member</strong>
+        <% else %>
+        <strong class="text-muted">Withdrawal</strong>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

@@ -25,7 +25,7 @@ class Post < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no-image.jpg')
       image.attach(io: File.open(file_path), filename: 'no-image.jpg', content_type:'image/jpg')
     end
-      image.variant(resize_to_limit: [200, 200]).processed
+      image.variant(resize_to_limit: [300, 300]).processed
   end
   
 end

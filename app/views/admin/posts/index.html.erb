@@ -1,2 +1,17 @@
-<h1>Admin::Posts#index</h1>
-<p>Find me in app/views/admin/posts/index.html.erb</p>
+<h1>Recipes</h1>
+
+<% @posts.each do |post| %>
+
+    <div>
+    <%= link_to admin_post_path(post) do %>
+    <%= image_tag post.get_image %></br>
+    <% end %>
+    <%= image_tag post.user.home_country.image, size: "20x20" %>
+    <%= post.title %></br>
+    Level: <%= post.level %></br>
+    <%= post.originality %>
+    </div>
+
+<% end %>
+
+<%= link_to 'BACK', 'javascript:history.back()' ,class:"btn btn-success" %>
