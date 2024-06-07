@@ -1,2 +1,35 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<h1>Post New Recipe</h1>
+
+　<%= form_with model: @post, url: posts_path, method: :post do |f| %>
+    <%= f.label :Genre %><br/>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Please select--"} %></br>
+    <%= f.label :image, "Picture" %></br>
+    <%= f.file_field :image,accept:'image/*' %></br>
+    <%= f.label :title %></br>
+    <%= f.text_field :title %></br>
+    <%= f.label :body, "explain" %></br>
+    <%= f.text_field :body %></br>
+    <%= f.label :ingredient %></br>
+    <%= f.text_field :ingredient %></br>
+    <%= f.label :method %></br>
+    <%= f.text_field :method %></br>
+    <%= f.label :level %></br>
+    <%= f.select :level, Post.levels.keys %></br>
+    <%= f.label :originality %></br>
+    <%= f.select :originality, Post.originalities.keys %></br>
+
+
+    </br>
+    <%= f.submit 'New Registration',class:"btn btn-success" %>
+　<% end %>
+　
+　<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

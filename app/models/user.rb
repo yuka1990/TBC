@@ -10,6 +10,13 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
   belongs_to :home_country
+  
+  
+  validates :name, presence: true
+  validates :nickname, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
 
 
 

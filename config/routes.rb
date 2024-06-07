@@ -25,10 +25,14 @@ Rails.application.routes.draw do
     get '/my_page' => 'users#mypage'
     get '/unsubscribe' => 'users#unsubscribe'
     get '/withdraw' => 'users#withdraw'
-    resources :users, only: [:edit, :show, :update]
+    resources :users, only: [:edit, :show, :update] do
+      member do
+        get :favorite
+      end
+    end
     resources :posts do
       resources :comments
-      resource :favorite, only: [:create, :destroy, :index]
+      resource :favorite, only: [:create, :destroy]
     end
     resources :groups do
       resource :group_user, only: [:create, :destroy]

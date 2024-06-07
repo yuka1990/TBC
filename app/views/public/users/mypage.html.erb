@@ -1,2 +1,31 @@
-<h1>Public::Users#mypage</h1>
-<p>Find me in app/views/public/users/mypage.html.erb</p>
+<link rel="stylesheet" type="text/css" href="/assets/users.css">
+<h1>MY PAGE</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <th>Name: </th>
+      <td><%= current_user.name %></td>
+    </tr>
+    <tr>
+      <th>Nickname: </th>
+      <td><%= current_user.nickname %></td>
+    </tr>
+    <tr>
+      <th>Email: </th>
+      <td><%= current_user.email %></td>
+    </tr>
+    <tr>
+      <th>HomeCountry:</th>
+      <td><%= current_user.home_country.name %></td>
+    </tr>
+  </tbody>
+</table>
+    </br>
+    <div>
+    <%= link_to "Bookmark", favorite_user_path(current_user) , class:"btn btn-warning" %></th>
+    <%= link_to "New post", new_post_path , class:"btn btn-warning" %></th>
+    <%= link_to "Edit", edit_user_path(current_user) , class:"btn btn-warning" %></th>
+    </div>
+    
+  

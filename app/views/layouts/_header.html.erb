@@ -17,22 +17,22 @@
             <% elsif user_signed_in? %>
               <li>
                 <%= link_to my_page_path, class: 'nav-link text-white' do %>
-                  <i class="fa-solid fa-house"></i>Mypage
+                  <i class="fa-solid fa-house"></i> Mypage
                 <% end %>
               </li>
               <li>
                 <%= link_to groups_path, class: 'nav-link text-white' do %>
-                  <i class="fa-solid fa-ship"></i>Group
+                  <i class="fa-solid fa-ship"></i> Group
                 <% end %>
               </li>
               <li>
                 <%= link_to posts_path, class: 'nav-link text-white' do %>
-                  <i class="fa-solid fa-utensils"></i>Recipes
+                  <i class="fa-solid fa-utensils"></i> Recipes
                 <% end %>
               </li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white' do %>
-                  <i class="fa-solid fa-truck-fast"></i>Log out
+                  <i class="fa-solid fa-truck-fast"></i> Log out
                 <% end %>
               </li>
             <% else %>
