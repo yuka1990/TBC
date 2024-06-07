@@ -1,7 +1,9 @@
 class Public::UsersController < ApplicationController
   #before_action :authenticate_user!
-  before_action :ensure_user, only: [:edit, :update]
+  before_action :ensure_user
+  
   def mypage
+    @posts = @user.posts
   end
 
   def edit
@@ -21,6 +23,8 @@ class Public::UsersController < ApplicationController
 
   def confirm
   end
+  
+  private
   
   def ensure_user
     @user = current_user

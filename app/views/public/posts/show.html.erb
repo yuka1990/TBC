@@ -1,2 +1,41 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<h1>Posts#show</h1>
+
+  <%= image_tag @post.get_image %>
+  <table>
+    <tbody>
+      <tr>
+        <th>Genre</th>
+        <td><%= @post.genre.name %></td>
+      </tr>
+      <tr>
+        <th>Title</th>
+        <td><%= @post.title %></td>
+      </tr>
+      <tr>
+        <th>Explain</th>
+        <td><%= @post.body %></td>
+      </tr>
+      <tr>
+        <th>Ingredient</th>
+        <td><%= @post.ingredient %></td>
+      </tr>
+      <tr>
+        <th>Method</th>
+        <td><%= @post.method %></td>
+      </tr>
+      <tr>
+        <th>Level</th>
+        <td><%= @post.level %></td>
+      </tr>
+      <tr>
+        <th>Originality</th>
+        <td><%= @post.originality %></td>
+      </tr>
+    </tbody>
+  </table>
+  </br>
+  
+  <% if @post.user == current_user %>
+  　<%= link_to "Edit", edit_post_path(@post), class:"btn btn-success" %>
+  　<%= link_to "Destroy",post_path(@post), method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %></td>
+  <% end %>

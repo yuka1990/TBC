@@ -31,6 +31,8 @@ class Admin::HomeCountriesController < ApplicationController
   def edit
   end
   
+  private
+  
   def ensure_home_country
     @home_country = HomeCountry.find(params[:id])
   end

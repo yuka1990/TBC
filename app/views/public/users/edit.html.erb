@@ -1,24 +1,27 @@
 <h1>Users EDIT</h1>
 
-<%= form_with model: @user do |f| %>
-  <div class="form-group">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-  <div class="field">
-    <%= f.label :HomeCountry %><br/>
-    <%= f.collection_select :home_country_id, HomeCountry.all, :id, :name, { include_blank: "--Please select--"} %>
-  </div>
-  <div class="actions">
-    </br>
-    <%= f.submit "Save" ,class:"btn btn-success" %>
-  </div>
-<% end %>
+  <%= form_with model: @user do |f| %>
+    <table>
+      <tbody>
+        <tr>
+          <th><%= f.label :name %></th>
+          <td><%= f.text_field :name, autofocus: true %></td>
+        </tr>
+       <tr>
+          <th><%= f.label :nickname %></th>
+          <td><%= f.text_field :nickname %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :email %></th>
+          <td><%= f.email_field :email, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :HomeCountry %></th>
+          <td><%= f.collection_select :home_country_id, HomeCountry.all, :id, :name, { include_blank: "--Please select--"} %></td>
+        </tr>
+      </tbody>
+    </table>
+  <%= f.submit "Save" ,class:"btn btn-success" %>
+  <% end %>
+  </br>
+  <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn btn-success" %>

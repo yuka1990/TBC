@@ -27,5 +27,12 @@
     <%= link_to "New post", new_post_path , class:"btn btn-warning" %></th>
     <%= link_to "Edit", edit_user_path(current_user) , class:"btn btn-warning" %></th>
     </div>
-    
-  
+
+  <% @posts.each do |post| %>
+    <%= link_to post_path(post) do %>
+      <%= image_tag post.get_image %></br>
+    <% end %>
+    <%= post.title %>
+  <% end %>
+  </br>
+  <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn btn-success" %>

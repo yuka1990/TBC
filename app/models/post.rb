@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   
   has_many :comments, dependent: :destroy
-  has_many :favoreites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   belongs_to :user
   belongs_to :genre
   
@@ -17,7 +17,7 @@ class Post < ApplicationRecord
   
   
   enum level: { beginner: 0, intermediate: 1, advanced: 2 }
-  enum originality: { local: 0, original: 1, }
+  enum originality: { Local_cuisine: 0, original: 1, }
   
   
   def get_image
