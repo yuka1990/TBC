@@ -10,8 +10,10 @@
     <%= post.title %></br>
     Level: <%= post.level %></br>
     <%= post.originality %>
+    <p><%= link_to "#{post.comments.count} comments",post_path(post) %></p>
+    <% end %>
     </div>
 
-<% end %>
+
 
 <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn btn-success" %>
