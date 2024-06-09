@@ -7,14 +7,16 @@ body {
 table {
   margin-top: 30px;
 }
+.page-title {
+  margin-top: 20px;
+  font-size: 50px;
+  background-color: white;
+}
 .box {
   display: grid;
-  grid-template-columns:repeat(3, 200px);
+  grid-template-columns:repeat(4, 1fr);
   grid-auto-rows: auto;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  margin: 20px 10px 10px 10px;
+  gap: 5px;
 }
 
 .items {
@@ -22,5 +24,27 @@ table {
   background-color: white;
 }
 tr {
-  background-color: #fff450
+  background-color: #FFFFB3
+}
+
+.card {
+  margin: 20px auto;
+  width: 200px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+}
+.card-img {
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  
+}
+.card-content {
+  padding: 20px;
+}
+.card-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
 }
