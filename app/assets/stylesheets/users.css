@@ -5,5 +5,22 @@ body {
   background-repeat: no-repeat;
 }
 table {
-  background-color: yellow;
+  margin-top: 30px;
+}
+.box {
+  display: grid;
+  grid-template-columns:repeat(3, 200px);
+  grid-auto-rows: auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin: 20px 10px 10px 10px;
+}
+
+.items {
+  list-style:none;
+  background-color: white;
+}
+tr {
+  background-color: #fff450
 }

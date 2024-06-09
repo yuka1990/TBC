@@ -1,38 +1,48 @@
 <link rel="stylesheet" type="text/css" href="/assets/users.css">
-<h1>MY PAGE</h1>
-
-<table>
-  <tbody>
-    <tr>
-      <th>Name: </th>
-      <td><%= current_user.name %></td>
-    </tr>
-    <tr>
-      <th>Nickname: </th>
-      <td><%= current_user.nickname %></td>
-    </tr>
-    <tr>
-      <th>Email: </th>
-      <td><%= current_user.email %></td>
-    </tr>
-    <tr>
-      <th>HomeCountry:</th>
-      <td><%= current_user.home_country.name %></td>
-    </tr>
-  </tbody>
-</table>
+<div class='container'>
+  <div class = "row">
+    <div class = 'col-4'>
+      <h1>MY PAGE</h1>
+        <table>
+          <tbody>
+            <tr>
+              <th>Name: </th>
+              <td><%= current_user.name %></td>
+            </tr>
+            <tr>
+              <th>Nickname: </th>
+              <td><%= current_user.nickname %></td>
+            </tr>
+            <tr>
+              <th>Email: </th>
+              <td><%= current_user.email %></td>
+            </tr>
+            <tr>
+              <th>HomeCountry:</th>
+              <td><%= current_user.home_country.name %></td>
+            </tr>
+          </tbody>
+        </table>
     </br>
-    <div>
-    <%= link_to "Bookmark", favorite_user_path(current_user) , class:"btn btn-warning" %></th>
-    <%= link_to "New post", new_post_path , class:"btn btn-warning" %></th>
-    <%= link_to "Edit", edit_user_path(current_user) , class:"btn btn-warning" %></th>
+    <%= link_to "Bookmark", favorite_user_path(current_user) , class:"btn btn-warning" %></br></br>
+    <%= link_to "New post", new_post_path , class:"btn btn-warning" %></br></br>
+    <%= link_to "Edit", edit_user_path(current_user) , class:"btn btn-warning" %></br></br>
+    <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn btn-success" %></br></br>
     </div>
-
-  <% @posts.each do |post| %>
-    <%= link_to post_path(post) do %>
-      <%= image_tag post.get_image %></br>
-    <% end %>
-    <%= post.title %>
-  <% end %>
-  </br>
-  <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn btn-success" %>
+     <div class = 'col-8'>
+      <div class="box">
+      <% @posts.each do |post| %>
+        <li class="items">
+          <div class="picture">
+            <%= link_to post_path(post) do %>
+              <%= image_tag post.get_image ,size: "200x150"%>
+            <% end %>
+            <p><%= post.title %></p>
+          </div>
+        </li>
+      <% end %>
+      </div>
+     </div>
+    </div>
+  </div>
+</div>

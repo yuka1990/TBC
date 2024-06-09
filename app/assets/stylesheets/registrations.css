@@ -4,3 +4,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
+.text-box {
+  background-color: #F2F0E7;
+  width: auto;
+  padding: 10px 30px;
+}
