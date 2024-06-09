@@ -36,3 +36,11 @@
   </table>
   </br>
   　<%= link_to "Destroy",admin_post_path(@post), method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %></td>
+  　
+  　<p>Comments: <%= @post.comments.count %></p>
+    <% @post.comments.each do |comment| %>
+      <%= comment.user.nickname %></br>
+      <%= comment.created_at.strftime('%Y/%m/%d') %></br>
+      <%= comment.body %></br>
+      <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %></br>
+    <% end %>
