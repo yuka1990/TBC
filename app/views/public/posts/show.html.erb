@@ -40,16 +40,20 @@
   　<%= link_to "Destroy",post_path(@post), method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %></td>
   <% end %>
   
-  <p>Total number of comment: <%= @post.comments.count %></p>
-  <% @post.comments.each do |comment| %>
-  <%= comment.user.nickname %></br>
-  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.body %></br>
-  <% if comment.user == current_user %>
-    <%= link_to "destroy", post_comment_path(comment.post, comment), method: :delete %>
-  <% end %>
+  <p>Comments: <%= @post.comments.count %></p>
+  <%= form_with model: [@post, @comment] do |f| %>
+    <%= f.text_area :body, row: '5', placeholder: "write a comment" %>
+    <%= f.submit "Send" %>
   <% end %>
   
-  <%= form_with model: [@post, @comment] do |f| %>
-    <%= f.text_area :body, row: '5', placeholder: "Please describe here" %>
-    <%= f.submit "Send" %>
+  <% @post.comments.order(created_at: :desc).limit(5).each do |comment| %>
+    <%= comment.user.nickname %></br>
+    <%= comment.created_at.strftime('%Y/%m/%d') %></br>
+    <%= comment.body %></br>
+    <% if comment.user == current_user %>
+      <%= link_to "Edit", edit_post_comment_path(comment.post,comment) %> |
+      <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %></br>
     <% end %>
+  <% end %>
+  <%= link_to "View more", post_comments_path(@post) %>
+  
