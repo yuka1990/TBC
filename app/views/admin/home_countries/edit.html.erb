@@ -1,9 +1,14 @@
-<h1>Home Country<br>Edit</h1>
-
-  <%= form_with model: @home_country, url: admin_home_country_path(@home_country) do |f| %>
-    <%= f.label :image, "Flag image" %>
-    <%= f.file_field :image,  accept:'image/*' %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.submit 'Save',class:"btn btn-success" %>
-  <% end %>
+<div class="container">
+  <h1 class="my-2">Country</h1><h2>Edit</h2>
+  <div class="row">
+    <div class="col-6 my-5">
+      <%= form_with model: @home_country, url: admin_home_country_path(@home_country) do |f| %>
+        <%= f.label :image, "Flag image" %>
+        <%= f.file_field :image,  accept:'image/*' %></br>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.submit 'Save',class:"btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

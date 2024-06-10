@@ -1,8 +1,17 @@
-<h1>Admin::Comments#index</h1>
-
-<% @comments.each do |comment| %>
-    <%= comment.user.nickname %></br>
-    <%= comment.created_at.strftime('%Y/%m/%d') %></br>
-    <%= comment.body %></br>
-    <%= link_to "destroy", admin_comment_path(comment), method: :delete %></br>
-  <% end %>
+<div class="container">
+  <h1>All Comments</h1>
+  <div class="row">
+    <div class="col">
+      <ul class="list-group">
+        <% @comments.each do |comment| %>
+        <li class="list-group-item">
+          <strong><%= comment.user.nickname %></strong></br>
+          <%= comment.created_at.strftime('%Y/%m/%d') %></br>
+          <%= comment.body %></br>
+          <%= link_to "destroy", admin_comment_path(comment), method: :delete %></br>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

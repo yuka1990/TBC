@@ -1,59 +1,65 @@
-<h1>Posts#show</h1>
-
-  <%= image_tag @post.get_image ,size: "400x300" %>
-  <table>
-    <tbody>
-      <tr>
-        <th>Genre</th>
-        <td><%= @post.genre.name %></td>
-      </tr>
-      <tr>
-        <th>Title</th>
-        <td><%= @post.title %></td>
-      </tr>
-      <tr>
-        <th>Explain</th>
-        <td><%= @post.body %></td>
-      </tr>
-      <tr>
-        <th>Ingredient</th>
-        <td><%= @post.ingredient %></td>
-      </tr>
-      <tr>
-        <th>Method</th>
-        <td><%= @post.method %></td>
-      </tr>
-      <tr>
-        <th>Level</th>
-        <td><%= @post.level %></td>
-      </tr>
-      <tr>
-        <th>Originality</th>
-        <td><%= @post.originality %></td>
-      </tr>
-    </tbody>
-  </table>
-  </br>
-
-  <% if @post.user == current_user %>
-  　<%= link_to "Edit", edit_post_path(@post), class:"btn btn-success" %>
-  　<%= link_to "Destroy",post_path(@post), method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %></td>
-  <% end %>
-  
-  <p>Comments: <%= @post.comments.count %></p>
-  <%= form_with model: [@post, @comment] do |f| %>
-    <%= f.text_area :body, row: '5', placeholder: "write a comment" %>
-    <%= f.submit "Send" %>
-  <% end %>
-  
-  <% @post.comments.order(created_at: :desc).limit(5).each do |comment| %>
-    <%= comment.user.nickname %></br>
-    <%= comment.created_at.strftime('%Y/%m/%d') %></br>
-    <%= comment.body %></br>
-    <% if comment.user == current_user %>
-      <%= link_to "Edit", edit_post_comment_path(comment.post,comment) %> |
-      <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %></br>
+<link rel="stylesheet" type="text/css" href="/assets/posts.css">
+<div class='container'>
+  <h1 class="page-title">Recipe detail</h1>
+  <div class = "row">
+    <div class = 'col-6'>
+    <%= image_tag @post.get_image ,size: "400x300" %>
+    </div>
+    <div class = 'col-6'>
+      <h1><%= @post.title %></h1>
+      <p><%= @post.body %></p>
+    <table>
+      <tbody>
+        <tr>
+          <th>Genre</th>
+          <td><%= @post.genre.name %></td>
+        </tr>
+        <tr>
+          <th>Level</th>
+          <td><%= @post.level %></td>
+        </tr>
+        <tr>
+          <th>Originality</th>
+          <td><%= @post.originality %></td>
+        </tr>
+        <tr>
+          <th>Country</th>
+          <td><%= image_tag @post.user.home_country.image, size: "20x20" %></td>
+        </tr>
+      </tbody>
+    </table>
+    <% if @post.user == current_user %>
+    　<%= link_to "Edit", edit_post_path(@post), class:"btn btn-success" %>
+    　<%= link_to "Destroy",post_path(@post), method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %></td>
     <% end %>
-  <% end %>
-  <%= link_to "View more", post_comments_path(@post) %>
-  
+    </div>
+  </div>
+  <section>
+    <h1>Ingredient</h1>
+    <p><%= safe_join(@post.ingredient.split("\n"),tag(:br)) %></p>
+  </section>
+  <section>
+    <h1>Method</h1>
+    <p><%= safe_join(@post.method.split("\n"),tag(:br)) %></p>
+  </section>
+  <section>
+      <h1>Comments: <%= @post.comments.count %></h1>
+      <div>
+      <%= form_with model: [@post, @comment] do |f| %>
+        <%= f.text_area :body, row: '5', placeholder: "write a comment" %>
+        <%= f.submit "Send" %>
+      <% end %>
+  </section>
+      
+      <% @post.comments.order(created_at: :desc).limit(5).each do |comment| %>
+        <%= comment.user.nickname %></br>
+        <%= comment.created_at.strftime('%Y/%m/%d') %></br>
+        <%= comment.body %></br>
+        <% if comment.user == current_user %>
+          <%= link_to "Edit", edit_post_comment_path(comment.post,comment) %> |
+          <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %></br>
+        <% end %>
+      <% end %>
+      <%= link_to "View more", post_comments_path(@post) %>
+  </div>
+</div>

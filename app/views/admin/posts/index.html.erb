@@ -1,17 +1,27 @@
-<h1>Recipes</h1>
-
-<% @posts.each do |post| %>
-
-    <div>
-    <%= link_to admin_post_path(post) do %>
-    <%= image_tag post.get_image %></br>
-    <% end %>
-    <%= image_tag post.user.home_country.image, size: "20x20" %>
-    <%= post.title %></br>
-    Level: <%= post.level %></br>
-    <%= post.originality %>
+<link rel="stylesheet" type="text/css" href="/assets/posts.css">
+<div class='container'>
+  <div class = "row">
+    <div class = 'col-12'>
+      <h1 class="page-title">Recipes</h1>
+      <ul class="box">
+      <% @posts.each do |post| %>
+        <li class="card">
+          <div class="card-img">
+            <%= link_to admin_post_path(post) do %>
+              <%= image_tag post.get_image, size: "200x130" %>
+    　　　   　<% end %>
+    　　　　</div>
+            <div class="card-content">
+              <h1 class="card-title"><%= post.title %></h1>
+              <p class="card-text">
+                Level: <%= post.level %></br>
+                <%= post.originality %></br>
+                <%= image_tag post.user.home_country.image, size: "20x20" %></br>
+                <%= link_to "#{post.comments.count} comments",post_path(post) %></br>
+            </div>
+        </li>
+      <% end %>
+      </ul>
     </div>
-
-<% end %>
-
-<%= link_to 'BACK', 'javascript:history.back()' ,class:"btn btn-success" %>
+  </div>
+</div>
