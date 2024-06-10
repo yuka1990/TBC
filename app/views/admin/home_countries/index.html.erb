@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 class="my-2">Country</h1><h2>list& new registrations</h2>
+  <div class="row">
+    <div class="col-6 my-5">
+      <%= form_with model: @home_country, url: admin_home_countries_path, method: :post do |f| %>
+        <%= f.label :image, "Flag image" %>
+        <%= f.file_field :image,  accept:'image/*' %></br>
+        <%= f.label :name %>
+        <%= f.text_field :name %></br>
+        <%= f.submit 'New Registration',class:"btn btn-success" %>
+      <% end %>
+    </div>
+    <div class="col-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Country name</th>
+            <th scope="col">National flag</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @home_countries.each do |home_country| %>
+          <tr>
+            <td><%= home_country.name %></td>
+            <td><%= image_tag home_country.get_image %></td>
+            <td><%= link_to "Edit",edit_admin_home_country_path(home_country.id), class:"btn btn-success" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>

@@ -1,0 +1,11 @@
+<h1>Public::Comments#index</h1>
+
+<% @comments.each do |comment| %>
+    <%= comment.user.nickname %></br>
+    <%= comment.created_at.strftime('%Y/%m/%d') %></br>
+    <%= comment.body %></br>
+    <% if comment.user == current_user %>
+      <%= link_to "Edit", edit_post_comment_path(comment.post,comment) %> |
+      <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %></br>
+    <% end %>
+  <% end %>

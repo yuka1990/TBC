@@ -1,0 +1,5 @@
+<h1>Public::Comments#edit</h1>
+  <%= form_with model: [@post, @comment], url: post_comment_path, method: :patch do |f| %>
+    <%= f.text_area :body, row: '5', placeholder: "Please describe here" %>
+    <%= f.submit "Save" %>
+  <% end %>

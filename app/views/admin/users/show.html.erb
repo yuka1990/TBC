@@ -1,0 +1,62 @@
+<div class="container">
+  <h1>User detail</h1>
+  <div class="row">
+    <div class="col">
+      <table>
+        <tbody>
+          <tr>
+            <th>ID: </th>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <th>Nickname: </th>
+            <td><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <th>Email: </th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
+            <th> <%= f.label :is_active, 'user_status' %></th>
+            <td>
+              <%= f.radio_button :is_active, true, checked: @user.is_active == true %>
+              <%= f.label :is_active, 'Member' %>
+              <%= f.radio_button :is_active, false, checked: @user.is_active == false %>
+              <%= f.label :is_active, 'Withdrawal' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <%= f.submit "変更を保存", class: "btn btn-success" %>
+      <% end %>
+
+
+
+  <table class="table table-hover my-3">
+    <thead>
+      <tr>
+        <th>Picture</th>
+        <th>Genre</th>
+        <th>Title</th>
+        <th>Level</th>
+        <th>Originality</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= image_tag post.get_image, size: "50x50" %></td>
+          <td><%= post.genre.name %></td>
+          <td><%= post.title %></td>
+          <td><%= post.level %></td>
+          <td><%= post.originality %></td>
+          <td><%= link_to "Show" ,admin_post_path(post) , class:"btn btn-success" %></td>
+          <td><%= link_to "Destroy",admin_post_path(post), method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %></td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
