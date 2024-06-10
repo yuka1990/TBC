@@ -1,0 +1,50 @@
+<div class='container'>
+  <h1 class="page-title">Recipe detail</h1>
+  <div class = "row">
+    <div class = 'col-6'>
+    <%= image_tag @post.get_image ,size: "400x300" %>
+    </div>
+    <div class = 'col-6'>
+      <h1><%= @post.title %></h1>
+      <p><%= @post.body %></p>
+    <table>
+      <tbody>
+        <tr>
+          <th>Genre</th>
+          <td><%= @post.genre.name %></td>
+        </tr>
+        <tr>
+          <th>Level</th>
+          <td><%= @post.level %></td>
+        </tr>
+        <tr>
+          <th>Originality</th>
+          <td><%= @post.originality %></td>
+        </tr>
+        <tr>
+          <th>Country</th>
+          <td><%= image_tag @post.user.home_country.image, size: "20x20" %></td>
+        </tr>
+      </tbody>
+    </table>
+      </br>
+    　<%= link_to "Destroy",admin_post_path(@post), method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %>
+    </div>
+  </div>
+  <section>
+    <h1>Ingredient</h1>
+    <p><%= safe_join(@post.ingredient.split("\n"),tag(:br)) %></p>
+  </section>
+  <section>
+    <h1>Method</h1>
+    <p><%= safe_join(@post.method.split("\n"),tag(:br)) %></p>
+  </section>
+  <section>
+  　<h1>Comments: <%= @post.comments.count %></h1>
+    <% @post.comments.each do |comment| %>
+      <%= comment.user.nickname %></br>
+      <%= comment.created_at.strftime('%Y/%m/%d') %></br>
+      <%= comment.body %></br>
+      <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %></br>
+    <% end %>
+  </section>
