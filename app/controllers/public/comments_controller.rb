@@ -10,7 +10,7 @@ class Public::CommentsController < ApplicationController
     redirect_to post_path(post)
     else
       flash[:alert] = "Failed to save."
-      render :edit
+    redirect_to post_path(post)
     end
   end
 
