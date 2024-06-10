@@ -1,5 +1,5 @@
 class Admin::CommentsController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
   before_action :ensure_comment, only: [:show, :destroy]
 
   def index

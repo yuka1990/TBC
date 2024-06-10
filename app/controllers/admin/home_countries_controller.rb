@@ -1,5 +1,5 @@
 class Admin::HomeCountriesController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
   before_action :ensure_home_country, only: [:edit, :update]
   
   
