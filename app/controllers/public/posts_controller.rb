@@ -11,7 +11,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to my_page_path, notice: "Successfully saved."
+      redirect_to post_path(@post), notice: "Successfully saved."
     else
       flash[:alert] = "Failed to save."
       render :new
