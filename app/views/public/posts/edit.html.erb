@@ -43,6 +43,7 @@
         </table>
   <%= f.submit 'Save',class:"btn btn-success" %>
 　<% end %>
+　<%= link_to "Destroy",post_path(@post), method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %>
 　</br>
 　<%= link_to 'BACK', 'javascript:history.back()' ,class:"btn btn-success" %>
     </div>

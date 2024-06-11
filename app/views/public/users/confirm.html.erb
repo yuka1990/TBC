@@ -1,2 +1,22 @@
-<h1>Public::Users#confirm</h1>
-<p>Find me in app/views/public/users/confirm.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <h1 class="my-5">Are you sure you want to cancel your membership?</h1>
+    <div class="col"></div>
+  </div>
+    
+  <div class="row mb-5">
+    <div class="col"></div>
+      <h2 class="text-center">
+        Once you cancel your membership,you will no longer be able to view</br>
+        your registration information or bookmark list.</br>
+        To cancel your membership, please click “Cancel”.</h2>
+      <div class="col"></div>
+  </div>
+  <div class="row pb-5">
+    <div class="col"></div>
+    <%= link_to "KEEP membership", my_page_path, :class => "btn btn-primary ms-3 btn-lg mr-5" %>
+    <%= link_to "CANCEL membership", withdraw_path, method: :patch, :class => "btn btn-danger ms-3 btn-lg ml-5", data: { confirm: "Are you sure you want to cancel your membership?" }  %>
+    <div class="col"></div>
+  </div>
+</div>

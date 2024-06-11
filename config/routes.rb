@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root to:'homes#top'
     get '/my_page' => 'users#mypage'
-    get '/unsubscribe' => 'users#unsubscribe'
-    get '/withdraw' => 'users#withdraw'
+    get '/confirm' => 'users#confirm'
+    patch '/withdraw' => 'users#withdraw'
     resources :users, only: [:edit, :show, :update] do
       member do
         get :favorite

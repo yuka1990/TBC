@@ -1,14 +1,14 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_user
-  
+
   def mypage
     @posts = @user.posts
   end
 
   def edit
   end
-  
+
   def update
     if @user.update(user_params)
        redirect_to my_page_path(@user), notice: "Successfully saved."
@@ -23,13 +23,20 @@ class Public::UsersController < ApplicationController
 
   def confirm
   end
-  
+
+  def withdraw
+    @user.update(is_active: false)
+    reset_session
+    flash[:notice] = "Cancellation of membership has been executed."
+    redirect_to root_path
+  end
+
   private
-  
+
   def ensure_user
     @user = current_user
   end
-  
+
   def user_params
     params.require(:user).permit(:name, :nickname, :email, :home_country_id)
   end
