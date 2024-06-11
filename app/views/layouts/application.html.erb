@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/f4a6fb0793.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
   </head>
 
    <body class="d-flex flex-column min-vh-100">
@@ -20,10 +20,10 @@
     <% elsif flash[:alert] %>
       <div class="alert alert-danger text-center"><%= flash[:alert] %></div>
     <% end %>
-    
+
     <%= yield %>
     </br>
-    
+
     </main>
     <%= render 'layouts/footer' %>
   </body>
