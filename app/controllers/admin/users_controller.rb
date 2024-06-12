@@ -1,7 +1,11 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   def index
+    if params[:search].present?
+      @users = User.where('name LIKE :search OR nickname LIKE :search', search: "%#{params[:search]}%")
+    else
     @users = User.all
+    end
   end
 
   def show

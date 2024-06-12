@@ -63,7 +63,17 @@ section {
   position: relative;
 }
 
-.search_form {
+.search_form-1 {
+  position: absolute;
+  top: 0;
+  left: 60%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+}
+
+
+.search_form-2 {
   position: absolute;
   top: 0;
   right: 0;

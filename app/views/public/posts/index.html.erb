@@ -1,24 +1,21 @@
 <%= stylesheet_link_tag 'public/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-
-
-
-
 <div class='container'>
   <div class = "row">
-    <h1 class="page-title">Recipes</h1>
-    
-    <div class="search_form">
+    <h1 class="page-title">Recipes
+    </h1>
+    <div class="search_form-1">
+  　　<%= form_with local: true, method: :get do |f| %>
+      　<%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Select Category--"} %>
+      　<%= f.submit "Search" %>
+    　<% end %>
+  　</div>
+    <div class="search_form-2">
   　　<%= form_with local: true, method: :get do |f| %>
       　<%= f.text_field :keyword %>
       　<%= f.submit "Search" %>
     　<% end %>
   　</div>
     <div class = 'col-12'>
-      <% if @keyword.present? %>
-       <%= "#{@keywords}の検索結果" %>
-      <% end %>
-      
       <ul class="box">
       <% @posts.each do |post| %>
         <li class="card">

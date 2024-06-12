@@ -1,6 +1,13 @@
+<%= stylesheet_link_tag 'admin/users', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container">
   <div class="row">
     <h1 class="my-2">Users List</h1>
+    <div class="search_form-2">
+  　　<%= form_with local: true, method: :get do |f| %>
+      　<%= f.text_field :search %>
+      　<%= f.submit "Search" %>
+    　<% end %>
+  　</div>
     <table class="table table-hover">
       <thead style="background-color: #b4ba9f;">
         <tr>
