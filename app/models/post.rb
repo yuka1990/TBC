@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   validates :method, presence: true
   validates :level, presence: true
   validates :originality, presence: true
+  validates :image, presence: true
   
   
   enum level: { beginner: 0, intermediate: 1, advanced: 2 }

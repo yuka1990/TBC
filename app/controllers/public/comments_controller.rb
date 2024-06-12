@@ -1,6 +1,7 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_comment, only: [:edit, :update, :show, :destroy]
+  before_action :is_matching_login_user, only: [:edit, :update]
   
   def create
     post = Post.find(params[:post_id])
@@ -44,6 +45,13 @@ class Public::CommentsController < ApplicationController
   
   def ensure_comment
     @comment = Comment.find(params[:id])
+  end
+  
+  def is_matching_login_user
+    post = Post.find(params[:post_id])
+    unless @comment.user_id == current_user.id
+      redirect_to post_path(post)
+    end
   end
   
   def comment_params

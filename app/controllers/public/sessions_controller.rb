@@ -35,11 +35,19 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
   
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to posts_path, notice: "Logged in as guestuser"
+  end
+  
+  private
+  
    def reject_inactive_user
     @user = User.find_by(email: params[:user][:email])
     if @user
       if @user.valid_password?(params[:user][:password]) && !@user.is_active
-        flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
+        flash[:alert] = 'You have already canceled your membership. We are sorry, but please use another e-mail address.'
         redirect_to new_user_registration_path
       end
     end

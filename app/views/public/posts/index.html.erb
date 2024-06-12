@@ -9,15 +9,15 @@
           <div class="card-img">
             <%= link_to post_path(post) do %>
               <%= image_tag post.get_image, size: "200x130" %>
-    　　　   　<% end %>
-    　　　　</div>
+            <% end %>
+          </div>
             <div class="card-content">
               <h1 class="card-title"><%= post.title %></h1>
               <p class="card-text">
                 Level: <%= post.level %></br>
                 <%= post.originality %></br>
                 <%= image_tag post.user.home_country.image, size: "20x20" %></br>
-                <%= link_to "#{post.comments.count} comments",post_path(post) %></br>
+                <%= link_to "#{post.comments.count} comments",post_comments_path(post) %></br>
             </div>
         </li>
       <% end %>

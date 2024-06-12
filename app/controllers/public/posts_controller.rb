@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_post, only: [:edit, :update, :show, :destroy]
+  before_action :is_matching_login_user, only: [:edit, :update]
 
 
   def new
@@ -49,6 +50,12 @@ class Public::PostsController < ApplicationController
 
   def ensure_post
     @post = Post.find(params[:id])
+  end
+  
+  def is_matching_login_user
+    unless @post.user_id == current_user.id
+      redirect_to posts_path
+    end
   end
 
   def post_params

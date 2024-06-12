@@ -45,21 +45,26 @@
   <section>
       <h1>Comments: <%= @post.comments.count %></h1>
       <div>
+      <% if current_user.email != "guest@example.com" %>
       <%= form_with model: [@post, @comment] do |f| %>
         <%= f.text_area :body, row: '5', placeholder: "write a comment" %>
         <%= f.submit "Send" %>
       <% end %>
+      <% end %>
   </section>
-      
+      <ul class="list-group">
       <% @post.comments.order(created_at: :desc).limit(5).each do |comment| %>
-        <%= comment.user.nickname %></br>
+      　<li class="list-group-item">
+        <strong><%= comment.user.nickname %></strong></br>
         <%= comment.created_at.strftime('%Y/%m/%d') %></br>
         <%= comment.body %></br>
         <% if comment.user == current_user %>
           <%= link_to "Edit", edit_post_comment_path(comment.post,comment) %> |
           <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %></br>
         <% end %>
+      　</li>
       <% end %>
+      </ul>
       <%= link_to "View more", post_comments_path(@post) %>
   </div>
 </div>
