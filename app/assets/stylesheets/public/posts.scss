@@ -58,3 +58,13 @@ section {
   display: block;
   unicode-bidi: isolate;
 }
+
+.container{
+  position: relative;
+}
+
+.search_form {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

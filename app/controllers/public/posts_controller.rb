@@ -20,7 +20,15 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @genres = Genre.all
+    if params[:genre_id]
+      @genre = @genres.find(params[:genre_id])
+      @posts = @genre.posts
+    elsif params[:keyword].present?
+      @posts = Post.joins(user: :home_country).where('posts.title LIKE :keyword OR posts.ingredient LIKE :keyword OR home_countries.name LIKE :keyword', keyword: "%#{params[:keyword]}%")
+    else
+      @posts = Post.all
+    end
   end
 
   def show
@@ -44,6 +52,11 @@ class Public::PostsController < ApplicationController
     redirect_to my_page_path
   end
 
+  def search
+    @keyword = search_params[:keyword]
+    @posts = Post.search(@keyword)
+  end
+
 
 
   private
@@ -51,7 +64,7 @@ class Public::PostsController < ApplicationController
   def ensure_post
     @post = Post.find(params[:id])
   end
-  
+
   def is_matching_login_user
     unless @post.user_id == current_user.id
       redirect_to posts_path
