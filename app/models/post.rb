@@ -29,4 +29,9 @@ class Post < ApplicationRecord
       image.variant(resize_to_limit: [300, 300]).processed
   end
   
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+    
+  
 end
