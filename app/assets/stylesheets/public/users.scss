@@ -9,6 +9,7 @@ body {
 }
 table {
   margin: 30px 0px;
+  font-size: 20px;
 }
 .page-title {
   width: 210px;
@@ -28,7 +29,7 @@ table {
   background-color: white;
 }
 tr {
-  background-color: #FFFFB3
+  background-color: #FFFEEF;
 }
 
 .card {
@@ -52,4 +53,20 @@ tr {
   margin-bottom: 20px;
   text-align: center;
   color: #333;
+}
+
+.user-link {
+  font-family: "Itim", cursive;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: #FFFEEF;
+}
+
+.user-link a{
+  color: #000000;
+}
+
+.btn {
+  background: #4A290D;
+  color:#FFFFFF;
 }
