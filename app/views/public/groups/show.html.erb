@@ -1,2 +1,26 @@
-<h1>Public::Groups#show</h1>
-
+<%= stylesheet_link_tag 'public/groups', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container">
+  <h1>Tour detail</h1>
+  <div class="row">
+    <div class="col">
+      <h2>Organizer</h2>
+      <%= @group.owner_nickname %>
+      <div class="list-group">
+        <div class="box-title"><%= @group.name %></div>
+          <%= @group.introduction %>
+          <div class="link-button">
+          <% if @group.is_owned_by?(current_user) %>
+          <%= link_to 'Edit', edit_group_path(@group) %>
+          <%= link_to 'destroy', group_path(@group), method: :delete %>
+          <% end %>
+          </div>
+      </div>
+      <div>
+        <h1>Members</h1>
+        <% @group.users.each do |user| %>
+　　      <li style="list-style: none;"><%= user.nickname %></li>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

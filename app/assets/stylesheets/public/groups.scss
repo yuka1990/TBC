@@ -1,17 +1,17 @@
 // Place all the styles related to the public/groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-body {
-  background-image: image-url("AdobeStock_236184001.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+//body {
+  //background-image: image-url("AdobeStock_236184001.jpeg");
+  //background-size: cover;
+  //background-position: center;
+  //background-repeat: no-repeat;
+//}
 
 .list-group{
 	margin: 2em auto;
 	background-color: #F6EEEC;/*ボックス背景色*/
-	padding:2.5em 2em 2em;/*ボックス内側余白*/
+	padding:2.1em 1em 1em;/*ボックス内側余白*/
 	position:relative;/*配置(ここを基準に)*/
 }
 .list-group .box-title {
@@ -29,4 +29,8 @@ body {
 .link-button {
   display: inline-block;
   margin-right: 5px;  // リンクの間に隙間を開けるために必要な場合
+}
+ul {
+  list-style: none;
+  line-height: 1;
 }

@@ -6,13 +6,26 @@
       <% @groups.each do |group| %>
       <div class="list-group">
         <div class="box-title"><%= group.name %></div>
-          <%= group.introduction %>
+        <ul>
+          <li>
+        　<li>Organizer:<%= group.owner_nickname %></li>
+        　<li>Members: <%= group.group_users.count %></li>
+        　<li><%= safe_join(group.introduction.split("\n"),tag(:br)) %></li>
+        　<li>
           <div class="link-button">
           <%= link_to 'Show', group %>
           <% if group.is_owned_by?(current_user) %>
           /&nbsp;<%= link_to 'Edit', edit_group_path(group) %>
+          /&nbsp;<%= link_to 'destroy', group_path(group), method: :delete %>
+          <% elsif group.includesUser?(current_user)%>
+　　      <%= link_to 'Leave this group', group_group_user_path(group), method: :delete, class: "btn" %>
+          <% else %>
+　　      <%= link_to 'Join this group', group_group_user_path(group), method: :post, class: "btn" %>
           <% end %>
           </div>
+          </li>
+          </ul>
+          
       </div>
       <% end %>
     </div>
