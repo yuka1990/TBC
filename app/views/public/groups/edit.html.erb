@@ -1,2 +1,21 @@
-<h1>Public::Groups#edit</h1>
-<p>Find me in app/views/public/groups/edit.html.erb</p>
+<%= stylesheet_link_tag 'public/groups', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class='container'>
+  <div class = "row py-5 mx-auto">
+    <div class = 'col-6 mx-auto'>
+      <h1>Create cooking tour</h1>
+      <%= form_with model: @group, url: group_path, method: :patch do |f| %>
+      <div class="field">
+        <%= f.label:name, "Tour name" %></br>
+        <%= f.text_field :name, size: "48x1" %>
+      </div>
+      <div class="field">
+        <%= f.label:introduction, "Introduction" %></br>
+        <%= f.text_area :introduction , size: "50x10" %>
+      </div>
+      <div class="actions">
+      <%= f.submit 'New Registration',class:"btn" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

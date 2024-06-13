@@ -5,3 +5,4 @@
 //= link public/homes.css
 //= link public/registrations.css
 //= link admin/users.css
+//= link public/groups.css
