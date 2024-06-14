@@ -16,11 +16,17 @@
     <%= render 'layouts/header' %>
     <main class="flex-grow-1">
     <% if flash[:notice] %>
-      <div class="alert alert-warning text-center"><%= flash[:notice] %></div>
+      <div id="notice" class="alert alert-warning text-center"><%= flash[:notice] %></div>
     <% elsif flash[:alert] %>
-      <div class="alert alert-danger text-center"><%= flash[:alert] %></div>
-      
+      <div id="alert" class="alert alert-danger text-center"><%= flash[:alert] %></div>
     <% end %>
+
+  <script>
+   setTimeout(function() {
+    document.getElementById('notice')?.remove();  // noticeが存在する場合に非表示にします
+    document.getElementById('alert')?.remove();  // alertが存在する場合に非表示にします
+   }, 3000);  // 5000ミリ秒（5秒）後に実行します
+  </script>
 
     <%= yield %>
     </br>

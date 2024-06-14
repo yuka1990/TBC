@@ -1,7 +1,12 @@
 <%= stylesheet_link_tag 'public/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-<h1>Public::Comments#edit</h1>
-  <%= form_with model: [@post, @comment], url: post_comment_path, method: :patch do |f| %>
-    <%= f.text_area :body, row: '5', placeholder: "Please describe here" %>
-    <%= f.submit "Save" %>
-  <% end %>
+<div class='container'>
+  <h1 class="page-title-long">COMMENT EDIT</h1>
+  <div class = "row mt-5">
+    <div class = 'col mt-5'>
+      <%= form_with model: [@post, @comment], url: post_comment_path, method: :patch do |f| %>
+        <%= f.text_area :body, row: '5', placeholder: "Please describe here" %></br>
+        <%= f.submit "Save",class:"btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

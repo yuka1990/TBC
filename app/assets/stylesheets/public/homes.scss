@@ -1,20 +1,23 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-body {
+#mv {
   background-image: image-url("AdobeStock_528723350.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  font-family: Georgia, serif;
+  width: 100%;
+  height: 650px;
 }
 
 .top_title{
   text-align: center;
   color: #3e2e28;
-  margin-top: 10%;
+  padding: 10%;
 }
 
-h1{
+.main-title{
   font-size:80px;
 }
 
@@ -27,4 +30,24 @@ a {
 }
 a:hover {
   color: #3e2e28;
+}
+
+#about {
+  background-color: #fee6e3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Georgia, serif;
+  width: 100%;
+  height: 650px;
+  margin: 0;
+}
+
+.about_title {
+  text-align: center;
+  color: #3e2e28;
+  padding-top: 90px;
+}
+.second-title{
+  font-size: 60px;
 }
