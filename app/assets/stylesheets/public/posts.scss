@@ -17,6 +17,7 @@ body {
 }
 
 .page-title-long {
+  width: 400px;
   margin-top: 10px;
   font-size: 50px;
 }
@@ -172,10 +173,12 @@ section {
 }
 .btn_search {
 	text-align: center;
+	font-size: 13px;
 	vertical-align: middle;
 	text-decoration: none;
 	margin: auto;
 	font-weight: bold;
+	font-family: Inter,sans-serif;
 	background-image: linear-gradient(to right, #2B611A 0%, #b4e12b 100%);
 	border-radius: 100vh;
 	color: #fff;

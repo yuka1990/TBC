@@ -1,20 +1,23 @@
-<div class="container">
-  <h1>All Comments</h1>
-  <div class="row">
-    <div class="col">
-      <ul class="list-group">
-        <% @comments.each do |comment| %>
-        <li class="list-group-item">
-          <strong><%= comment.user.nickname %></strong></br>
-          <%= comment.created_at.strftime('%Y/%m/%d') %></br>
-          <%= comment.body %></br>
-          <% if comment.user == current_user %>
-            <%= link_to "Edit", edit_post_comment_path(comment.post,comment) %>
-            <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %></br>
+<%= stylesheet_link_tag 'public/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <div class="container">
+    <h1 class="page-title">Comments</h1>
+    <div class="row">
+      <div class="col">
+        <ul class="list-group">
+          <% @comments.each do |comment| %>
+          <li class="list-group-item">
+            <strong><%= comment.user.nickname %></strong></br>
+            <%= comment.created_at.strftime('%Y/%m/%d') %></br>
+            <%= comment.body %></br>
+            <% if comment.user == current_user %>
+              <%= link_to "Edit", edit_post_comment_path(comment.post,comment) %>
+              <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %></br>
+            <% end %>
+          </li>
           <% end %>
-        </li>
-        <% end %>
-      </ul>
+        </ul>
+        </br>
+        <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
+      </div>
     </div>
   </div>
-</div>
