@@ -20,7 +20,7 @@
         <li class="card">
           <div class="card-img">
             <%= link_to post_path(post) do %>
-              <%= image_tag post.get_image, size: "200x130" %>
+              <%= image_tag post.get_image, size: "199x130" %>
             <% end %>
           </div>
             <div class="card-content">
@@ -46,6 +46,7 @@
         </li>
       <% end %>
       </ul>
+      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>
   </div>
 </div>
