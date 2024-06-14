@@ -6,6 +6,28 @@
         <h2><%= link_to "Let's start the journey" ,new_user_registration_path %></h2>
       </div>
     </div>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <%= image_tag("sakujo5.jpg", class: "swiper-image") %>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag("AdobeStock_335744309.jpeg", class: "swiper-image名") %>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag("AdobeStock_335744309.jpeg", class: "swiper-image") %>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag("AdobeStock_335744309.jpeg", class: "swiper-image") %>
+        </div>
+        <div class="swiper-slide">
+         <%= image_tag("AdobeStock_335744309.jpeg", class: "swiper-image") %>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag("AdobeStock_335744309.jpeg", class: "swiper-image") %>
+        </div>
+      </div>
+    </div>
   </section>
   <section id="about">
     <div class="container">
@@ -15,3 +37,15 @@
       </div>
     </div>
   </section>
+  <script>
+  const swiper = new Swiper(".swiper", {
+  loop: true, // ループ有効
+  slidesPerView: 3, // 一度に表示する枚数
+  speed: 9000, // ループの時間
+  allowTouchMove: false, // スワイプ無効
+  autoplay: {
+    delay: 0, // 途切れなくループ
+    reverseDirection: true,
+  },
+});
+</script>
