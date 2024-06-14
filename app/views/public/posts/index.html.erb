@@ -1,17 +1,16 @@
 <%= stylesheet_link_tag 'public/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class='container'>
   <div class = "row">
-    <h1 class="page-title">Recipes
-    </h1>
+    <h1 class="page-title">RECIPES</h1>
     <div class="search_form-1">
   　　<%= form_with local: true, method: :get do |f| %>
-      　<%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Select Category--"} %>
+      　<%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Select Category--"}  %>
       　<%= f.submit "Search" %>
     　<% end %>
   　</div>
     <div class="search_form-2">
   　　<%= form_with local: true, method: :get do |f| %>
-      　<%= f.text_field :keyword %>
+      　<%= f.text_field :keyword, placeholder: "--input keyword--" %>
       　<%= f.submit "Search" %>
     　<% end %>
   　</div>
@@ -27,13 +26,13 @@
             <div class="card-content">
               <h1 class="card-title"><%= post.title %></h1>
               <p class="card-text">
+                <%= post.genre.name %></br>
                 Level: <%= post.level %></br>
-                <%= post.originality %></br>
                 <%= image_tag post.user.home_country.image, size: "20x20" %></br>
+                By<%= post.user.nickname %>
                 <%= link_to post_comments_path(post) do %>
                 <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>
-                <% end %>
-                &nbsp;&nbsp;&nbsp;&nbsp;
+                <% end %>|
                 <% if post.favorited_by?(current_user) %>
                     <%= link_to post_favorite_path(post), method: :delete do %>
                       <i class="fa-solid fa-heart"></i>&nbsp;<%= post.favorites.count %>

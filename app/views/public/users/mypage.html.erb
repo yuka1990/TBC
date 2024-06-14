@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'public/users', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class='container'>
-  <div class = "row">
+  <div class = "row mt-2">
     <div class = 'col-3'>
       <h1 class="page-title">MY PAGE</h1>
         <table>
@@ -23,28 +23,36 @@
             </tr>
           </tbody>
         </table>
-    <div class="user-link">
-    <%= link_to "Bookmark", favorite_user_path(current_user) %></br>
-    <%= link_to "Post new recipe", new_post_path %></br>
-    <%= link_to "Create cooking tour", new_group_path %></br>
-    <%= link_to "Edit Profile", edit_user_path(current_user)  %></br>
-    </div>
-    </br>
-    <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn" %></br></br>
-    </div>
-     <div class = 'col-9 mt-3'>
+        <div class="user-link">
+        <%= link_to favorite_user_path(current_user) do %>
+          <i class="fa-solid fa-heart"></i> Bookmark</br>
+        <% end %>
+        <%= link_to new_post_path do %>
+          <i class="fa-solid fa-utensils"></i> Post new recipe</br>
+        <% end %>
+        <%= link_to new_group_path do %>
+          <i class="fa-solid fa-flag"></i> Create cooking tour</br>
+        <% end %>
+        <%= link_to edit_user_path(current_user) do %>
+          <i class="fa-solid fa-user-pen"></i>Edit Profile</br>
+        <% end %>
+        </div>
+        </br>
+        <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
+        </div>
+    <div class = 'col-9 mt-3'>
       <ul class="box">
       <% @posts.each do |post| %>
-          <li class="card">
-            <div class="card-img">
-            <%= link_to post_path(post) do %>
-              <%= image_tag post.get_image , size: "200x130"%>
-            <% end %>
-            </div>
-            <div class="card-content">
-               <h1 class="card-title"><%= post.title %></h1>
-            </div>
-          </li>
+        <li class="card">
+          <div class="card-img">
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.get_image , size: "200x130"%>
+          <% end %>
+          </div>
+          <div class="card-content">
+            <h1 class="card-title"><%= post.title %></h1>
+          </div>
+        </li>
       <% end %>
       </ul>
      </div>

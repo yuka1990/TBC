@@ -6,14 +6,24 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  font-family: Georgia, serif;
 }
+
 .page-title {
-  margin-top: 5px;
+  width: 250px;
+  margin-top: 10px;
   font-size: 50px;
 }
+
+.page-title-long {
+  margin-top: 10px;
+  font-size: 50px;
+}
+
 table {
   margin: 20px 0px;
 }
+
 .box {
   display: grid;
   grid-template-columns:repeat(5, 1fr);
@@ -25,6 +35,7 @@ table {
   list-style:none;
   background-color: white;
 }
+
 .card {
   margin: 10px auto;
   width: 200px;
@@ -32,6 +43,12 @@ table {
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
 }
+
+.card a{
+  color: #000000;
+}
+
+
 .card-img {
   border-radius: 5px 5px 0 0;
   text-align: center;
@@ -42,6 +59,7 @@ table {
 .card-content {
   padding: 0px;
 }
+
 .card-title {
   font-size: 20px;
   margin: 5px 0px;
@@ -71,7 +89,6 @@ section {
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
 }
-
 
 .search_form-2 {
   position: absolute;
