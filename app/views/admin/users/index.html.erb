@@ -1,15 +1,15 @@
 <%= stylesheet_link_tag 'admin/users', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container">
-  <div class="row">
-    <h1 class="my-2">Users List</h1>
+  <div class="row mt-2">
+    <h1 class="page-title-long">USER LIST</h1>
     <div class="search_form-2">
-  　　<%= form_with local: true, method: :get do |f| %>
-      　<%= f.text_field :search %>
-      　<%= f.submit "Search" %>
+      <%= form_with local: true, method: :get do |f| %>
+        <%= f.text_field :search %>
+        <%= f.submit "Search" %>
     　<% end %>
   　</div>
     <table class="table table-hover">
-      <thead style="background-color: #b4ba9f;">
+      <thead>
         <tr>
           <td>ID</td>
           <td>Name</td>
@@ -27,14 +27,15 @@
           <td><%= link_to 'click' , admin_user_path(user), data: {"turbolinks" => false} %></td>
           <td>
             <% if user.is_active %>
-            <strong class="text-success">Member</strong>
+              <strong class="text-success">Member</strong>
             <% else %>
-            <strong class="text-muted">Withdrawal</strong>
+              <strong class="text-muted">Withdrawal</strong>
             <% end %>
           </td>
         </tr>
       </tbody>
       <% end %>
     </table>
+    <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
   </div>
 </div>

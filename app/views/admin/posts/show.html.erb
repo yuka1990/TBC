@@ -1,8 +1,9 @@
+<%= stylesheet_link_tag 'admin/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class='container'>
-  <h1 class="page-title">Recipe detail</h1>
+  <h1 class="page-title-long">RECIPE DETAIL</h1>
   <div class = "row">
     <div class = 'col-6'>
-    <%= image_tag @post.get_image ,size: "400x300" %>
+      <%= image_tag @post.get_image ,size: "400x300" %>
     </div>
     <div class = 'col-6'>
       <h1><%= @post.title %></h1>
@@ -41,10 +42,16 @@
   </section>
   <section>
   　<h1>Comments: <%= @post.comments.count %></h1>
+  　<ul class="list-group">
     <% @post.comments.each do |comment| %>
+      <li class="list-group-item">
       <%= comment.user.nickname %></br>
       <%= comment.created_at.strftime('%Y/%m/%d') %></br>
       <%= comment.body %></br>
       <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %></br>
+      </li>
     <% end %>
+    </ul>
   </section>
+  <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
+</div>

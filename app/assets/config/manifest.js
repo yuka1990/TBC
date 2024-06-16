@@ -6,3 +6,7 @@
 //= link public/registrations.css
 //= link admin/users.css
 //= link public/groups.css
+//= link admin/homes.css
+//= link admin/posts.css
+//= link admin/comments.css
+//= link admin/country_genre.css

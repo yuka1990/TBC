@@ -1,12 +1,18 @@
 class Admin::CommentsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :ensure_comment, only: [:show, :destroy]
+  before_action :ensure_comment, only: [:destroy]
 
   def index
+    if params[:search].present?
+      @comments = Comment.where('body LIKE :search', search: "%#{params[:search]}%")
+    else
     @comments = Comment.all
+    end
   end
 
   def show
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments
   end
 
   def destroy
