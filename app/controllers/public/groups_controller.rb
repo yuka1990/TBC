@@ -2,6 +2,7 @@ class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_group, only: [:edit, :update, :show, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :check_guest_user, only: [:new]
 
   def new
     @group = Group.new
@@ -56,6 +57,12 @@ class Public::GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :introduction)
+  end
+  
+  def check_guest_user
+    if current_user.email == "guest@example.com"
+      redirect_to groups_path, alert:"Access is not permitted."
+    end
   end
 
 end

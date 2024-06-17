@@ -13,13 +13,15 @@
         　<li>
           <div class="link-button">
           <%= link_to 'Show', group %>
+          <% if current_user.email != "guest@example.com" %>
           <% if group.is_owned_by?(current_user) %>
           /&nbsp;<%= link_to 'Edit', edit_group_path(group) %>
           /&nbsp;<%= link_to 'destroy', group_path(group), method: :delete %>
           <% elsif group.includesUser?(current_user)%>
-　　      <%= link_to 'Leave this group', group_group_user_path(group), method: :delete, class: "btn" %>
+　　      <%= link_to 'Leave this group', group_group_user_path(group), method: :delete, class: "btn-leave" %>
           <% else %>
-　　      <%= link_to 'Join this group', group_group_user_path(group), method: :post, class: "btn" %>
+　　      <%= link_to 'Join this group', group_group_user_path(group), method: :post, class: "btn-join" %>
+          <% end %>
           <% end %>
           </div>
           </li>

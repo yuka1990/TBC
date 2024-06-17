@@ -6,7 +6,7 @@
       <h3>Organizer:<%= @group.owner_nickname %></h3>
       <div class="list-group">
         <div class="box-title"><%= @group.name %></div>
-          <%= @group.introduction %>
+          <%= safe_join(@group.introduction.split("\n"),tag(:br)) %>
           <div class="link-button">
           <% if @group.is_owned_by?(current_user) %>
           <%= link_to 'Edit', edit_group_path(@group) %>&nbsp;/
