@@ -39,10 +39,10 @@
             </tr>
           </tbody>
         </table>
-        <%= f.submit "Sign up" ,class:"btn btn-success"%>
+        <%= f.submit "Sign up" ,class:"btn btn-warning"%>
         <% end %>
            </br>
-           Viewing only→<%= link_to "Login as guest", users_guest_sign_in_path, class: "btn btn-secondary", method: :post %></br>
+           Viewing only→<%= link_to "Login as guest", users_guest_sign_in_path, class: "btn btn-light", method: :post %></br>
            Already registered?→<%= render "public/shared/links" %>
       </div>
     </div>

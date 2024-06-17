@@ -8,10 +8,8 @@ class Public::CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = post.id
     if @comment.save
-    redirect_to post_path(post)
     else
       flash[:alert] = "Failed to save."
-    redirect_to post_path(post)
     end
   end
 
@@ -38,7 +36,7 @@ class Public::CommentsController < ApplicationController
   
   def destroy
     @comment.destroy
-    redirect_to post_path(params[:post_id])
+    redirect_to request.referer
   end
   
   

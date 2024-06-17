@@ -1,21 +1,28 @@
 <%= stylesheet_link_tag 'public/groups', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class='container'>
-  <div class = "row py-5 mx-auto">
-    <div class = 'col-6 mx-auto'>
-      <h1>Create cooking tour</h1>
+  <h1 class="page-title-long">CREATE COOKING TOUR</h1>
+  <div class = "row mt-3">
+    <div class = 'col'>
       <%= form_with model: @group, url: groups_path, method: :post do |f| %>
-      <div class="field">
-        <%= f.label:name, "Tour name" %></br>
-        <%= f.text_field :name, size: "48x1" %>
-      </div>
-      <div class="field">
-        <%= f.label:introduction, "Introduction" %></br>
-        <%= f.text_area :introduction , size: "50x10" %>
-      </div>
-      <div class="actions">
-      <%= f.submit 'New Registration',class:"btn" %>
-      </div>
+      <table>
+        <tbody>
+          <tr>
+            <th><%= f.label:name, "Tour name" %></th>
+            <td><%= f.text_field :name, size: "100x1" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label:introduction, "Introduction" %></th>
+            <td><%= f.text_area :introduction , size: "100x10" %></td>
+          </tr>
+          <tr>
+            <th><%= f.submit 'New Registration',class:"btn btn-warning" %></th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
       <% end %>
+      </br>
+      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>
   </div>
 </div>

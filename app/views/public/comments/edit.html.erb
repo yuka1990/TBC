@@ -4,9 +4,11 @@
   <div class = "row mt-5">
     <div class = 'col mt-5'>
       <%= form_with model: [@post, @comment], url: post_comment_path, method: :patch do |f| %>
-        <%= f.text_area :body, row: '5', placeholder: "Please describe here" %></br>
+        <%= f.text_area :body, row: '5', placeholder: "Please describe here" %></br></br>
         <%= f.submit "Save",class:"btn btn-success" %>
       <% end %>
+      </br>
+      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>
   </div>
 </div>

@@ -33,15 +33,9 @@
                 <%= link_to post_comments_path(post) do %>
                 <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>
                 <% end %>|
-                <% if post.favorited_by?(current_user) %>
-                    <%= link_to post_favorite_path(post), method: :delete do %>
-                      <i class="fa-solid fa-heart"></i>&nbsp;<%= post.favorites.count %>
-                <% end %>
-                <% else %>
-                    <%= link_to post_favorite_path(post), method: :post do %>
-                      <i class="fa-regular fa-heart"></i>&nbsp;<%= post.favorites.count %>
-                    <% end %>
-                 <% end %>
+                <span id="favorite_<%= post.id %>">
+                <%= render "public/favorites/favorite", post: post %>
+                </span>
             </div>
         </li>
       <% end %>

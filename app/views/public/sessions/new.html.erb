@@ -24,11 +24,11 @@
         <% end %>
       
         <div class="actions">
-          <%= f.submit "Log in" , class:"btn btn-success" %>
+          <%= f.submit "Log in" , class:"btn btn-warning" %>
         </div>
       <% end %>
       </br>
-      Viewing only→<%= link_to "Login as guest", users_guest_sign_in_path, class: "btn btn-secondary", method: :post %></br>
+      Viewing only→<%= link_to "Login as guest", users_guest_sign_in_path, class: "btn btn-light", method: :post %></br>
       Not registered yet?→ <%= render "public/shared/links" %>
       </br>
       </div>
