@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
   belongs_to :home_country
-
+  
 
 
   validates :name, presence: true
@@ -41,6 +41,7 @@ class User < ApplicationRecord
       favorites.destroy_all
       groups.destroy_all
       group_users.destroy_all
+      Group.where(owner_id: id).destroy_all
   end
   
 end
