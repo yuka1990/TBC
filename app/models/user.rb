@@ -35,6 +35,7 @@ class User < ApplicationRecord
   
 
   before_update :delete_associated_records, if: -> { is_active_changed? && !is_active }
+  
   def delete_associated_records
       posts.destroy_all
       comments.destroy_all

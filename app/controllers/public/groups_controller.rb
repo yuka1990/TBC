@@ -29,7 +29,11 @@ class Public::GroupsController < ApplicationController
   end
 
   def index
+    if params[:keyword].present?
+      @groups = Group.where('groups.name LIKE :keyword OR groups.introduction LIKE :keyword', keyword: "%#{params[:keyword]}%")
+    else
     @groups = Group.all
+    end
   end
 
   def show
