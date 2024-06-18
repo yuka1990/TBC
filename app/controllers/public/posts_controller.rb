@@ -21,7 +21,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @genres = Genre.all
-    if params[:genre_id]
+    if params[:genre_id].present?
       @genre = @genres.find(params[:genre_id])
       @posts = @genre.posts
     elsif params[:keyword].present?
