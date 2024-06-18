@@ -10,3 +10,4 @@
 //= link admin/posts.css
 //= link admin/comments.css
 //= link admin/country_genre.css
+//= link admin/groups.css
