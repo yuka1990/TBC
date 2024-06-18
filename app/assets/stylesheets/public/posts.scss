@@ -97,6 +97,15 @@ section {
   right: 0;
 }
 
+.sort {
+  position: absolute;
+  right: 0;
+  top: 8%;
+}
+.sort a {
+  color: green;
+}
+
 .list-group-item{
 	margin: 5px;
 	padding:1em;/*内側の余白*/

@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'public/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class='container'>
-  <div class = "row mt-2">
+  <div class = "row">
     <h1 class="page-title">RECIPES</h1>
     <div class="search_form-1">
   　　<%= form_with local: true, method: :get do |f| %>
@@ -14,6 +14,13 @@
       　<%= f.submit "Search" ,class:"search-submit",class:"btn_search" %>
     　<% end %>
   　</div>
+  　<div class="sort">
+    　<span>Sort by:</span>
+    　<%= link_to "Newest", posts_path(order: "latest") %>
+    　<%= link_to "Oldest", posts_path(order: "oldest") %>
+    　<%= link_to "Popularity", posts_path(order: "most_favorite") %>
+  　</div>
+  
     <div class = 'col-12'>
       <ul class="box">
       <% @posts.each do |post| %>

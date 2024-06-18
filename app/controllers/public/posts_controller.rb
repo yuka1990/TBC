@@ -31,6 +31,9 @@ class Public::PostsController < ApplicationController
       end
     else
       @posts = Post.all
+      @posts = @posts.latest if params[:order] == "latest"
+      @posts = @posts.oldest if params[:order] == "oldest"
+      @posts = @posts.most_favorite if params[:order] == "most_favorite"
     end
   end
 

@@ -34,4 +34,15 @@ class Post < ApplicationRecord
   end
     
   
+  scope :latest, -> {order(created_at: :desc) }
+  scope :oldest, -> {order(created_at: :asc) }
+  scope :most_favorite, -> {
+    select("posts.*, COUNT(favorites.id) AS favorites_count")
+    .left_joins(:favorites)
+    .group("posts.id")
+    .order(favorites_count: :desc)
+  }
+  
+  
+  
 end
