@@ -9,22 +9,30 @@
     <script src="https://kit.fontawesome.com/f4a6fb0793.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   </head>
 
-   <body class="d-flex flex-column min-vh-100">
+  <body class="d-flex flex-column min-vh-100">
     <%= render 'layouts/header' %>
     <main class="flex-grow-1">
-    <% if flash[:notice] %>
-      <div class="alert alert-warning text-center"><%= flash[:notice] %></div>
-    <% elsif flash[:alert] %>
-      <div class="alert alert-danger text-center"><%= flash[:alert] %></div>
-    <% end %>
+      <div id="flash-message">
+        <%= render 'layouts/flash' %>
+      </div>
+
+    <script>
+     setTimeout(function() {
+      document.getElementById('notice')?.remove();  // noticeが存在する場合に非表示にします
+      document.getElementById('alert')?.remove();  // alertが存在する場合に非表示にします
+     }, 3000);  // 5000ミリ秒（5秒）後に実行します
+    </script>
 
     <%= yield %>
     </br>
-
     </main>
+    
     <%= render 'layouts/footer' %>
+    
   </body>
 </html>

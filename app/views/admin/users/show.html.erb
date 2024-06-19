@@ -1,6 +1,7 @@
+<%= stylesheet_link_tag 'admin/users', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container">
-  <h1>User detail</h1>
-  <div class="row">
+  <h1 class="page-title-long">USER DETAIL</h1>
+  <div class="row mt-2">
     <div class="col">
       <table>
         <tbody>
@@ -28,35 +29,33 @@
           </tr>
         </tbody>
       </table>
-      <%= f.submit "変更を保存", class: "btn btn-success" %>
+      <%= f.submit "Save", class: "btn btn-success" %>
       <% end %>
-
-
-
-  <table class="table table-hover my-3">
-    <thead>
-      <tr>
-        <th>Picture</th>
-        <th>Genre</th>
-        <th>Title</th>
-        <th>Level</th>
-        <th>Originality</th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= image_tag post.get_image, size: "50x50" %></td>
-          <td><%= post.genre.name %></td>
-          <td><%= post.title %></td>
-          <td><%= post.level %></td>
-          <td><%= post.originality %></td>
-          <td><%= link_to "Show" ,admin_post_path(post) , class:"btn btn-success" %></td>
-          <td><%= link_to "Destroy",admin_post_path(post), method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %></td></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+      <table class="table table-hover my-3">
+        <thead>
+          <tr>
+            <th>Picture</th>
+            <th>Genre</th>
+            <th>Title</th>
+            <th>Level</th>
+            <th>Originality</th>
+            <th></th>
+            <th></th>
+          </tr>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td><%= image_tag post.get_image, size: "50x50" %></td>
+              <td><%= post.genre.name %></td>
+              <td><%= post.title %></td>
+              <td><%= post.level %></td>
+              <td><%= post.originality %></td>
+              <td><%= link_to "Show" ,admin_post_path(post) , class:"btn btn-success" %></td>
+              <td><%= link_to "Destroy",admin_post_path(post), method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %></td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
   </div>
 </div>

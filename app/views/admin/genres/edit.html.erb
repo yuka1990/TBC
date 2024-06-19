@@ -1,5 +1,6 @@
+<%= stylesheet_link_tag 'admin/country_genre', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container">
-  <h1 class="my-2">Genres</h1><h2>Edit</h2>
+  <h1 class="page-title-long">GENRES EDIT</h1>
   <div class="row">
     <div class="col-6 my-5">
       <%= form_with model: @genre, url: admin_genre_path(@genre) do |f| %>
@@ -7,6 +8,8 @@
         <%= f.text_field :name %>
         <%= f.submit 'Save',class:"btn btn-success" %>
       <% end %>
+      </br>
+      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>
   </div>
 </div>

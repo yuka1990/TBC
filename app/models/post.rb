@@ -14,10 +14,11 @@ class Post < ApplicationRecord
   validates :method, presence: true
   validates :level, presence: true
   validates :originality, presence: true
+  validates :image, presence: true
   
   
-  enum level: { beginner: 0, intermediate: 1, advanced: 2 }
-  enum originality: { Local_cuisine: 0, original: 1, }
+  enum level: { Beginner: 0, Intermediate: 1, Advanced: 2 }
+  enum originality: { Local_cuisine: 0, Original: 1, }
   
   
   def get_image
@@ -27,5 +28,21 @@ class Post < ApplicationRecord
     end
       image.variant(resize_to_limit: [300, 300]).processed
   end
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+    
+  
+  scope :latest, -> {order(created_at: :desc) }
+  scope :oldest, -> {order(created_at: :asc) }
+  scope :most_favorite, -> {
+    select("posts.*, COUNT(favorites.id) AS favorites_count")
+    .left_joins(:favorites)
+    .group("posts.id")
+    .order(favorites_count: :desc)
+  }
+  
+  
   
 end

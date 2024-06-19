@@ -1,4 +1,5 @@
-<header class="shadow-sm", style="background-color: #3e2e28;" >
+<%= stylesheet_link_tag 'navbar', media: 'all', 'data-turbolinks-track': 'reload' %>
+<header>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand text-white" href="/"><span>Travel By Cooking</span></a>
@@ -9,17 +10,20 @@
           <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
               <li><%= link_to 'User',admin_users_path, class: 'nav-link text-white' %></li>
-              <li><%= link_to 'Post',admin_posts_path, class: 'nav-link text-white' %></li>
+              <li><%= link_to 'Recipe',admin_posts_path, class: 'nav-link text-white' %></li>
               <li><%= link_to 'Genre',admin_genres_path, class: 'nav-link text-white' %></li>
               <li><%= link_to 'Country',admin_home_countries_path, class: 'nav-link text-white' %></li>
               <li><%= link_to 'Comment',admin_comments_path, class: 'nav-link text-white' %></li>
+              <li><%= link_to 'Group',admin_groups_path, class: 'nav-link text-white' %></li>
               <li><%= link_to 'Log out',destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %></li>
             <% elsif user_signed_in? %>
+            　<% if current_user.email != "guest@example.com" %>
               <li>
                 <%= link_to my_page_path, class: 'nav-link text-white' do %>
                   <i class="fa-solid fa-house"></i> Mypage
                 <% end %>
               </li>
+              <% end %>
               <li>
                 <%= link_to groups_path, class: 'nav-link text-white' do %>
                   <i class="fa-solid fa-ship"></i> Group

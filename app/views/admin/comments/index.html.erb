@@ -1,6 +1,13 @@
+<%= stylesheet_link_tag 'admin/comments', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container">
-  <h1>All Comments</h1>
-  <div class="row">
+  <h1 class="page-title-long">COMMENTS</h1>
+  <div class="search_form-2">
+    <%= form_with local: true, method: :get do |f| %>
+      <%= f.text_field :search %>
+      <%= f.submit "Search" %>
+    <% end %>
+  </div>
+  <div class="row mt-3">
     <div class="col">
       <ul class="list-group">
         <% @comments.each do |comment| %>
@@ -12,6 +19,8 @@
         </li>
         <% end %>
       </ul>
+      </br>
+      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>
   </div>
 </div>
