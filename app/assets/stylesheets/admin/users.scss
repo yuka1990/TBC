@@ -1,3 +1,79 @@
 // Place all the styles related to the admin/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  font-family: Georgia, serif;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+}
+
+.page-title-long {
+  width: 400px;
+  margin-top: 10px;
+  font-size: 50px;
+}
+
+.search_form-2 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+thead {
+  background-color: #FBFFBF;
+}
+
+.btn-back {
+  align-items: center;
+  background-color: #FEF5DF;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  padding: 0 25px;
+  position: relative;
+  width: 100px;
+  bottom: 0;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-back:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.btn-back:hover:after {
+  transform: translate(0, 0);
+}
+
+.btn-back:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.btn-back:hover {
+  outline: 0;
+}

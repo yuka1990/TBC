@@ -1,12 +1,13 @@
+<%= stylesheet_link_tag 'admin/country_genre', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container">
-  <h1 class="my-2">Country</h1><h2>list& new registrations</h2>
+  <h1 class="page-title-long">COUNTRY</h1>
   <div class="row">
     <div class="col-6 my-5">
       <%= form_with model: @home_country, url: admin_home_countries_path, method: :post do |f| %>
         <%= f.label :image, "Flag image" %>
-        <%= f.file_field :image,  accept:'image/*' %></br>
+        <%= f.file_field :image,  accept:'image/*' %></br></br>
         <%= f.label :name %>
-        <%= f.text_field :name %></br>
+        <%= f.text_field :name %></br></br>
         <%= f.submit 'New Registration',class:"btn btn-success" %>
       <% end %>
     </div>
@@ -29,3 +30,7 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+    <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
+  </div>
+</div>

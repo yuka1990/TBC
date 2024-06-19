@@ -1,7 +1,12 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
+  
   def index
+    if params[:search].present?
+      @users = User.where('name LIKE :search OR nickname LIKE :search', search: "%#{params[:search]}%")
+    else
     @users = User.all
+    end
   end
 
   def show
@@ -15,7 +20,7 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_user_path, notice: "Successfully saved."
     else
       @posts = @user.posts
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :show
     end
   end

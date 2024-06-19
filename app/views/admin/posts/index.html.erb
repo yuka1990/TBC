@@ -1,27 +1,42 @@
-<%= stylesheet_link_tag 'public/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag 'admin/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class='container'>
   <div class = "row">
+    <h1 class="page-title">RECIPES</h1>
+    <div class="search_form-1">
+  　　<%= form_with local: true, method: :get do |f| %>
+      　<%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Select Category--"}  %>
+      　<%= f.submit "Search",class:"btn_search" %>
+    　<% end %>
+  　</div>
+    <div class="search_form-2">
+  　　<%= form_with local: true, method: :get do |f| %>
+      　<%= f.text_field :keyword, placeholder: "--input keyword--" %>
+      　<%= f.submit "Search" ,class:"search-submit",class:"btn_search" %>
+    　<% end %>
+  　</div>
     <div class = 'col-12'>
-      <h1 class="page-title">Recipes</h1>
       <ul class="box">
       <% @posts.each do |post| %>
         <li class="card">
           <div class="card-img">
             <%= link_to admin_post_path(post) do %>
-              <%= image_tag post.get_image, size: "200x130" %>
-    　　　   　<% end %>
-    　　　　</div>
+              <%= image_tag post.get_image, size: "199x130" %>
+            <% end %>
+          </div>
             <div class="card-content">
               <h1 class="card-title"><%= post.title %></h1>
               <p class="card-text">
+                <%= post.genre.name %></br>
                 Level: <%= post.level %></br>
-                <%= post.originality %></br>
                 <%= image_tag post.user.home_country.image, size: "20x20" %></br>
-                <%= link_to "#{post.comments.count} comments",post_path(post) %></br>
+                By<%= post.user.nickname %>
+                <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>
+                <i class="fa-solid fa-heart"></i>&nbsp;<%= post.favorites.count %>
             </div>
         </li>
       <% end %>
       </ul>
+      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>
   </div>
 </div>

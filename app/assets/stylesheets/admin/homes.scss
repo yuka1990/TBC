@@ -1,3 +1,19 @@
 // Place all the styles related to the admin/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  background-image: image-url("AdobeStock_473884664.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-size: contain; 
+  background-repeat: no-repeat;
+  font-family: Georgia, serif;
+  height: 100%;
+}
+
+.page-title-long {
+  width: 400px;
+  margin-top: 5%;
+  font-size: 50px;
+}
+

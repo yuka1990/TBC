@@ -37,15 +37,13 @@
               <th><%= f.label :password_confirmation %></th>
               <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
             </tr>
-            <tr>
-              <th></th>
-              <td></br><%= f.submit "Sign up" ,class:"btn btn-success"%></td>
-            </tr>
           </tbody>
         </table>
+        <%= f.submit "Sign up" ,class:"btn btn-warning"%>
         <% end %>
-           <h2>Already registered?</h2>
-           <%= render "public/shared/links" %>
+           </br>
+           Viewing only→<%= link_to "Login as guest", users_guest_sign_in_path, class: "btn btn-light", method: :post %></br>
+           Already registered?→<%= render "public/shared/links" %>
       </div>
     </div>
   </div>

@@ -13,7 +13,7 @@ class Admin::GenresController < ApplicationController
       redirect_to admin_genres_path, notice: "Successfully saved."
     else
       @genres = Genre.all
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :index
     end
   end
@@ -22,7 +22,7 @@ class Admin::GenresController < ApplicationController
     if @genre.update(genre_params)
       redirect_to admin_genres_path, notice: "Successfully saved."
     else
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :edit
     end
   end
