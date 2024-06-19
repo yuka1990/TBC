@@ -12,14 +12,13 @@
   padding: 2%;
 }
 
-.top_title{
+.top_title {
   text-align: center;
   padding-top: 25%;
   padding-bottom: 3%;
 }
 
-
-h2{
+h2 {
   font-size: 60px;
   color: #F67676;
 }
@@ -27,6 +26,7 @@ h2{
 a {
   color: #F67676;
 }
+
 a:hover {
   color: #F67676;
 }
@@ -47,6 +47,7 @@ a:hover {
   color: #3e2e28;
   padding-top: 90px;
 }
+
 .second-title {
   font-size: 60px;
 }
@@ -59,6 +60,7 @@ a:hover {
 .swiper-wrapper {
   transition-timing-function: linear;
 }
+
 /* 画像のサイズ調整 */
 .swiper-slide img {
   height: 200px;

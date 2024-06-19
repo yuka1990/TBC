@@ -17,8 +17,8 @@ class Post < ApplicationRecord
   validates :image, presence: true
   
   
-  enum level: { beginner: 0, intermediate: 1, advanced: 2 }
-  enum originality: { Local_cuisine: 0, original: 1, }
+  enum level: { Beginner: 0, Intermediate: 1, Advanced: 2 }
+  enum originality: { Local_cuisine: 0, Original: 1, }
   
   
   def get_image

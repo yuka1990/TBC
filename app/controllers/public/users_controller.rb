@@ -37,7 +37,6 @@ class Public::UsersController < ApplicationController
   def favorite
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
-    @post = Post.find(params[:id])
   end
 
   private
@@ -49,7 +48,7 @@ class Public::UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to posts_path
+      redirect_to my_page_path
     end
   end
   

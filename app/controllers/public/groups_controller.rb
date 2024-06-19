@@ -41,7 +41,7 @@ class Public::GroupsController < ApplicationController
 
   def edit
   end
-  
+
   def destroy
     @group.destroy
     redirect_to groups_path
@@ -62,7 +62,7 @@ class Public::GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:name, :introduction)
   end
-  
+
   def check_guest_user
     if current_user.email == "guest@example.com"
       redirect_to groups_path, alert:"Access is not permitted."

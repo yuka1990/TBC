@@ -1,27 +1,30 @@
 <%= stylesheet_link_tag 'admin/groups', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container">
   <h1 class="page-title">TOURS</h1>
-    <div class="search_form-2">
-  　　<%= form_with local: true, method: :get do |f| %>
-      　<%= f.text_field :keyword, placeholder: "--input keyword--" %>
-      　<%= f.submit "Search" ,class:"search-submit",class:"btn_search" %>
-    　<% end %>
-  　</div>
-    <div class="row">
+  <div class="search_form-2">
+  　<%= form_with local: true, method: :get do |f| %>
+      <%= f.text_field :keyword, placeholder: "--input keyword--" %>
+      <%= f.submit "Search" ,class:"search-submit",class:"btn_search" %>
+    <% end %>
+  </div>
+  <div class="row">
     <div class="col">
       <% @groups.each do |group| %>
       <div class="list-group">
-        <div class="box-title"><%= group.name %></div>
+        <div class="box-title">
+          <%= group.name %>
+        </div>
         <ul>
         　<li><strong>Organizer:<%= group.owner_nickname %></strong></li>
         　<li><i class="fa-solid fa-users"></i>Members: <%= group.group_users.count %></li>
         　<li><%= safe_join(group.introduction.split("\n"),tag(:br)) %></li>
         　<li>
-          <div class="link-button">
-          <%= link_to 'destroy', admin_group_path(group), method: :delete %>
-          </div>
+            <div class="link-button">
+            　<%= link_to 'Show', admin_group_path(group) %>/&nbsp;
+            　<%= link_to 'destroy', admin_group_path(group), method: :delete %>
+            </div>
           </li>
-          </ul>
+        </ul>
       </div>
       <% end %>
       </br>

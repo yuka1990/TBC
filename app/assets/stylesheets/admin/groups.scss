@@ -11,6 +11,7 @@ body {
   margin-top: 10px;
   font-size: 50px;
 }
+
 .page-title-long {
   width: 700px;
   margin-top: 10px;
@@ -22,12 +23,13 @@ body {
   justify-content: flex-end;
 }
 
-.list-group{
+.list-group {
 	margin: 2em auto;
 	background-color: #F0D5C0;/*ボックス背景色*/
 	padding: 2.1em 1em 1em;/*ボックス内側余白*/
 	position: relative;/*配置(ここを基準に)*/
 }
+
 .list-group .box-title {
 	background-image: repeating-linear-gradient(-45deg,#F6CE95 0, #F6EEEC 3px,#fafafa 3px,#fafafa 6px);/*ストライプ*/
 	border-left: 2px dotted rgba(0,0,0,.1);/* テープのギザギザ左*/
@@ -41,6 +43,7 @@ body {
 	left: 20px; /*左から(20px)移動*/
 	font-weight: bold;
 }
+
 .list-group a {
   color: #777;
 }
@@ -49,10 +52,12 @@ body {
   display: inline-block;
   margin-right: 5px;  // リンクの間に隙間を開けるために必要な場合
 }
+
 ul {
   list-style: none;
   line-height: 1;
 }
+
 .btn-back {
   align-items: center;
   background-color: #FEF5DF;
@@ -105,6 +110,7 @@ ul {
 .btn-back:hover {
   outline: 0;
 }
+
 .member {
   background-color: #FDFFCE;
   list-style-position: inside;

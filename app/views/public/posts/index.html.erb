@@ -2,28 +2,30 @@
 <div class='container'>
   <div class = "row">
     <h1 class="page-title">RECIPES</h1>
-     <div class ="search-box">
-       <div class="left"><div class="sort">
-    　<span>Sort by:</span>
-    　<%= link_to "Newest", posts_path(order: "latest") %>
-    　<%= link_to "Oldest", posts_path(order: "oldest") %>
-    　<%= link_to "Popularity", posts_path(order: "most_favorite") %>
-  　</div></div>
-       <div class="right"><div class="search_form-1">
-  　　<%= form_with local: true, method: :get do |f| %>
-      　<%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Select Category--"}  %>
-      　<%= f.submit "Search",class:"btn_search" %>
-    　<% end %>
+    <div class ="search-box">
+      <div class="left">
+        <div class="sort">
+          <span>Sort by:</span>
+        　<%= link_to "Newest", posts_path(order: "latest") %>
+        　<%= link_to "Oldest", posts_path(order: "oldest") %>
+        　<%= link_to "Popularity", posts_path(order: "most_favorite") %>
+        </div>
+      </div>
+      <div class="right">
+        <div class="search_form-1">
+          <%= form_with local: true, method: :get do |f| %>
+          　<%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Select Category--"}  %>
+          　<%= f.submit "Search",class:"btn_search" %>
+          <% end %>
+        </div>
+        <div class="search_form-2">
+          <%= form_with local: true, method: :get do |f| %>
+        　   <%= f.text_field :keyword, placeholder: "--input keyword--" %>
+        　   <%= f.submit "Search" ,class:"search-submit",class:"btn_search" %>
+      　   <% end %>
+  　     </div>
+  　   </div>
   　</div>
-    <div class="search_form-2">
-  　　<%= form_with local: true, method: :get do |f| %>
-      　<%= f.text_field :keyword, placeholder: "--input keyword--" %>
-      　<%= f.submit "Search" ,class:"search-submit",class:"btn_search" %>
-    　<% end %>
-  　</div></div>
-    
-  　</div>
-  　
     <div class = 'col-12'>
       <ul class="box">
       <% @posts.each do |post| %>
@@ -33,24 +35,24 @@
               <%= image_tag post.get_image, size: "199x130" %>
             <% end %>
           </div>
-            <div class="card-content">
-              <h1 class="card-title"><%= post.title %></h1>
-              <p class="card-text">
-                <%= post.genre.name %></br>
-                Level: <%= post.level %></br>
-                <%= image_tag post.user.home_country.image, size: "20x20" %></br>
-                By<%= post.user.nickname %>
-                <%= link_to post_comments_path(post) do %>
+          <div class="card-content">
+            <h1 class="card-title"><%= post.title %></h1>
+            <p class="card-text">
+              <%= post.genre.name %></br>
+              Level: <%= post.level %></br>
+              <%= image_tag post.user.home_country.image, size: "20x20" %></br>
+              By<%= post.user.nickname %>
+              <%= link_to post_comments_path(post) do %>
                 <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>
-                <% end %>|
-                <% if current_user.email != "guest@example.com" %>
+              <% end %>|
+              <% if current_user.email != "guest@example.com" %>
                 <span id="favorite_<%= post.id %>">
                 <%= render "public/favorites/favorite", post: post %>
                 </span>
-                <% else %>
+              <% else %>
                 <i class="fa-solid fa-heart"></i>&nbsp;<%= post.favorites.count %>
-                <% end %>
-            </div>
+              <% end %>
+          </div>
         </li>
       <% end %>
       </ul>

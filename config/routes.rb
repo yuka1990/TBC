@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :home_countries, only: [:index, :create, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :groups, only: [:index, :destroy]
+    resources :groups, only: [:index, :destroy, :show]
   end
 
   devise_for :users,skip: [:passwords], controllers: {

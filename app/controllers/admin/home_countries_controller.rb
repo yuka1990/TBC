@@ -14,7 +14,7 @@ class Admin::HomeCountriesController < ApplicationController
       redirect_to admin_home_countries_path, notice: "Successfully saved."
     else
       @home_countries = HomeCountry.all
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :index
     end
   end
@@ -23,7 +23,7 @@ class Admin::HomeCountriesController < ApplicationController
     if @home_country.update(home_country_params)
       redirect_to admin_home_countries_path, notice: "Successfully saved."
     else
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :edit
     end
   end
