@@ -17,11 +17,10 @@
    <body class="d-flex flex-column min-vh-100">
     <%= render 'layouts/header' %>
     <main class="flex-grow-1">
-    <% if flash[:notice] %>
-      <div id="notice" class="alert alert-warning text-center"><%= flash[:notice] %></div>
-    <% elsif flash[:alert] %>
-      <div id="alert" class="alert alert-danger text-center"><%= flash[:alert] %></div>
-    <% end %>
+      <div id="flash-message">
+        <%= render 'layouts/flash' %>
+      </div>
+    
 
   <script>
    setTimeout(function() {

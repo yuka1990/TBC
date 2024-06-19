@@ -3,8 +3,8 @@
   <h1 class="page-title-long">RECIPE EDIT</h1>
   <div class = "row mt-3">
     <div class = 'col'>
+        <%= form_with model: @post, url: post_path, method: :patch do |f| %>
         <table>
-          <%= form_with model: @post, url: post_path, method: :patch do |f| %>
           <tbody>
             <tr>
               <th><%= f.label :Genre %></th>
@@ -43,8 +43,8 @@
               <td></td>
             </tr>
           </tbody>
-           <% end %>
         </table>
+          <% end %>
         <%= link_to 'Destroy' , post_path(@post), method: :delete, data: {confirm: 'Do you really want to delete it?'} ,class:"btn btn-danger" %>
 　      </br>
 　      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %>

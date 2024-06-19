@@ -2,7 +2,14 @@
 <div class='container'>
   <div class = "row">
     <h1 class="page-title">RECIPES</h1>
-    <div class="search_form-1">
+     <div class ="search-box">
+       <div class="left"><div class="sort">
+    　<span>Sort by:</span>
+    　<%= link_to "Newest", posts_path(order: "latest") %>
+    　<%= link_to "Oldest", posts_path(order: "oldest") %>
+    　<%= link_to "Popularity", posts_path(order: "most_favorite") %>
+  　</div></div>
+       <div class="right"><div class="search_form-1">
   　　<%= form_with local: true, method: :get do |f| %>
       　<%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Select Category--"}  %>
       　<%= f.submit "Search",class:"btn_search" %>
@@ -13,14 +20,10 @@
       　<%= f.text_field :keyword, placeholder: "--input keyword--" %>
       　<%= f.submit "Search" ,class:"search-submit",class:"btn_search" %>
     　<% end %>
+  　</div></div>
+    
   　</div>
-  　<div class="sort">
-    　<span>Sort by:</span>
-    　<%= link_to "Newest", posts_path(order: "latest") %>
-    　<%= link_to "Oldest", posts_path(order: "oldest") %>
-    　<%= link_to "Popularity", posts_path(order: "most_favorite") %>
-  　</div>
-  
+  　
     <div class = 'col-12'>
       <ul class="box">
       <% @posts.each do |post| %>
