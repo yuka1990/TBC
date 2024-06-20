@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
   belongs_to :home_country
+  has_many :chats, dependent: :destroy
   
 
 
