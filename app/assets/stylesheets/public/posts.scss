@@ -10,10 +10,30 @@ body {
   height: 100%;
 }
 
+.row {
+  width: 100%;
+  display: flex;
+  margin-top: 0;
+}
+
+.items-box {
+  width: 80%;
+}
+
+.search-box {
+  text-align: center;
+  width: 20%;
+}
+.search-box-content {
+  text-align: left;
+  padding: 0 20%;
+}
+
 .page-title {
-  width: 250px;
-  margin-top: 10px;
+  width: 100%;
   font-size: 50px;
+  margin-top: 10px;
+  margin-left: 10%;
 }
 
 .page-title-long {
@@ -24,12 +44,12 @@ body {
 
 table {
   margin: 20px 0px;
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
 section {
   margin: 20px 0px;
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
 .box {
@@ -79,41 +99,6 @@ section {
   font-size: 14px;
   line-height: 1.5;
   text-align: center;
-}
-
-.container{
-  position: relative;
-}
-
-.search-box {
-  display: flex;
-  justify-content: flex-end;
-  height: 5%;
-  width : 100%;
-  padding: 0;
-  margin-bottom: 0;
-}
-
-.left {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sort a {
-  color: green;
-}
-
-.search_form-2,.search_form-1,.sort {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .list-group-item {
