@@ -21,12 +21,12 @@ body {
 }
 
 .search-box {
-  text-align: center;
   width: 20%;
+  margin-top: 1%;
 }
 .search-box-content {
   text-align: left;
-  padding: 0 20%;
+  padding: 0;
 }
 
 .page-title {
@@ -54,7 +54,7 @@ section {
 
 .box {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: auto;
   gap: 5px;
 }
@@ -198,4 +198,21 @@ section {
 .btn_search:hover {
 	color: #fff;
 	background-image: linear-gradient(to left, #2B611A 0%, #b4e12b 100%);
+}
+.back {
+  margin: 5% 0 3% 10%;
+}
+.search-box-content select,
+.search-box-content input {
+  width: 200px;
+}
+.search-box-content
+h5
+{
+  border-bottom: 1px solid #000;
+}
+
+.search-box-content a
+{
+  color: green;
 }
