@@ -1,6 +1,6 @@
 class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
-  before_action :block_non_related_users, only: [index]
+  #before_action :block_non_related_users, only: [index]
   before_action :check_guest_user
 
 
@@ -19,6 +19,7 @@ class Public::ChatsController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @chats = @group.chats
+    @chat = Chat.new
   end
 
 

@@ -2,16 +2,22 @@
 
 <div class="message" style="width: 400px;">
   <% @chats.each do |chat| %>
+  <% if chat.user_id == current_user.id %>
+    <div class="right-container d-flex justify-content-end">
+      <p id="chat_<%= chat.id %>" style="background-color: rgba(0, 185, 0, 0.6); padding: 5px; border-radius: 10px; "><%= chat.message %></p>
+      <%= button_to "削除",group_chat_path(chat.group,chat),method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm ml-2", remote: true, id:"delete_chat_#{chat.id}" %>
+    </div>
+  <% else %>
     <div class= "left-container d-flex">
-      <%= @user.nickname %>
       <p class=ml-1 style="text-align: left;"><span style="background-color: #F5F5DC; padding: 5px; border-radius: 10px;"><%= chat.message %></span></p>
     </div>
-    <% end %>
+  <% end %>
+   <% end %>
 </div>
 
 
 <%= form_with model:@chat, url: group_chats_path, method: :post do |f| %>
   <%= f.text_field :message %>
-  <%= f.submit "送信", class:"btn btn-dark btn-sm" %>
   <%= f.hidden_field :group_id %>
+  <%= f.submit "送信", class:"btn btn-dark btn-sm" %>
   <% end %>
