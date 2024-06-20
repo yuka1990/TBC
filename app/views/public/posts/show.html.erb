@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'public/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class='container'>
   <h1 class="page-title-long">RECIPE DETAIL</h1>
-  <div class = "row mt-5 justify-content-between">
+  <div class = "row mt-3 justify-content-between">
     <div class = 'col-6'>
       <%= image_tag @post.get_image ,size: "400x300" %>
     </div>
@@ -27,9 +27,9 @@
             <td><%= image_tag @post.user.home_country.image, size: "20x20" %></td>
           </tr>
           <tr>
-            <td>comments:&nbsp;<%= @post.comments.count %>&nbsp;</td>
+            <td>comments:&nbsp;<%= @post.comments.count %>&nbsp;&nbsp;</td>
             <% if current_user.email != "guest@example.com" %>
-            <td id="favorite_<%= @post.id %>">
+            <td id="favorite_<%= @post.id %>" class="red-link">
               <%= render "public/favorites/favorite", post: @post %>
             </td>
             <% else %>
@@ -40,6 +40,7 @@
             </tr>
           </tbody>
         </table>
+        </br>
         <% if @post.user == current_user %>
           <%= link_to "Edit", edit_post_path(@post), class:"btn btn-success" %>&nbsp;&nbsp;
           <%= link_to "Destroy",post_path(@post),  method: :delete , data: { confirm: 'Do you really want to delete it?' },class:"btn btn-danger" %></td>
@@ -48,11 +49,11 @@
     </div>
   <div class="container">
     <div class="row mt-5">
-      <div class ="col-4">
+      <div class ="col-6">
         <h1>Ingredient</h1>
         <p><%= safe_join(@post.ingredient.split("\n"),tag(:br)) %></p>
       </div>
-      <div class ="col-8">
+      <div class ="col-6">
         <h1>Method</h1>
         <p><%= safe_join(@post.method.split("\n"),tag(:br)) %></p>
       </div>
@@ -73,9 +74,10 @@
             <div id="post-index">
               <%= render "public/comments/show", post: @post %>
             </div>
-          <%= link_to "View more", post_comments_path(@post) %>
+          <%= link_to "View more", post_comments_path(@post) ,class:"green-link" %>
         </div>
       </div>
+      </br>
       <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>
     
