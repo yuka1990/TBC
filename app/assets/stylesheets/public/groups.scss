@@ -24,7 +24,7 @@ body {
 
 .page-title-long {
   width: 700px;
-  margin-top: 10px;
+  margin-top: 2%;
   font-size: 50px;
 }
 
@@ -124,6 +124,11 @@ ul {
 .member {
   background-color: #FDFFCE;
   list-style-position: inside;
+  padding: 2%;
+}
+.member-list {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 a.btn-leave {
@@ -196,4 +201,63 @@ a.btn-join {
 .btn-leave:hover,
 .btn-leave:focus {
   background-color: #F082AC;
+}
+
+.button {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.7em 2em;
+  border: 3px solid #F08650;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: #F08650;
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+.button:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: #F08650;
+  z-index: -1;
+}
+
+.button:hover, button:focus {
+  color: white;
+}
+
+.button:hover:before, button:focus:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+.button:active {
+  transform: scale(0.9);
+}
+
+.under-border {
+ border-bottom: 1px solid #000;
+ width: 30%;
+}
+.member h1 {
+  border-bottom: 2px solid #000;
+  width: 20%;
+}
+.col-10 h3 {
+  border-bottom: 1px solid #000;
+  width: 40%;
 }

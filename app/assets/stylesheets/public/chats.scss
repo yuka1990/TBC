@@ -4,7 +4,9 @@
 body {
   font-family: Georgia, serif;
   height: 100%;
+  background-color: #FAFFEB;
 }
+
 
 .page-title-long {
   width: 100%;
@@ -68,9 +70,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .date-divider p {
+  padding: 0.5%;
   display: inline;
   background-color: #edf1ee;
   border-radius: 10px;
@@ -84,7 +88,7 @@ body {
   padding: 8px;
   max-width: 400px;
   border-radius: 12px;
-  background-color: #30e852;
+  background-color: #ABE890;
   font-size: 15px;
 }
 
@@ -94,7 +98,7 @@ body {
   top: 3px; 
   right: -19px;
   border: 8px solid transparent;
-  border-left: 18px solid #30e852;
+  border-left: 18px solid #ABE890;
   -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
 }
@@ -126,4 +130,17 @@ body {
 a {
   size: small;
   color: red;
+}
+.message {
+  width: 80%;
+  margin: 5% auto;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 650px;
+}
+
+.chat-form {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10%;
 }

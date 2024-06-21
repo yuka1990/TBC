@@ -40,9 +40,9 @@
               <%= post.genre.name %></br>
               Level: <%= post.level %></br>
               <%= image_tag post.user.home_country.image, size: "20x20" %></br>
-              By<%= post.user.nickname %>
+              By <%= post.user.nickname %>&nbsp;
               <%= link_to post_comments_path(post) do %>
-                <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>
+                <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>&nbsp;
               <% end %>|
               <% if current_user.email != "guest@example.com" %>
                 <span id="favorite_<%= post.id %>" class="red-link">

@@ -14,7 +14,7 @@
           <div class="box-title"><%= group.name %></div>
           <ul>
           　<li><strong>Organizer:<%= group.owner_nickname %></strong></li>
-          　<li><i class="fa-solid fa-users"></i>Members: <%= group.group_users.count %></li>
+          　<li class="under-border"><i class="fa-solid fa-users"></i>Members: <%= group.group_users.count %></li>
           　<li><%= safe_join(group.introduction.split("\n"),tag(:br)) %></li>
           　<li>
             <div class="link-button">

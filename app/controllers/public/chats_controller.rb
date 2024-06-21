@@ -42,7 +42,7 @@ class Public::ChatsController < ApplicationController
   def block_non_related_users
     group = Group.find(params[:group_id])
     unless group.owner_id == current_user.id || current_user.groups.exists?(id: group.id)
-      redirect_to groups_path, alert: "このグループのメンバーでないため、グループ一覧へ遷移しました。"
+      redirect_to groups_path, alert: "You have been redirected to the group list because you are not a member of this group."
     end
   end
 

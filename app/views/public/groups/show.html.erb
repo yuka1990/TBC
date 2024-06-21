@@ -1,13 +1,13 @@
 <%= stylesheet_link_tag 'public/groups', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container">
   <h1 class="page-title-long">TOUR DETAIL</h1>
-  <div class="row mt-5">
+  <div class="row mt-4">
     <div class="col-10">
-      <h3>Organizer:<%= @group.owner_nickname %></h3>
+      <h3>Organizer: <%= @group.owner_nickname %></h3>
     </div>
     <div class="col-2">
       <% if @group.includesUser?(current_user) || @group.is_owned_by?(current_user) %>
-      <%= link_to "Chat Room" ,group_chats_path(@group) %>
+      <%= link_to "Chat Room" ,group_chats_path(@group) ,class:"button"%>
       <% end %>
     </div>
   </div>
@@ -23,12 +23,14 @@
           <% end %>
           </div>
       </div>
-      <ul class="member">
+      <div class="member">
         <h1>Members</h1>
+        <div class="member-list">
         <% @group.users.each do |user| %>
-　　      <li class="member-list"><%= user.nickname %></li>
+　　      <div><i class="fa-solid fa-user-large"></i><%= user.nickname %></div>
         <% end %>
-      </ul>
+        </div>
+      </div>
       </br>
       <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>
