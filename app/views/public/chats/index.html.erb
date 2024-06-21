@@ -1,23 +1,35 @@
 <h1>"<%= @group.name %>" 's CHAT ROOM</h1>
-
 <div class="message" style="width: 400px;">
+  <% current_date = nil %>
   <% @chats.each do |chat| %>
-  <% if chat.user_id == current_user.id %>
-    <div class="right-container d-flex justify-content-end">
-      <p id="chat_<%= chat.id %>" style="background-color: rgba(0, 185, 0, 0.6); padding: 5px; border-radius: 10px; "><%= chat.message %></p>
-      <%= button_to "削除",group_chat_path(chat.group,chat),method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm ml-2", remote: true, id:"delete_chat_#{chat.id}" %>
-    </div>
-  <% else %>
-    <div class= "left-container d-flex">
-      <p class=ml-1 style="text-align: left;"><span style="background-color: #F5F5DC; padding: 5px; border-radius: 10px;"><%= chat.message %></span></p>
-    </div>
+    <% if chat.created_at.to_date != current_date %>
+      <% current_date = chat.created_at.to_date %>
+        <% if current_date == Date.today %>
+          <div class="date-divider">Today</div>
+        <% elsif current_date == Date.today - 1.day %>
+          <div class="date-divider">Yesterday</div>
+        <% else %>
+          <div class="date-divider">
+            <%= current_date.strftime('%Y/%m/%d') %>
+          </div>
+        <% end %>
+    <% end %>
+    <% if chat.user_id == current_user.id %>
+      <div class="right-container d-flex justify-content-end"><%= chat.created_at.strftime('%H:%M') %>
+        <p id="chat_<%= chat.id %>" style="background-color: rgba(0, 185, 0, 0.6); padding: 5px; border-radius: 10px; "><%= chat.message %></p>
+        <%= button_to "Delete",group_chat_path(chat.group,chat),method: :delete, data: {confirm: "Do you really want to delete?"}, class: "btn btn-danger btn-sm ml-2", remote: true, id:"delete_chat_#{chat.id}" %>
+      </div>
+    <% else %>
+      <div class= "left-container d-flex">
+        <%= chat.user.nickname %>
+        <p class=ml-1 style="text-align: left;"><span style="background-color: #F5F5DC; padding: 5px; border-radius: 10px;">:<%= chat.message %></span><%= chat.created_at.strftime('%H:%M') %></p>
+      </div>
+    <% end %>
   <% end %>
-   <% end %>
 </div>
-
 
 <%= form_with model:@chat, url: group_chats_path, method: :post do |f| %>
   <%= f.text_field :message %>
   <%= f.hidden_field :group_id %>
-  <%= f.submit "送信", class:"btn btn-dark btn-sm" %>
-  <% end %>
+  <%= f.submit "send", class:"btn btn-dark btn-sm" %>
+<% end %>
