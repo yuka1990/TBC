@@ -1,35 +1,45 @@
-<h1>"<%= @group.name %>" 's CHAT ROOM</h1>
-<div class="message" style="width: 400px;">
-  <% current_date = nil %>
-  <% @chats.each do |chat| %>
-    <% if chat.created_at.to_date != current_date %>
-      <% current_date = chat.created_at.to_date %>
-        <% if current_date == Date.today %>
-          <div class="date-divider">Today</div>
-        <% elsif current_date == Date.today - 1.day %>
-          <div class="date-divider">Yesterday</div>
-        <% else %>
-          <div class="date-divider">
-            <%= current_date.strftime('%Y/%m/%d') %>
-          </div>
+<%= stylesheet_link_tag 'public/chats', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container">
+  <h1 class="page-title-long">"<%= @group.name %>" 's CHAT ROOM</h1>
+  <div class="row">
+    <div class="col">
+      <div class="message" style="width: 400px;">
+        <% current_date = nil %>
+        <% @chats.each do |chat| %>
+          <% if chat.created_at.to_date != current_date %>
+            <% current_date = chat.created_at.to_date %>
+              <% if current_date == Date.today %>
+                <div class="date-divider"><p>Today</p></div>
+              <% elsif current_date == Date.today - 1.day %>
+                <div class="date-divider"><p>Yesterday</p></div>
+              <% else %>
+                <div class="date-divider">
+                  <p><%= current_date.strftime('%Y/%m/%d') %></p>
+                </div>
+              <% end %>
+          <% end %>
+          <% if chat.user_id == current_user.id %>
+            <div class="right-container d-flex justify-content-end"><span class="time"> <%= link_to "Delete",group_chat_path(chat.group,chat),method: :delete, data: {confirm: "Do you really want to delete?"}, class: "delete" %>&nbsp;<%= chat.created_at.strftime('%H:%M') %></span>
+              <p><span id="chat_<%= chat.id %>" class="mychat"><%= chat.message %></span></p>
+             
+            </div>
+          <% else %>
+            <div class= "left-container d-flex">
+              <%= chat.user.nickname %>
+              <p><span class="chat"><%= chat.message %></span><span class="time"><%= chat.created_at.strftime('%H:%M') %></span></p>
+            </div>
+          <% end %>
         <% end %>
-    <% end %>
-    <% if chat.user_id == current_user.id %>
-      <div class="right-container d-flex justify-content-end"><%= chat.created_at.strftime('%H:%M') %>
-        <p id="chat_<%= chat.id %>" style="background-color: rgba(0, 185, 0, 0.6); padding: 5px; border-radius: 10px; "><%= chat.message %></p>
-        <%= button_to "Delete",group_chat_path(chat.group,chat),method: :delete, data: {confirm: "Do you really want to delete?"}, class: "btn btn-danger btn-sm ml-2", remote: true, id:"delete_chat_#{chat.id}" %>
       </div>
-    <% else %>
-      <div class= "left-container d-flex">
-        <%= chat.user.nickname %>
-        <p class=ml-1 style="text-align: left;"><span style="background-color: #F5F5DC; padding: 5px; border-radius: 10px;">:<%= chat.message %></span><%= chat.created_at.strftime('%H:%M') %></p>
-      </div>
-    <% end %>
-  <% end %>
-</div>
 
-<%= form_with model:@chat, url: group_chats_path, method: :post do |f| %>
-  <%= f.text_field :message %>
-  <%= f.hidden_field :group_id %>
-  <%= f.submit "send", class:"btn btn-dark btn-sm" %>
-<% end %>
+      <%= form_with model:@chat, url: group_chats_path, method: :post do |f| %>
+        <%= f.text_field :message %>
+        <%= f.hidden_field :group_id %>
+        <%= f.submit "send", class:"btn btn-dark btn-sm" %>
+      <% end %>
+
+      </br>
+      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
+    </div>
+  </div>
+</div>
