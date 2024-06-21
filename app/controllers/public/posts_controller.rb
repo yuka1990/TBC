@@ -14,18 +14,18 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "Successfully saved."
     else
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :new
     end
   end
-  
+
   def index
     @keyword = params[:keyword]
     @by_genre = params[:genre_id]
     @by_home_country = params[:home_country_id]
     @by_level = params[:level]
     @by_originality = params[:originality]
-    
+
     @posts = Post.all
     @posts = @posts.search(@keyword) if @keyword.present?
     @posts = @posts.by_genre(@by_genre) if @by_genre.present?
@@ -35,7 +35,7 @@ class Public::PostsController < ApplicationController
     @posts = @posts.latest if params[:order] == "latest"
     @posts = @posts.oldest if params[:order] == "oldest"
     @posts = @posts.most_favorite if params[:order] == "most_favorite"
-  
+
   end
 
   #def index
@@ -67,7 +67,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "Successfully saved."
     else
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :edit
     end
   end

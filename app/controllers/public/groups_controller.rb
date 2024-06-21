@@ -14,7 +14,7 @@ class Public::GroupsController < ApplicationController
     if @group.save
       redirect_to groups_path, notice: "Successfully saved."
     else
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :new
     end
   end
@@ -23,7 +23,7 @@ class Public::GroupsController < ApplicationController
     if @group.update(group_params)
       redirect_to groups_path, notice: "Successfully saved."
     else
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :edit
     end
   end

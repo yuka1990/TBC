@@ -1,6 +1,6 @@
 class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
-  #before_action :block_non_related_users, only: [index]
+  before_action :block_non_related_users, only: [:index]
   before_action :check_guest_user
 
 
@@ -40,7 +40,8 @@ class Public::ChatsController < ApplicationController
   end
 
   def block_non_related_users
-    unless current_user.groups.include?(params[:group_id])
+    group = Group.find(params[:group_id])
+    unless group.owner_id == current_user.id || current_user.groups.exists?(id: group.id)
       redirect_to groups_path, alert: "このグループのメンバーでないため、グループ一覧へ遷移しました。"
     end
   end

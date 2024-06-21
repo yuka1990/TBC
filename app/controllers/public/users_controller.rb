@@ -16,7 +16,7 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
        redirect_to my_page_path(@user), notice: "Successfully saved."
     else
-       flash[:alert] = "Failed to save."
+       flash.now[:alert] = "Failed to save."
        render :edit
     end
   end
@@ -30,7 +30,7 @@ class Public::UsersController < ApplicationController
   def withdraw
     @user.update(is_active: false)
     reset_session
-    flash[:notice] = "Cancellation of membership has been executed."
+    flash.now[:notice] = "Cancellation of membership has been executed."
     redirect_to root_path
   end
   
