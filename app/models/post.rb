@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   has_one_attached :image
   
   validates :genre_id, presence: true
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 20 }
   validates :body, presence: true
   validates :ingredient, presence: true
   validates :method, presence: true
