@@ -13,13 +13,23 @@ body {
   width: 250px;
   margin-top: 10px;
   font-size: 50px;
-  background-color: #FEEFD7;
+  background-color: white;
+  width: fit-content;
+}
+
+.page-title2 {
+  width: 100%;
+  font-size: 50px;
+  margin-top: 10px;
+  margin-left: 10%;
+  background-color: white;
+  width: fit-content;
 }
 
 table {
   margin: 30px 0px;
   font-size: 20px;
-  background-color: #FEEFD7;
+  background-color: #FEFBD5;
 }
 
 .profile {
@@ -32,7 +42,7 @@ table {
   width: 300px;
   font-size: 20px;
   font-weight: bold;
-  background-color: #FEEFD7;
+  background-color: #FEFBD5;
 }
 
 .user-link a{
@@ -79,7 +89,7 @@ table {
 
 .btn-back {
   align-items: center;
-  background-color: #fee6e3;
+  background-color: #FEF5DF;
   border: 2px solid #111;
   border-radius: 8px;
   box-sizing: border-box;
