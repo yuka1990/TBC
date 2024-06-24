@@ -76,6 +76,11 @@ table {
   height: 130px;
 }
 
+.card-img img {
+  width: 200px;
+  height: 130px;
+}
+
 .card-content {
   padding: 0px;
 }
@@ -101,9 +106,9 @@ table {
   height: 48px;
   justify-content: center;
   line-height: 24px;
-  max-width: 100%;
   padding: 0 25px;
-  position: absolute;
+  position: relative;
+  width: 100px;
   bottom: 0;
   text-align: center;
   text-decoration: none;
@@ -224,4 +229,44 @@ table {
   border-color: #EB3324;
   color: #EB3324;
   fill: #EB3324;
+}
+
+
+@media (max-width: 768px) {
+  .box {
+  grid-template-columns: repeat(3, 1fr);
+  }
+  .user-link a{
+  color: pink;
+  }
+}
+
+@media (max-width: 479px) {
+  .box {
+  grid-template-columns: repeat(1, 1fr);
+  }
+
+  .box ul {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .card-img img {
+  width: 350px;
+  height: 227px;
+  }
+  .card {
+  margin: 10px auto;
+  width: 350px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+.card-img {
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  margin: 0px;
+  height: 227px;
+}
 }
