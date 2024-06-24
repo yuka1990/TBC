@@ -2,7 +2,7 @@
 <h1 class="page-title2">MY PAGE</h1>
 <div class='container'>
   <div class = "row mt-2">
-    <div class = 'col-md-3'>
+    <div class = 'col-lg-4'>
       <div class="profile">
         <table>
           <tbody>
@@ -40,8 +40,8 @@
         <% end %>
       </div>
     </div>
-    <div class = 'col-md-9'>
-      <ul class="box">
+    <div class = 'col-lg-8'>
+      <div class="box">
       <% @posts.each do |post| %>
         <li class="card">
           <div class="card-img">
@@ -51,10 +51,20 @@
           </div>
           <div class="card-content">
             <h1 class="card-title"><%= post.title %></h1>
+            <p class="card-text">
+              <%= post.genre.name %></br>
+              Level: <%= post.level %></br>
+              <%= link_to post_comments_path(post) do %>
+                <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>&nbsp;
+              <% end %>
+                <span id="favorite_<%= post.id %>" class="red-link">
+                <%= render "public/favorites/favorite", post: post %>
+                </span>
+        
           </div>
         </li>
       <% end %>
-      </ul>
+      </div>
     </div>
     <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %>
   </div>

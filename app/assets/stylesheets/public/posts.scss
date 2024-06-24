@@ -18,10 +18,11 @@ body {
 
 .items-box {
   width: 80%;
+  margin-left: 5%;
 }
 
 .search-box {
-  width: 20%;
+  width: 15%;
   margin-top: 1%;
 }
 .search-box-content {
@@ -55,7 +56,8 @@ section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: auto;
-  gap: 5px;
+  column-gap: 5%;
+  row-gap: 1%;
 }
 
 .items {
@@ -65,7 +67,7 @@ section {
 
 .card {
   margin: 10px auto;
-  width: 200px;
+  width: 180px;
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
@@ -122,6 +124,11 @@ section {
 
 .list-group a {
   color: #777;
+}
+
+.card-img img {
+  width: 180px;
+  height: 117px;
 }
 
 .btn-back {
@@ -203,7 +210,7 @@ section {
 }
 .search-box-content select,
 .search-box-content input {
-  width: 200px;
+  width: 180px;
 }
 .search-box-content
 h5
@@ -222,4 +229,29 @@ h5
 
 .green-link {
   color: green;
+}
+
+@media (max-width: 768px) {
+  .box {
+  grid-template-columns: repeat(2, 1fr);
+   column-gap: 15%;
+  }
+}
+
+@media (max-width: 479px) {
+  .box {
+  grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card-img img {
+  width: 300px;
+  height: 195px;
+  }
+  .card {
+  width: 300px;
+  }
+
+  .card-img {
+  height: 195px;
+  }
 }

@@ -27,19 +27,18 @@ body {
 }
 
 table {
-  margin: 30px 0px;
+  padding: 30px 0px;
   font-size: 20px;
-  background-color: #FEFBD5;
 }
 
 .profile {
   overflow-x: scroll;
-  width: 300px;
   margin-bottom: 20px;
+  background-color: #FEFBD5;
+  margin-top: 5%;
 }
 
 .user-link {
-  width: 300px;
   font-size: 20px;
   font-weight: bold;
   background-color: #FEFBD5;
@@ -51,13 +50,13 @@ table {
 
 .box {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
-  gap: 10px;
+  gap: 5px;
 }
 
 .items {
-  list-style: none;
+  list-style:none;
   background-color: white;
 }
 
@@ -69,15 +68,17 @@ table {
   box-shadow: 0 2px 5px #ccc;
 }
 
+.card a {
+  color: #777;
+}
+.red-link a {
+  color: #EF6C62;
+}
+
 .card-img {
   border-radius: 5px 5px 0 0;
   text-align: center;
   margin: 0px;
-  height: 130px;
-}
-
-.card-img img {
-  width: 200px;
   height: 130px;
 }
 
@@ -87,9 +88,45 @@ table {
 
 .card-title {
   font-size: 20px;
-  margin-bottom: 20px;
+  margin: 5px 0px;
   text-align: center;
   color: #333;
+}
+
+.card-text {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.list-group-item {
+	margin: 5px;
+	padding: 1em;/*内側の余白*/
+	background: none;/*元のボックス背景色なし*/
+	border: 1px solid #ccc ;/*線の太さ・種類・色*/
+	position: relative;/*配置（基準）*/
+}
+
+.list-group-item:after {
+	background-color:#EAFBEB;/*ずらしたボックスの背景色*/
+	border: none;
+	content: '';
+	position: absolute;/*配置（ここを動かす）*/
+	top: 7px;/*上から7pxずらす*/
+	left: 7px;/*左から7pxずらす*/
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.list-group a {
+  color: #777;
+}
+
+.card-img img {
+  width: 200px;
+  height: 130px;
 }
 
 .btn-back {
@@ -236,9 +273,6 @@ table {
   .box {
   grid-template-columns: repeat(3, 1fr);
   }
-  .user-link a{
-  color: pink;
-  }
 }
 
 @media (max-width: 479px) {
@@ -246,27 +280,15 @@ table {
   grid-template-columns: repeat(1, 1fr);
   }
 
-  .box ul {
-    margin-left: 0;
-    padding-left: 0;
-  }
-
   .card-img img {
   width: 350px;
   height: 227px;
   }
   .card {
-  margin: 10px auto;
   width: 350px;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px #ccc;
-}
+  }
 
-.card-img {
-  border-radius: 5px 5px 0 0;
-  text-align: center;
-  margin: 0px;
+  .card-img {
   height: 227px;
-}
+  }
 }
