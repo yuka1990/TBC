@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_user
   before_action :is_matching_login_user, only: [:edit, :update]
-  before_action :check_guest_user
+  before_action :check_guest_user, only: [:edit, :update, :withdraw]
 
 
   def mypage
@@ -54,7 +54,7 @@ class Public::UsersController < ApplicationController
   
   def check_guest_user
     if current_user.email == "guest@example.com"
-      redirect_to posts_path, alert:"Access is not permitted."
+      redirect_to my_page_path, alert:"Access is not permitted."
     end
   end
 

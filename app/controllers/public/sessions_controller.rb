@@ -38,7 +38,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to posts_path, notice: "Logged in as Guest User"
+    redirect_to my_page_path, notice: "Logged in as Guest User"
   end
   
   private

@@ -17,13 +17,11 @@
               <li><%= link_to 'Group',admin_groups_path, class: 'nav-link text-white' %></li>
               <li><%= link_to 'Log out',destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %></li>
             <% elsif user_signed_in? %>
-            　<% if current_user.email != "guest@example.com" %>
               <li>
                 <%= link_to my_page_path, class: 'nav-link text-white' do %>
                   <i class="fa-solid fa-house"></i> Mypage
                 <% end %>
               </li>
-              <% end %>
               <li>
                 <%= link_to groups_path, class: 'nav-link text-white' do %>
                   <i class="fa-solid fa-ship"></i> Group
