@@ -2,20 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 #mv {
-  background-image: image-url("2.jpg");
+  background-image: image-url("AdobeStock_528723350.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   font-family: Georgia, serif;
   width: 100%;
-  height: 650px;
-  padding: 2%;
+  height: 100vh;
+}
+
+#mv container1 {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.top-image {
+  width: 100%;
+  height: 40%;
+  text-align: center;
+  padding-top: 3%;
 }
 
 .top_title {
   text-align: center;
-  padding-top: 25%;
-  padding-bottom: 3%;
 }
 
 h2 {
@@ -29,27 +40,6 @@ a {
 
 a:hover {
   color: #F67676;
-}
-
-#about {
-  background-image: image-url("AdobeStock_566056172.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: Georgia, serif;
-  width: 100%;
-  height: 650px;
-  margin: 0;
-}
-
-.about_title {
-  text-align: center;
-  color: #3e2e28;
-  padding-top: 90px;
-}
-
-.second-title {
-  font-size: 60px;
 }
 
 .swiper {
@@ -67,6 +57,47 @@ a:hover {
   width: 300px;
 }
 
+#about {
+  background-image: image-url("AdobeStock_566056172.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Georgia, serif;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
+
+.about_title {
+  text-align: center;
+  color: #3e2e28;
+  padding-top: 90px;
+}
+
+.second-title {
+  font-size: 60px;
+}
+
+
+
 .subtitle,.content {
   margin-top: 3%;
+}
+
+@media (max-width: 768px) {
+  #mv {
+    padding: 0;
+  }
+
+  .top_title {
+    padding-top: 10%;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 479px) {
+
 }
