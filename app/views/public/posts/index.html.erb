@@ -1,10 +1,10 @@
 <%= stylesheet_link_tag 'public/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
 <h1 class="page-title">RECIPES</h1>
 <div id="search-icon">
-      <%= link_to("#", class: "menu-trigger button") do %>
-        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-      <% end %>
-    </div>
+  <%= link_to("#", class: "menu-trigger button") do %>
+    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+  <% end %>
+</div>
 <div class='container'>
   <div class="row">
     <div id="search-menu">
@@ -32,7 +32,6 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-12 col-lg-10 col-md-8">
     <div class = 'items-box'>
       <div class="box">
       <% @posts.each do |post| %>
@@ -63,7 +62,6 @@
         </li>
       <% end %>
       </div>
-    </div>
     </div>
   </div>
 </div>

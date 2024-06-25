@@ -226,7 +226,7 @@ h5
 /* ---------------------------- */
 #search-icon {
   position: absolute;
-  right: 20%;
+  right: 5%;
   top: 13%;
   z-index: 10;
 }
@@ -340,10 +340,15 @@ h5
     transform: translate(0%, 0%);
   }
 }
+@media (max-width: 1024px) {
+  .box {
+  grid-template-columns: repeat(4, 1fr);
+  }
+}
 
 @media (max-width: 768px) {
   .box {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
    column-gap: 15%;
   }
 }
@@ -351,6 +356,7 @@ h5
 @media (max-width: 479px) {
   .box {
   grid-template-columns: repeat(1, 1fr);
+  row-gap: 1px;
   }
 
   .card-img img {
@@ -363,5 +369,8 @@ h5
 
   .card-img {
   height: 195px;
+  }
+  .row {
+    justify-content: center;
   }
 }
