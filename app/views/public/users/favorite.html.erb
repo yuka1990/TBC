@@ -1,8 +1,7 @@
 <%= stylesheet_link_tag 'public/posts', media: 'all', 'data-turbolinks-track': 'reload' %>
+<h1 class="page-title">FAVOURITES</h1>
 <div class='container'>
   <div class = "row">
-    <h1 class="page-title">FAVOURITES</h1>
-    <div class = 'col-12'>
       <ul class="box">
       <% @favorite_posts.each do |post| %>
         <li class="card">
@@ -14,22 +13,21 @@
           <div class="card-content">
             <h1 class="card-title"><%= post.title %></h1>
             <p class="card-text">
+              <%= post.genre.name %></br>
               Level: <%= post.level %></br>
-              <%= post.originality %></br>
-              <%= image_tag post.user.home_country.image, size: "20x20" %></br>
+              <%= image_tag post.user.home_country.image, size: "20x20" %>
+              By <%= post.user.nickname %>&nbsp;</br>
               <%= link_to post_comments_path(post) do %>
-                <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>
+                <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>&nbsp;
               <% end %>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <span id="favorite_<%= post.id %>">
+              <span id="favorite_<%= post.id %>" class="red-link">
                 <%= render "public/favorites/favorite", post: post %>
               </span>
-            </div>
+          </div>
         </li>
       <% end %>
       </ul>
-      </br>
-      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
-    </div>
   </div>
+  </br>
+  <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
 </div>

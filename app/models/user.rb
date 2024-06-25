@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
   belongs_to :home_country
+  has_many :chats, dependent: :destroy
   
 
 
@@ -27,7 +28,7 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
       user.name = "guestuser"
-      user.home_country_id = "2"
+      user.home_country_id = "1"
       user.nickname = "guestuser"
     end
   end

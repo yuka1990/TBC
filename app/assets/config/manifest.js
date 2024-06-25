@@ -11,3 +11,4 @@
 //= link admin/comments.css
 //= link admin/country_genre.css
 //= link admin/groups.css
+//= link public/chats.css

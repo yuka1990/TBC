@@ -12,30 +12,28 @@
         <% @groups.each do |group| %>
         <div class="list-group">
           <div class="box-title"><%= group.name %></div>
-          <ul>
-          　<li><strong>Organizer:<%= group.owner_nickname %></strong></li>
-          　<li><i class="fa-solid fa-users"></i>Members: <%= group.group_users.count %></li>
-          　<li><%= safe_join(group.introduction.split("\n"),tag(:br)) %></li>
-          　<li>
-            <div class="link-button">
-            <%= link_to 'Show', group %>
-            <% if current_user.email != "guest@example.com" %>
-              <% if group.is_owned_by?(current_user) %>
-              /&nbsp;<%= link_to 'Edit', edit_group_path(group) %>
-              /&nbsp;<%= link_to 'destroy', group_path(group), method: :delete %>
-              <% elsif group.includesUser?(current_user)%>
-    　　  　　　　    <%= link_to 'Leave this group', group_group_user_path(group), method: :delete, class: "btn-leave" %>
-              <% else %>
-    　　    　　　　  <%= link_to 'Join this group', group_group_user_path(group), method: :post, class: "btn-join" %>
-              <% end %>
-            <% end %>
-            </div>
-            </li>
-          </ul>
+            <ul>
+            　<li><strong>Organizer:<%= group.owner_nickname %></strong></li>
+            　<li class="under-border"><i class="fa-solid fa-users"></i>Members: <%= group.group_users.count %></li>
+            　<li><%= safe_join(word_wrap(group.introduction).split("\n"),tag(:br)) %></li>
+            　<li>
+              <div class="link-button">
+              <%= link_to 'Show', group %>
+                <% if group.is_owned_by?(current_user) %>
+                /&nbsp;<%= link_to 'Edit', edit_group_path(group) %>
+                /&nbsp;<%= link_to 'destroy', group_path(group), data: { confirm: 'Do you really want to delete it?' }, method: :delete %>
+                <% elsif group.includesUser?(current_user)%>
+      　　  　　　　    <%= link_to 'Leave this group', group_group_user_path(group), method: :delete, class: "btn-leave" %>
+                <% else %>
+      　　    　　　　  <%= link_to 'Join this group', group_group_user_path(group), method: :post, class: "btn-join" %>
+                <% end %>
+              </div>
+              </li>
+            </ul>
         </div>
-      <% end %>
-      </br>
-      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
+        <% end %>
+        </br>
+        <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>
   </div>
 </div>

@@ -1,4 +1,8 @@
 <%= form_with model: [post, comment], local: false do |f| %>
-  <%= f.text_area :body, row: '5', placeholder: "Please write a comment" %>
-  <%= f.submit "Send" %>
+<table>
+  <tr>
+    <td><%= f.text_area :body, row: '5', placeholder: "Please write a comment", class:"comment-form" %></td>
+    <td>&nbsp;&nbsp;<%= f.submit "Send" %></td>
+  </tr>
+</table>
 <% end %>

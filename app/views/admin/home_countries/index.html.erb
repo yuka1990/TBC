@@ -2,7 +2,7 @@
 <div class="container">
   <h1 class="page-title-long">COUNTRY</h1>
   <div class="row">
-    <div class="col-6 my-5">
+    <div class="col-md-6 my-5">
       <%= form_with model: @home_country, url: admin_home_countries_path, method: :post do |f| %>
         <%= f.label :image, "Flag image" %>
         <%= f.file_field :image,  accept:'image/*' %></br></br>
@@ -11,8 +11,8 @@
         <%= f.submit 'New Registration',class:"btn btn-success" %>
       <% end %>
     </div>
-    <div class="col-6">
-      <table class="table">
+    <div class="col-md-6">
+      <table class="table table table-responsive-md">
         <thead>
           <tr>
             <th scope="col">Country name</th>

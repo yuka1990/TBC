@@ -14,28 +14,47 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "Successfully saved."
     else
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :new
     end
   end
 
   def index
-    @genres = Genre.all
-    if params[:genre_id].present?
-      @genre = @genres.find(params[:genre_id])
-      @posts = @genre.posts
-    elsif params[:keyword].present?
-      @posts = Post.joins(user: :home_country).where('posts.title LIKE :keyword OR posts.ingredient LIKE :keyword OR home_countries.name LIKE :keyword', keyword: "%#{params[:keyword]}%")
-      if @posts.empty?
-        flash.now[:notice] = "No results found"
-      end
-    else
-      @posts = Post.all
-      @posts = @posts.latest if params[:order] == "latest"
-      @posts = @posts.oldest if params[:order] == "oldest"
-      @posts = @posts.most_favorite if params[:order] == "most_favorite"
-    end
+    @keyword = params[:keyword]
+    @by_genre = params[:genre_id]
+    @by_home_country = params[:home_country_id]
+    @by_level = params[:level]
+    @by_originality = params[:originality]
+
+    @posts = Post.all
+    @posts = @posts.search(@keyword) if @keyword.present?
+    @posts = @posts.by_genre(@by_genre) if @by_genre.present?
+    @posts = @posts.by_home_country(@by_home_country) if @by_home_country.present?
+    @posts = @posts.by_level(@by_level) if @by_level.present?
+    @posts = @posts.by_originality(@by_originality) if @by_originality.present?
+    @posts = @posts.latest if params[:order] == "latest"
+    @posts = @posts.oldest if params[:order] == "oldest"
+    @posts = @posts.most_favorite if params[:order] == "most_favorite"
+
   end
+
+  #def index
+    #@genres = Genre.all
+    #if params[:genre_id].present?
+      #@genre = @genres.find(params[:genre_id])
+      #@posts = @genre.posts
+    #elsif params[:keyword].present?
+      #@posts = Post.joins(user: :home_country).where('posts.title LIKE :keyword OR posts.ingredient LIKE :keyword OR home_countries.name LIKE :keyword', keyword: "%#{params[:keyword]}%")
+      #if @posts.empty?
+        #flash.now[:notice] = "No results found"
+      #end
+    #else
+      #@posts = Post.all
+      #@posts = @posts.latest if params[:order] == "latest"
+      #@posts = @posts.oldest if params[:order] == "oldest"
+      #@posts = @posts.most_favorite if params[:order] == "most_favorite"
+    #end
+  #end
 
   def show
     @comment = Comment.new
@@ -48,7 +67,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "Successfully saved."
     else
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :edit
     end
   end

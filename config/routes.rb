@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     end
     resources :groups do
       resource :group_user, only: [:create, :destroy]
+      resources :chats, only: [:index, :create, :destroy]
     end
   end
   devise_scope :user do
