@@ -19,17 +19,17 @@
           <li><%= safe_join(word_wrap(@group.introduction).split("\n"),tag(:br)) %></li>
           <li></br></li>
           <li>
-          <div class="link-button">
-            <% if @group.is_owned_by?(current_user) %>
-            　<%= link_to 'Edit', edit_group_path(@group) %>&nbsp;/
-            　<%= link_to 'destroy', group_path(@group), method: :delete %>
-            <% end %>
-          </div>
+            <div class="link-button">
+              <% if @group.is_owned_by?(current_user) %>
+              　<%= link_to 'Edit', edit_group_path(@group) %>&nbsp;/
+              　<%= link_to 'destroy', group_path(@group), method: :delete %>
+              <% end %>
+            </div>
           </li>
         </ul>
       </div>
       <div class="member">
-        <h1>Members</h1>
+        <h1>Members:<%= @group.group_users.count %></h1>
           <div class="member-list">
           <% @group.users.each do |user| %>
 　　        <div>
