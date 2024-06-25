@@ -21,7 +21,7 @@
         　<li>
             <div class="link-button">
             　<%= link_to 'Show', admin_group_path(group) %>/&nbsp;
-            　<%= link_to 'destroy', admin_group_path(group), method: :delete %>
+            　<%= link_to 'destroy', admin_group_path(group), data: { confirm: 'Do you really want to delete it?' },method: :delete %>
             </div>
           </li>
         </ul>

@@ -51,13 +51,9 @@
               <%= link_to post_comments_path(post) do %>
                 <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>&nbsp;
               <% end %>
-              <% if current_user.email != "guest@example.com" %>
                 <span id="favorite_<%= post.id %>" class="red-link">
                 <%= render "public/favorites/favorite", post: post %>
                 </span>
-              <% else %>
-                <i class="fa-solid fa-heart"></i>&nbsp;<%= post.favorites.count %>
-              <% end %>
           </div>
         </li>
       <% end %>

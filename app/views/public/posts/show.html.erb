@@ -28,14 +28,8 @@
           </tr>
           <tr>
             <td>comments:&nbsp;<%= @post.comments.count %>&nbsp;&nbsp;</td>
-            <% if current_user.email != "guest@example.com" %>
             <td id="favorite_<%= @post.id %>" class="red-link">
               <%= render "public/favorites/favorite", post: @post %>
-            </td>
-            <% else %>
-            <td>
-              <i class="fa-solid fa-heart"></i>&nbsp;<%= @post.favorites.count %>
-            <% end %>
             </td>
             </tr>
           </tbody>

@@ -1,7 +1,6 @@
 class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
   before_action :block_non_related_users, only: [:index]
-  before_action :check_guest_user
 
 
   def create
@@ -31,12 +30,6 @@ class Public::ChatsController < ApplicationController
 
 
   private
-
-  def check_guest_user
-    if current_user.email == "guest@example.com"
-      redirect_to groups_path, alert:"Access is not permitted."
-    end
-  end
 
   def block_non_related_users
     group = Group.find(params[:group_id])

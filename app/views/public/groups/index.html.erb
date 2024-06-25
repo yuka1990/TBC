@@ -21,7 +21,7 @@
               <%= link_to 'Show', group %>
                 <% if group.is_owned_by?(current_user) %>
                 /&nbsp;<%= link_to 'Edit', edit_group_path(group) %>
-                /&nbsp;<%= link_to 'destroy', group_path(group), method: :delete %>
+                /&nbsp;<%= link_to 'destroy', group_path(group), data: { confirm: 'Do you really want to delete it?' }, method: :delete %>
                 <% elsif group.includesUser?(current_user)%>
       　　  　　　　    <%= link_to 'Leave this group', group_group_user_path(group), method: :delete, class: "btn-leave" %>
                 <% else %>
