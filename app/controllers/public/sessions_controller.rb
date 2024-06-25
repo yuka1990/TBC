@@ -47,7 +47,7 @@ class Public::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email])
     if @user
       if @user.valid_password?(params[:user][:password]) && !@user.is_active
-        flash.now[:alert] = 'You have already canceled your membership. We are sorry, but please use another e-mail address.'
+        flash[:alert] = 'You have already canceled your membership. We are sorry, but please use another e-mail address.'
         redirect_to new_user_registration_path
       end
     end

@@ -123,8 +123,7 @@ ul {
 
 .member {
   background-color: #FDFFCE;
-  list-style-position: inside;
-  padding: 2%;
+  padding: 2% 0;
 }
 
 .member-list {
@@ -257,7 +256,7 @@ a.btn-join {
 
 .member h1 {
   border-bottom: 2px solid #000;
-  width: 20%;
+  width: 25%;
 }
 
 .col-10 h3 {
@@ -276,7 +275,7 @@ a.btn-join {
   .long-text {
     overflow-x: scroll;
   }
-  
+
   body {
     background-image: none;
   }
@@ -289,9 +288,22 @@ a.btn-join {
   .long-text {
     overflow-x: scroll;
   }
-  
+
   body {
     background-image: none;
+  }
+
+  .under-border {
+    width: 100%;
+  }
+
+  .member h1 {
+    border-bottom: 2px solid #000;
+    width: 100%;
+  }
+
+  .member-list {
+    display: block;
   }
 }
 

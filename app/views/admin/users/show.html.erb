@@ -19,7 +19,7 @@
           </tr>
           <tr>
             <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
-            <th> <%= f.label :is_active, 'user_status' %></th>
+            <th> <%= f.label :is_active, 'User_status' %></th>
             <td>
               <%= f.radio_button :is_active, true, checked: @user.is_active == true %>
               <%= f.label :is_active, 'Member' %>

@@ -82,7 +82,7 @@ body {
 
 .mychat {
   display: inline-block;
-  position: relative; 
+  position: relative;
   margin: 0 10px 0 0;
   padding: 8px;
   max-width: 400px;
@@ -94,7 +94,7 @@ body {
 .mychat:after {
   content: "";
   position: absolute;
-  top: 3px; 
+  top: 3px;
   right: -19px;
   border: 8px solid transparent;
   border-left: 18px solid #ABE890;
@@ -104,7 +104,7 @@ body {
 
 .chat {
   display: inline-block;
-  position: relative; 
+  position: relative;
   margin: 0 0 0 10px;
   padding: 10px;
   max-width: 400px;
@@ -116,7 +116,7 @@ body {
   content: "";
   display: inline-block;
   position: absolute;
-  top: 3px; 
+  top: 3px;
   left: -19px;
   border: 8px solid transparent;
   border-right: 18px solid #EFEBD2;
@@ -145,4 +145,12 @@ a {
   display: flex;
   justify-content: flex-end;
   margin-right: 10%;
+}
+
+@media (max-width: 479px) {
+  .chat-form {
+   display: flex;
+   justify-content: center;
+   margin-right: 0
+  }
 }

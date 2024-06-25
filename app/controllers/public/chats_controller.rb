@@ -10,7 +10,7 @@ class Public::ChatsController < ApplicationController
     if @chat.save
       redirect_to request.referer
     else
-      flash.now[:alert] = "Failed to save."
+      flash[:alert] = "Failed to save."
       redirect_to request.referer
     end
   end

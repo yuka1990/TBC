@@ -57,9 +57,16 @@
               <%= render "public/comments/counter", post: @post %>
             </span>
           </h1>
-            <div id="post-index">
-              <%= render "public/comments/show", post: @post %>
-            </div>
+            <% @post.comments.order(created_at: :desc).each do |comment| %>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <strong><%= comment.user.nickname %></strong></br>
+                  <%= comment.created_at.strftime('%Y/%m/%d') %></br>
+                  <%= comment.body %></br>
+                  <%= link_to "destroy", post_comment_path(comment.post,comment), method: :delete %>
+              </li>
+            </ul>
+            <% end %>
         </div>
       </div>
       </br>
