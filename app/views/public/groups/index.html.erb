@@ -19,7 +19,6 @@
           　<li>
             <div class="link-button">
             <%= link_to 'Show', group %>
-            <% if current_user.email != "guest@example.com" %>
               <% if group.is_owned_by?(current_user) %>
               /&nbsp;<%= link_to 'Edit', edit_group_path(group) %>
               /&nbsp;<%= link_to 'destroy', group_path(group), method: :delete %>
@@ -28,7 +27,6 @@
               <% else %>
     　　    　　　　  <%= link_to 'Join this group', group_group_user_path(group), method: :post, class: "btn-join" %>
               <% end %>
-            <% end %>
             </div>
             </li>
           </ul>
