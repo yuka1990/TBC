@@ -16,7 +16,7 @@
       <div class="list-group">
         <div class="box-title"><%= @group.name %></div>
          <ul>
-          <li><%= safe_join(@group.introduction.split("\n"),tag(:br)) %></li>
+          <li><%= safe_join(word_wrap(@group.introduction).split("\n"),tag(:br)) %></li>
           <li></br></li>
           <li>
           <div class="link-button">

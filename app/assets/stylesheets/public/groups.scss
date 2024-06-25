@@ -261,6 +261,9 @@ a.btn-join {
   border-bottom: 1px solid #000;
   width: 40%;
 }
+.list-group li {
+  word-wrap: break-word;
+}
 @media (max-width: 768px) {
   .list-group ul {
     overflow-x: scroll;
