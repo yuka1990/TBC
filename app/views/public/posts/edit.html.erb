@@ -4,6 +4,7 @@
   <div class = "row mt-3">
     <div class = 'col'>
         <%= form_with model: @post, url: post_path, method: :patch do |f| %>
+        <div class="edit-form">
         <table>
           <tbody>
             <tr>
@@ -44,6 +45,8 @@
             </tr>
           </tbody>
         </table>
+        </br>
+        </div>
           <% end %>
         </br>
         <%= link_to 'Destroy' , post_path(@post), method: :delete, data: {confirm: 'Do you really want to delete it?'} ,class:"btn btn-danger" %>

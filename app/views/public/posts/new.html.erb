@@ -4,6 +4,7 @@
       <div class = 'col'>
         <h1 class="page-title-long">NEW RECIPE</h1>
           <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+          <div class="edit-form">
           <table>
             <tbody>
               <tr>
@@ -40,6 +41,8 @@
               </tr>
             </tbody>
           </table>
+          </div>
+          </br>
           <%= f.submit 'New Registration',class:"btn btn-success" %>
           <% end %>
           </br>

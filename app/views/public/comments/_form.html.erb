@@ -1,7 +1,7 @@
 <%= form_with model: [post, comment], local: false do |f| %>
 <table>
   <tr>
-    <td><%= f.text_area :body, row: '5', placeholder: "Please write a comment", size: "60x2" %></td>
+    <td><%= f.text_area :body, row: '5', placeholder: "Please write a comment", class:"comment-form" %></td>
     <td>&nbsp;&nbsp;<%= f.submit "Send" %></td>
   </tr>
 </table>

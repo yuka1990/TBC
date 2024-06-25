@@ -342,6 +342,11 @@ h5
     transform: translate(0%, 0%);
   }
 }
+
+.comment-form {
+   width: 300px;
+}
+
 @media (max-width: 1024px) {
   .box {
   grid-template-columns: repeat(4, 1fr);
@@ -358,6 +363,9 @@ h5
   }
   #search-menu {
   width: 30%;
+  }
+  .edit-form {
+    overflow-x: scroll;
   }
 }
 
@@ -383,5 +391,19 @@ h5
   }
   #search-menu {
   width: 60%;
+  }
+  
+  .long-text {
+    overflow-x: scroll;
+  }
+  .main-image img{
+    width: 300px;
+    height: 225px;
+  }
+  .comment-form {
+   width: 200px;
+  }
+  .edit-form {
+    overflow: scroll;
   }
 }
