@@ -28,7 +28,7 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
       user.name = "guestuser"
-      user.home_country_id = "2"
+      user.home_country_id = "1"
       user.nickname = "guestuser"
     end
   end

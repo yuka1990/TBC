@@ -53,6 +53,7 @@ body {
   display: inline-block;
   margin-right: 5px;  // リンクの間に隙間を開けるために必要な場合
 }
+
 .list-group li {
   word-wrap: break-word;
 }
@@ -61,7 +62,6 @@ ul {
   list-style: none;
   line-height: 1;
 }
-
 
 .btn-back {
   align-items: center;

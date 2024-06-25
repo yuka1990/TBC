@@ -57,10 +57,9 @@
               <%= link_to post_comments_path(post) do %>
                 <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>&nbsp;
               <% end %>
-                <span id="favorite_<%= post.id %>" class="red-link">
+              <span id="favorite_<%= post.id %>" class="red-link">
                 <%= render "public/favorites/favorite", post: post %>
-                </span>
-        
+              </span>
           </div>
         </li>
       <% end %>

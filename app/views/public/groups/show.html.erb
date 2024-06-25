@@ -11,31 +11,33 @@
       <% end %>
     </div>
   </div>
-      <div class="row">
-        <div class="col">
+  <div class="row">
+    <div class="col">
       <div class="list-group">
         <div class="box-title"><%= @group.name %></div>
-         <ul>
+        <ul>
           <li><%= safe_join(word_wrap(@group.introduction).split("\n"),tag(:br)) %></li>
           <li></br></li>
           <li>
           <div class="link-button">
-          <% if @group.is_owned_by?(current_user) %>
-          　<%= link_to 'Edit', edit_group_path(@group) %>&nbsp;/
-          　<%= link_to 'destroy', group_path(@group), method: :delete %>
-          <% end %>
+            <% if @group.is_owned_by?(current_user) %>
+            　<%= link_to 'Edit', edit_group_path(@group) %>&nbsp;/
+            　<%= link_to 'destroy', group_path(@group), method: :delete %>
+            <% end %>
           </div>
           </li>
-          
-           </ul>
+        </ul>
       </div>
       <div class="member">
         <h1>Members</h1>
-        <div class="member-list">
-        <% @group.users.each do |user| %>
-　　      <div><i class="fa-solid fa-user-large"></i><%= user.nickname %></div>
-        <% end %>
-        </div>
+          <div class="member-list">
+          <% @group.users.each do |user| %>
+　　        <div>
+　　          <i class="fa-solid fa-user-large"></i>
+　　          <%= user.nickname %>
+　　        </div>
+        　<% end %>
+        　</div>
       </div>
       </br>
       <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>

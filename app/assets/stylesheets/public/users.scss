@@ -72,6 +72,7 @@ table {
 .card a {
   color: #777;
 }
+
 .red-link a {
   color: #EF6C62;
 }
@@ -269,7 +270,6 @@ table {
   fill: #EB3324;
 }
 
-
 @media (max-width: 768px) {
   .box {
   grid-template-columns: repeat(3, 1fr);
@@ -285,6 +285,7 @@ table {
   width: 350px;
   height: 227px;
   }
+  
   .card {
   width: 350px;
   }

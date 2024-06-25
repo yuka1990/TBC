@@ -30,7 +30,6 @@ class Public::ChatsController < ApplicationController
   end
 
 
-
   private
 
   def check_guest_user

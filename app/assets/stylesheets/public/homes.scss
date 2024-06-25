@@ -83,8 +83,6 @@ a:hover {
   font-size: 60px;
 }
 
-
-
 .subtitle,.content {
   margin-top: 3%;
 }
@@ -107,7 +105,7 @@ a:hover {
   }
   .swiper {
   width: 600px;
-}
+  }
   .swiper-slide img {
     height: 100%;
     width: 100%;
@@ -117,9 +115,7 @@ a:hover {
   background-size: cover;
   background-position: center;
   height: 100vh;
-}
-
-
+  }
 }
 
 @media (max-width: 479px) {
@@ -149,6 +145,5 @@ a:hover {
   }
   .about_title {
   padding-top: 5%;
-}
-
+  }
 }

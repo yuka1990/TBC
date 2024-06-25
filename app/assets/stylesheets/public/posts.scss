@@ -33,7 +33,6 @@ body {
   font-size: 50px;
   margin-top: 10px;
   margin-left: 10%;
-
 }
 
 table {
@@ -198,21 +197,22 @@ section {
 	color: #fff;
 	background-image: linear-gradient(to left, #2B611A 0%, #b4e12b 100%);
 }
+
 .back {
   margin: 5% 0 3% 10%;
 }
+
 .search-box-content select,
 .search-box-content input {
   width: 180px;
 }
+
 .search-box-content
-h5
-{
+h5 {
   border-bottom: 1px solid #000;
 }
 
-.search-box-content a
-{
+.search-box-content a {
   color: green;
 }
 
@@ -233,7 +233,7 @@ h5
   z-index: 10;
 }
 
-#search-icon a{
+#search-icon a {
   color: green;
   text-decoration: none;
 }
@@ -243,12 +243,12 @@ h5
   transition: all .4s;
   font-size: 20px;
 }
+
 .menu-trigger {
   position: relative;
   width: 100px;
   height: 44px;
 }
-
 
 /* ------------------------ */
 /* -- 折りたたみ式検索メニュー -- */
@@ -264,14 +264,17 @@ h5
   display: none;
   z-index: 9;
 }
+
 #search-menu li {
   text-align: center;
   margin-bottom: 30px;
 }
+
 #search-menu a {
   text-decoration: none;
   font-weight: bold;
 }
+
 .button {
   position: relative;
   border: none;
@@ -379,6 +382,7 @@ h5
   width: 300px;
   height: 195px;
   }
+  
   .card {
   width: 300px;
   }
@@ -386,9 +390,11 @@ h5
   .card-img {
   height: 195px;
   }
+  
   .row {
     justify-content: center;
   }
+  
   #search-menu {
   width: 60%;
   }
@@ -396,13 +402,16 @@ h5
   .long-text {
     overflow-x: scroll;
   }
+  
   .main-image img{
     width: 300px;
     height: 225px;
   }
+  
   .comment-form {
    width: 200px;
   }
+  
   .edit-form {
     overflow: scroll;
   }
