@@ -1,29 +1,32 @@
 <%= stylesheet_link_tag 'public/homes', media: 'all', 'data-turbolinks-track': 'reload' %>
   <section id="mv">
-    <div class="container">
+    <div class="container1">
+      <div class="top-image">
+        <%= image_tag("TBCtop.png") %>
+      </div>
       <div class="top_title">
         <h2><%= link_to "Let's start the journey" ,new_user_registration_path %></h2>
       </div>
-    </div>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <%= image_tag("AdobeStock_281748742.jpeg", class: "swiper-image") %>
-        </div>
-        <div class="swiper-slide">
-          <%= image_tag("AdobeStock_203197729.jpeg", class: "swiper-image") %>
-        </div>
-        <div class="swiper-slide">
-          <%= image_tag("AdobeStock_292592821.jpeg", class: "swiper-image") %>
-        </div>
-        <div class="swiper-slide">
-          <%= image_tag("AdobeStock_296667027.jpeg", class: "swiper-image") %>
-        </div>
-        <div class="swiper-slide">
-         <%= image_tag("AdobeStock_335744309.jpeg", class: "swiper-image") %>
-        </div>
-        <div class="swiper-slide">
-          <%= image_tag("chinese-food-5233488_1280.jpg", class: "swiper-image") %>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <%= image_tag("AdobeStock_281748742.jpeg", class: "swiper-image") %>
+          </div>
+          <div class="swiper-slide">
+            <%= image_tag("AdobeStock_203197729.jpeg", class: "swiper-image") %>
+          </div>
+          <div class="swiper-slide">
+            <%= image_tag("AdobeStock_292592821.jpeg", class: "swiper-image") %>
+          </div>
+          <div class="swiper-slide">
+            <%= image_tag("AdobeStock_296667027.jpeg", class: "swiper-image") %>
+          </div>
+          <div class="swiper-slide">
+           <%= image_tag("AdobeStock_335744309.jpeg", class: "swiper-image") %>
+          </div>
+          <div class="swiper-slide">
+            <%= image_tag("chinese-food-5233488_1280.jpg", class: "swiper-image") %>
+          </div>
         </div>
       </div>
     </div>

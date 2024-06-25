@@ -29,7 +29,7 @@ class Public::CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to post_path(params[:post_id])
     else
-      flash[:alert] = "Failed to save."
+      flash.now[:alert] = "Failed to save."
       render :edit
     end
   end

@@ -1,41 +1,43 @@
 <%= stylesheet_link_tag 'admin/users', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container">
-    <h1 class="page-title-long">USER LIST</h1>
-    <div class="search_form-2">
-      <%= form_with local: true, method: :get do |f| %>
-        <%= f.text_field :search %>
-        <%= f.submit "Search" %>
-    　<% end %>
-  　</div>
-  　<div class="row mt-2">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>Name</td>
-          <td>Nickname</td>
-          <td>Detail&Posts</td>
-          <td>Status</td>
-        </tr>
-      </thead>
-      <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.id %></td>
-          <td><%= user.name %></td>
-          <td><%= user.nickname %></td>
-          <td><%= link_to 'click' , admin_user_path(user), data: {"turbolinks" => false} %></td>
-          <td>
-            <% if user.is_active %>
-              <strong class="text-success">Member</strong>
-            <% else %>
-              <strong class="text-muted">Withdrawal</strong>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
-      <% end %>
-    </table>
-    <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
+  <h1 class="page-title-long">USER LIST</h1>
+  <div class="search_form-2">
+    <%= form_with local: true, method: :get do |f| %>
+      <%= f.text_field :search %>
+      <%= f.submit "Search" %>
+    <% end %>
   </div>
+  <div class="row mt-2">
+  　<div class="col">
+      <table class="table table-responsive-lg table-hover table-inverse">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Nickname</td>
+            <td>Detail&Posts</td>
+            <td>Status</td>
+          </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.nickname %></td>
+            <td><%= link_to 'click' , admin_user_path(user), data: {"turbolinks" => false} %></td>
+            <td>
+              <% if user.is_active %>
+                <strong class="text-success">Member</strong>
+              <% else %>
+                <strong class="text-muted">Withdrawal</strong>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
 </div>

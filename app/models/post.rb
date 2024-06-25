@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   has_one_attached :image
   
   validates :genre_id, presence: true
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 20 }
   validates :body, presence: true
   validates :ingredient, presence: true
   validates :method, presence: true
@@ -33,7 +33,11 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
     
-  
+  scope :search, -> (keyword) { where('title LIKE :keyword OR ingredient LIKE :keyword', keyword: "%#{keyword}%") }
+  scope :by_genre, ->(genre_id) { where(genre_id: genre_id) }
+  scope :by_level, ->(level) { where(level: level) }
+  scope :by_originality, ->(originality) { where(originality: originality) }
+  scope :by_home_country, ->(country_id) { joins(user: :home_country).where('home_countries.id = ?', country_id) }
   scope :latest, -> {order(created_at: :desc) }
   scope :oldest, -> {order(created_at: :asc) }
   scope :most_favorite, -> {
@@ -42,6 +46,7 @@ class Post < ApplicationRecord
     .group("posts.id")
     .order(favorites_count: :desc)
   }
+  
   
   
   

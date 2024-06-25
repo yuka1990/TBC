@@ -1,0 +1,148 @@
+// Place all the styles related to the public/chats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  font-family: Georgia, serif;
+  height: 100%;
+  background-color: #FAFFEB;
+}
+
+.page-title-long {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.btn-back {
+  align-items: center;
+  background-color: #FEF5DF;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  padding: 0 25px;
+  position: relative;
+  width: 100px;
+  bottom: 0;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-back:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.btn-back:hover:after {
+  transform: translate(0, 0);
+}
+
+.btn-back:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.btn-back:hover {
+  outline: 0;
+}
+
+.date-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-divider p {
+  padding: 0.5%;
+  display: inline;
+  background-color: #edf1ee;
+  border-radius: 10px;
+}
+
+.mychat {
+  display: inline-block;
+  position: relative; 
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 400px;
+  border-radius: 12px;
+  background-color: #ABE890;
+  font-size: 15px;
+}
+
+.mychat:after {
+  content: "";
+  position: absolute;
+  top: 3px; 
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #ABE890;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+.chat {
+  display: inline-block;
+  position: relative; 
+  margin: 0 0 0 10px;
+  padding: 10px;
+  max-width: 400px;
+  border-radius: 12px;
+  background-color: #EFEBD2;
+}
+
+.chat:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px; 
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #EFEBD2;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.time {
+  font-size: small;
+}
+
+a {
+  size: small;
+  color: red;
+}
+
+.message {
+  width: 80%;
+  margin: 5% auto;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 650px;
+}
+
+.chat-form {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10%;
+}

@@ -2,18 +2,21 @@ class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @genres = Genre.all
-    if params[:genre_id]
-      @genre = @genres.find(params[:genre_id])
-      @posts = @genre.posts
-    elsif params[:keyword].present?
-      @posts = Post.joins(user: :home_country).where('posts.title LIKE :keyword OR posts.ingredient LIKE :keyword OR home_countries.name LIKE :keyword', keyword: "%#{params[:keyword]}%")
-      if @posts.empty?
-        flash.now[:notice] = "No results found"
-      end
-    else
-      @posts = Post.all
-    end
+    @keyword = params[:keyword]
+    @by_genre = params[:genre_id]
+    @by_home_country = params[:home_country_id]
+    @by_level = params[:level]
+    @by_originality = params[:originality]
+
+    @posts = Post.all
+    @posts = @posts.search(@keyword) if @keyword.present?
+    @posts = @posts.by_genre(@by_genre) if @by_genre.present?
+    @posts = @posts.by_home_country(@by_home_country) if @by_home_country.present?
+    @posts = @posts.by_level(@by_level) if @by_level.present?
+    @posts = @posts.by_originality(@by_originality) if @by_originality.present?
+    @posts = @posts.latest if params[:order] == "latest"
+    @posts = @posts.oldest if params[:order] == "oldest"
+    @posts = @posts.most_favorite if params[:order] == "most_favorite"
   end
 
   def show

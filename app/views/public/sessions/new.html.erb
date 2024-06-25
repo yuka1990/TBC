@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'public/registrations', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class='container'>
   <div class = "row py-5 mx-auto">
-    <div class = 'col-6 py-5 mx-auto'>
+    <div class = 'col-md-5 col-sm-10 mx-2 mx-sm-auto'>
       <div class="text-box">
       <h2>Log in</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -24,10 +24,11 @@
         </div>
       <% end %>
       </br>
-      Viewing only→<%= link_to "Login as guest", users_guest_sign_in_path, class: "btn btn-light", method: :post %></br>
-      Not registered yet?→ <%= render "public/shared/links" %>
+      Not registered yet?→ <%= render "public/shared/links" %></br>
+      PF専用見学ログイン→<%= link_to "Login as guest", users_guest_sign_in_path, class: "btn btn-light", method: :post %>
+      <p>(Userの編集以外操作可能です。お試しください。)</p>
       </br>
       </div>
     </div>
   </div>
-</div>      
+</div>

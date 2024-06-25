@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_user
   before_action :is_matching_login_user, only: [:edit, :update]
-  before_action :check_guest_user
+  before_action :check_guest_user, only: [:edit, :update, :withdraw]
 
 
   def mypage
@@ -16,7 +16,7 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
        redirect_to my_page_path(@user), notice: "Successfully saved."
     else
-       flash[:alert] = "Failed to save."
+       flash.now[:alert] = "Failed to save."
        render :edit
     end
   end
@@ -30,7 +30,7 @@ class Public::UsersController < ApplicationController
   def withdraw
     @user.update(is_active: false)
     reset_session
-    flash[:notice] = "Cancellation of membership has been executed."
+    flash.now[:notice] = "Cancellation of membership has been executed."
     redirect_to root_path
   end
   
@@ -54,7 +54,7 @@ class Public::UsersController < ApplicationController
   
   def check_guest_user
     if current_user.email == "guest@example.com"
-      redirect_to posts_path, alert:"Access is not permitted."
+      redirect_to my_page_path, alert:"Access is not permitted."
     end
   end
 
