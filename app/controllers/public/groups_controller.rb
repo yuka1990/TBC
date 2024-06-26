@@ -1,7 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_group, only: [:edit, :update, :show, :destroy]
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update, :permits]
 
   def new
     @group = Group.new
@@ -45,6 +45,11 @@ class Public::GroupsController < ApplicationController
     @group.destroy
     redirect_to groups_path
   end
+  
+  def permits
+    @group = Group.find(params[:id])
+    @permits = @group.permits.all
+  end
 
   private
 
@@ -53,6 +58,7 @@ class Public::GroupsController < ApplicationController
   end
 
   def ensure_correct_user
+    @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id
       redirect_to groups_path
     end

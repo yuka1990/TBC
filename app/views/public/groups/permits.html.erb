@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag 'public/groups', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container">
+  <h1 class="page-title-long">"<%= @group.name %>"Waiting list for approval</h1>
+  <div class="row mt-5 mx-auto">
+    <div class="col-10">
+    <% if @permits.present? %>
+        <table class="table table-responsive-lg table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>Nickname</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @permits.each do |permit| %>
+              <tr>
+                <td><%= permit.user.nickname %></td>
+                <td>
+                  <%= link_to 'Approval', group_group_user_path(@group, permit_id: permit.id), method: :post, class: "btn btn-success" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    <% else %>
+      <h2 class="text-center">There are no users waiting for approval.</h2>
+    <% end %>
+      </div>
+  </div>
+  </br>
+  <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
+</div>

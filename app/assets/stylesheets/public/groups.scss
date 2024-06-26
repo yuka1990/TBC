@@ -267,6 +267,14 @@ a.btn-join {
 .list-group li {
   word-wrap: break-word;
 }
+.red-text {
+  font-size: 20px;
+  color: red;
+}
+
+thead {
+  background-color: #FBFFBF;
+}
 
 @media (max-width: 768px) {
   .list-group ul {

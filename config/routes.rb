@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get '/my_page' => 'users#mypage'
     get '/confirm' => 'users#confirm'
     patch '/withdraw' => 'users#withdraw'
+    get "groups/:id/permits" => "groups#permits", as: :permits
     resources :users, only: [:edit, :show, :update] do
       member do
         get :favorite
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
     end
     resources :groups do
+      resource :permits, only: [:create, :destroy]
       resource :group_user, only: [:create, :destroy]
       resources :chats, only: [:index, :create, :destroy]
     end
