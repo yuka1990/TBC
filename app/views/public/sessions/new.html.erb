@@ -27,7 +27,7 @@
       Not registered yet?→ <%= render "public/shared/links" %></br>
       PF専用見学ログイン→<%= link_to "Login as guest", users_guest_sign_in_path, class: "btn btn-light", method: :post %>
       <p>(Userの編集以外操作可能です。お試しください。)</p>
-      </br>
+      管理者専用ログイン→<%= link_to "Administrators only", admin_root_path, class: 'btn btn-light' %>
       </div>
     </div>
   </div>
