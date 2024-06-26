@@ -18,14 +18,24 @@
             　<li><%= safe_join(word_wrap(group.introduction).split("\n"),tag(:br)) %></li>
             　<li>
               <div class="link-button">
-              <%= link_to 'Show', group %>
                 <% if group.is_owned_by?(current_user) %>
-                /&nbsp;<%= link_to 'Edit', edit_group_path(group) %>
-                /&nbsp;<%= link_to 'destroy', group_path(group), data: { confirm: 'Do you really want to delete it?' }, method: :delete %>
+                  <%= link_to "Approval", permits_path(group) %>
+                  /&nbsp;<%= link_to 'Show', group %>
+                  /&nbsp;<%= link_to 'Edit', edit_group_path(group) %>
+                  /&nbsp;<%= link_to 'destroy', group_path(group), data: { confirm: 'Do you really want to delete it?' }, method: :delete %>
+                  </br>
+                　<p>Unapproved Number:<%= content_tag(:span, group.permits.count, class: 'red-text') %></p>
                 <% elsif group.includesUser?(current_user)%>
-      　　  　　　　    <%= link_to 'Leave this group', group_group_user_path(group), method: :delete, class: "btn-leave" %>
+                  &nbsp;<%= link_to 'Show', group %></br></br>
+                  <%= link_to 'Leave this group', group_group_user_path(group), method: :delete, class: "btn-leave" %>
                 <% else %>
-      　　    　　　　  <%= link_to 'Join this group', group_group_user_path(group), method: :post, class: "btn-join" %>
+                  <% if group.permits.exists?(user_id: current_user.id) %>
+                    &nbsp;<%= link_to 'Show',group %></br></br>
+                    <%= link_to 'Cancellation of application', group_permits_path(group), method: :delete, class: "btn-leave" %>
+                  <% else %>
+                    &nbsp;<%= link_to 'Show',group %></br></br>
+                    <%= link_to 'application to join', group_permits_path(group), method: :post, class: "btn-join" %>
+                  <% end %>
                 <% end %>
               </div>
               </li>
