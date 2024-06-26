@@ -29,7 +29,9 @@
 - 世界の食のトレンドを知りたいとき
 
 ## 設計書
-後ほど作成予定
+- テーブル定義書:https://docs.google.com/spreadsheets/d/1YaxBTUNECL_bYWl81W86WP3IECUXbojaSSSi8pLPyV0/edit?usp=sharing
+- ER図:https://drive.google.com/file/d/1kc3tXMfHVCmASmeR3lk3tnhtVyd5wWYl/view?usp=sharing
+- アプリケーション詳細設計書:https://docs.google.com/spreadsheets/d/17GW5JHv0JhIWaGORRx6arODlbymfQUhTlW3ggsQwb_c/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -41,3 +43,5 @@
 ## 使用素材
 - フリー素材として以下を使用
 - Adobe Stock(https://stock.adobe.com/jp)
+- Pixabay(https://pixabay.com/ja/)
+- いらすとや(https://www.irasutoya.com/)
