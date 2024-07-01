@@ -11,6 +11,16 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    if post_params[:images].present?
+      post_params[:images].each do |image|
+        result = Vision.images_analysis(image)
+        if result == false
+              flash.now[:alert] = "画像が不適切です。最初から入力して下さい。"
+              render :new
+              return
+        end
+      end
+    end
     if @post.save
       redirect_to post_path(@post), notice: "Successfully saved."
     else
