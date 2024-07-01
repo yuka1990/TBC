@@ -29,7 +29,10 @@
       <ul class="list-group">
         <% @comments.each do |comment| %>
         <li class="list-group-item">
-          <span class="sentiment-score">Sentiment analysis<%= comment.score %></span></br>
+          <span>Sentiment analysis:
+            <span class="sentiment-score"><%= comment.score %></span>
+          </span>
+          </br>
           <strong><%= comment.user.nickname %></strong></br>
           <%= comment.created_at.strftime('%Y/%m/%d') %></br>
           <%= comment.body %></br>
@@ -42,3 +45,15 @@
     </div>
   </div>
 </div>
+
+<script>
+  var sentimentScores = document.getElementsByClassName("sentiment-score");
+
+  for(var i = 0; i < sentimentScores.length; i++) {
+    var score = parseFloat(sentimentScores[i].innerHTML);
+
+    if(score < 0) {
+      sentimentScores[i].style.color = "red";
+    }
+  }
+</script>
