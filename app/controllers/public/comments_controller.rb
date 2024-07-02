@@ -7,6 +7,7 @@ class Public::CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = post.id
+    @comment.score = Language.get_data(comment_params[:body]) 
     if @comment.save
     else
       flash.now[:alert] = "Failed to save."
@@ -26,6 +27,7 @@ class Public::CommentsController < ApplicationController
   end
   
   def update
+    @comment.score = Language.get_data(comment_params[:body])
     if @comment.update(comment_params)
       redirect_to post_path(params[:post_id])
     else

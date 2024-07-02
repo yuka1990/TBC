@@ -1,10 +1,27 @@
 <%= stylesheet_link_tag 'admin/comments', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container">
   <h1 class="page-title-long">COMMENTS</h1>
-  <div class="search_form-2">
+  <div class="search-form-2">
     <%= form_with local: true, method: :get do |f| %>
-      <%= f.text_field :search %>
-      <%= f.submit "Search" %>
+    <table>
+      <tbody>
+        <tr>
+          <th>Score:</th>
+          <td>
+            <%= f.number_field :min_score, min: -1.0, max: 1.0, step: 0.1, placeholder: "Mim" %>～
+            <%= f.number_field :max_score, min: -1.0, max: 1.0, step: 0.1, placeholder: "Max" %>
+          </td>
+        </tr>
+        <tr>
+          <th>Keyword:</th>
+          <td> <%= f.text_field :search, placeholder: "---Keyword---" %></td>
+        </tr>
+        <tr>
+          <th><%= f.submit "Search" %></th>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
     <% end %>
   </div>
   <div class="row mt-3">
@@ -12,6 +29,10 @@
       <ul class="list-group">
         <% @comments.each do |comment| %>
         <li class="list-group-item">
+          <span>Sentiment analysis:
+            <span class="sentiment-score"><%= comment.score %></span>
+          </span>
+          </br>
           <strong><%= comment.user.nickname %></strong></br>
           <%= comment.created_at.strftime('%Y/%m/%d') %></br>
           <%= comment.body %></br>
@@ -24,3 +45,15 @@
     </div>
   </div>
 </div>
+
+<script>
+  var sentimentScores = document.getElementsByClassName("sentiment-score");
+
+  for(var i = 0; i < sentimentScores.length; i++) {
+    var score = parseFloat(sentimentScores[i].innerHTML);
+
+    if(score < 0) {
+      sentimentScores[i].style.color = "red";
+    }
+  }
+</script>

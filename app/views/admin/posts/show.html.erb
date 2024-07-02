@@ -60,6 +60,7 @@
             <% @post.comments.order(created_at: :desc).each do |comment| %>
             <ul class="list-group">
               <li class="list-group-item">
+                <span class="sentiment-score">Sentiment analysis<%= comment.score %></span></br>
                 <strong><%= comment.user.nickname %></strong></br>
                   <%= comment.created_at.strftime('%Y/%m/%d') %></br>
                   <%= comment.body %></br>
