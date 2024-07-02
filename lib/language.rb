@@ -20,6 +20,7 @@ module Language
       https.use_ssl = true
       request = Net::HTTP::Post.new(uri.request_uri)
       request['Content-Type'] = 'application/json'
+      request['Authorization'] = "Bearer #{ENV['GOOGLE_API_KEY']}"
       response = https.request(request, params)
       # APIレスポンス出力
       response_body = JSON.parse(response.body)
