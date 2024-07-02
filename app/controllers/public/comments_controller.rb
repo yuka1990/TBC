@@ -27,6 +27,7 @@ class Public::CommentsController < ApplicationController
   end
   
   def update
+    @comment.score = Language.get_data(comment_params[:body])
     if @comment.update(comment_params)
       redirect_to post_path(params[:post_id])
     else
