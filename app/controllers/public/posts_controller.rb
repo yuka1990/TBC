@@ -38,24 +38,6 @@ class Public::PostsController < ApplicationController
 
   end
 
-  #def index
-    #@genres = Genre.all
-    #if params[:genre_id].present?
-      #@genre = @genres.find(params[:genre_id])
-      #@posts = @genre.posts
-    #elsif params[:keyword].present?
-      #@posts = Post.joins(user: :home_country).where('posts.title LIKE :keyword OR posts.ingredient LIKE :keyword OR home_countries.name LIKE :keyword', keyword: "%#{params[:keyword]}%")
-      #if @posts.empty?
-        #flash.now[:notice] = "No results found"
-      #end
-    #else
-      #@posts = Post.all
-      #@posts = @posts.latest if params[:order] == "latest"
-      #@posts = @posts.oldest if params[:order] == "oldest"
-      #@posts = @posts.most_favorite if params[:order] == "most_favorite"
-    #end
-  #end
-
   def show
     @comment = Comment.new
   end

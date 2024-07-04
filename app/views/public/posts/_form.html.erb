@@ -1,0 +1,45 @@
+<%= form_with model: post do |f| %>
+  <div class="edit-form">
+    <table>
+      <tbody>
+        <tr>
+          <th><%= f.label :Genre %></th>
+          <td> <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Please select--"} %></br></td>
+        </tr>
+        <tr>
+          <th><%= f.label :level %></th>
+          <td><%= f.select :level, Post.levels.keys %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :originality %></th>
+          <td><%= f.select :originality, Post.originalities.keys %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :image, "Picture" %></th>
+          <td><%= f.file_field :image,accept:'image/*' %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :title %>(Up to 20 characters)</th>
+          <td><%= f.text_field :title %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :body, "explain" %></th>
+          <td><%= f.text_area :body %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :ingredient %></th>
+          <td><%= f.text_area :ingredient , size: "80x10" %></td>
+        </tr>
+        <tr>
+          <th> <%= f.label :method %></th>
+          <td><%= f.text_area :method , size: "100x10" %></td>
+        </tr>
+        <tr>
+          <th><%= f.submit submit, class:"btn btn-success" %></th>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    </br>
+  </div>
+<% end %>

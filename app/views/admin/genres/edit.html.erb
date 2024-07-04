@@ -3,11 +3,7 @@
   <h1 class="page-title-long">GENRES EDIT</h1>
   <div class="row">
     <div class="col-6 my-5">
-      <%= form_with model: @genre, url: admin_genre_path(@genre) do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-        <%= f.submit 'Save',class:"btn btn-success" %>
-      <% end %>
+      <%= render 'form', genre: @genre , url: admin_genre_path(@genre), submit: 'save'%>
       </br>
       <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>

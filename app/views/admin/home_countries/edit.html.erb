@@ -3,13 +3,7 @@
   <h1 class="page-title-long">COUNTRY EDIT</h1>
   <div class="row">
     <div class="col-6 my-5">
-      <%= form_with model: @home_country, url: admin_home_country_path(@home_country) do |f| %>
-        <%= f.label :image, "Flag image" %>
-        <%= f.file_field :image,  accept:'image/*' %></br></br>
-        <%= f.label :name %>
-        <%= f.text_field :name %></br></br>
-        <%= f.submit 'Save',class:"btn btn-success" %>
-      <% end %>
+      <%= render 'form', home_country: @home_country , url: admin_home_country_path(@home_country), submit: 'save'%>
       </br>
       <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
     </div>
