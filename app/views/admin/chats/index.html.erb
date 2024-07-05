@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag 'public/chats', media: 'all', 'data-turbolinks-track': 'reload' %>
+<h1 class="page-title-long">"<%= @group.name %>" 's CHAT ROOM</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="message">
+        <% current_date = nil %>
+        <% @chats.each do |chat| %>
+          <% if chat.created_at.to_date != current_date %>
+            <% current_date = chat.created_at.to_date %>
+              <% if current_date == Date.today %>
+                <div class="date-divider"><p>Today</p></div>
+              <% elsif current_date == Date.today - 1.day %>
+                <div class="date-divider"><p>Yesterday</p></div>
+              <% else %>
+                <div class="date-divider">
+                  <p><%= current_date.strftime('%Y/%m/%d') %></p>
+                </div>
+              <% end %>
+          <% end %>
+            <div class= "left-container d-flex">
+              <%= chat.user.nickname %>
+              <p>
+                <span class="chat">
+                  <%= safe_join(word_wrap(chat.message).split("\n"),tag(:br)) %>
+                </span>
+                <span class="time">
+                &nbsp;<%= chat.created_at.strftime('%H:%M') %>&nbsp;
+                <%= link_to admin_group_chat_path(chat.group,chat),method: :delete, data: {confirm: "Do you really want to delete?"}, class: "delete" do %>
+                  <i class="fa-regular fa-trash-can"></i>
+                <% end %>
+              </span>
+              </p>
+            </div>
+        <% end %>
+      </div>
+      </br>
+      <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
+    </div>
+  </div>
+</div>
