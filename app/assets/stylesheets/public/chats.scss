@@ -147,6 +147,11 @@ a {
   margin-right: 10%;
 }
 
+.search_form-2 {
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media (max-width: 479px) {
   .chat-form {
    display: flex;

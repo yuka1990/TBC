@@ -5,4 +5,6 @@ class Chat < ApplicationRecord
   
   validates :message, presence: true, length: { maximum: 140 }
   
+  scope :search_by_message, -> (search) { where('message LIKE ?', "%#{search}%") }
+  
 end

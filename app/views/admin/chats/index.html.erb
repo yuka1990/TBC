@@ -1,6 +1,12 @@
 <%= stylesheet_link_tag 'public/chats', media: 'all', 'data-turbolinks-track': 'reload' %>
 <h1 class="page-title-long">"<%= @group.name %>" 's CHAT ROOM</h1>
 <div class="container">
+  <div class="search_form-2">
+  <%= form_with local: true, method: :get do |f| %>
+    <%= f.text_field :search %>
+    <%= f.submit "Search" %>
+  <% end %>
+  </div>
   <div class="row">
     <div class="col">
       <div class="message">
