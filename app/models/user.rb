@@ -12,6 +12,7 @@ class User < ApplicationRecord
   belongs_to :home_country
   has_many :chats, dependent: :destroy
   has_many :permits, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   
 
 

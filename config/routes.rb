@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       resource :group_user, only: [:create, :destroy]
       resources :chats, only: [:index, :create, :destroy]
     end
+    resources :notifications, only: [:update]
   end
   devise_scope :user do
     post "users/guest_sign_in" , to: "public/sessions#guest_sign_in"
