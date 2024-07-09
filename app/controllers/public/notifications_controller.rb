@@ -8,8 +8,10 @@ class Public::NotificationsController < ApplicationController
      case notification.notifiable_type
      when "Permit"
        redirect_to group_permits_path(notification.notifiable.group_id)
+     when "Comment"
+       redirect_to post_comments_path(notification.notifiable.post_id)
      else
-       redirect_to my_page_path(notification.notifiable.user)
+       redirect_to post_path(notification.notifiable.post_id)
      end
    end
    

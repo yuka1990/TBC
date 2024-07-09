@@ -17,7 +17,7 @@ class Public::CommentsController < ApplicationController
 
   def index
     @post = Post.find(params[:post_id])
-    @comments = @post.comments
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   def show

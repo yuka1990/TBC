@@ -26,7 +26,7 @@ class Public::PostsController < ApplicationController
     @by_level = params[:level]
     @by_originality = params[:originality]
 
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
     @posts = @posts.search(@keyword) if @keyword.present?
     @posts = @posts.by_genre(@by_genre) if @by_genre.present?
     @posts = @posts.by_home_country(@by_home_country) if @by_home_country.present?
