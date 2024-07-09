@@ -32,19 +32,19 @@
                   <i class="fa-solid fa-utensils"></i> Recipes
                 <% end %>
               </li>
-              <li>
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Notification
+              <li class="dropdown">
+                <button class="btn text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa-solid fa-message"></i> Notification
                   <span class="badge badge-danger"><%= current_user.notifications.where(read: false).count %></span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <% if current_user.notifications.where(read: false).any? %>
-                    <small class="dropdown-item disabled">直近5件の未読の通知を表示しています</small>
-                    <% current_user.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
+                    <small class="dropdown-item disabled">Unread Notification</small>
+                    <% current_user.notifications.where(read: false).order(created_at: :desc).each do |notification| %>
                       <%= link_to notification_message(notification), notification_path(notification), method: :patch, class: "dropdown-item" %>
                     <% end %>
                   <% else %>
-                    <span class="dropdown-item disabled">未読の通知はありません</span>
+                    <span class="dropdown-item disabled">No unread notifications</span>
                   <% end %>
                 </div>
               </li>
