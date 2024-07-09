@@ -5,7 +5,7 @@ class Admin::HomeCountriesController < ApplicationController
   
   def index
     @home_country = HomeCountry.new
-    @home_countries = HomeCountry.all
+    @home_countries = HomeCountry.page(params[:page]).per(20)
   end
   
   def create

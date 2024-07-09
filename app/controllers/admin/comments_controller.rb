@@ -8,7 +8,7 @@ class Admin::CommentsController < ApplicationController
     @min_score = params[:min_score]
     @max_score = params[:max_score]
     
-    @comments = Comment.all.order(created_at: :desc)
+    @comments = Comment.page(params[:page]).per(20).order(created_at: :desc)
     @comments = @comments.search_by_body(@search) if @search.present?
     @comments = @comments.search_by_min_score(@min_score) if @min_score.present?
     @comments = @comments.search_by_max_score(@max_score) if @max_score.present?

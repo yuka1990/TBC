@@ -10,12 +10,11 @@
    <%= render 'search' %>
    <%= render 'index', posts: @posts %>
   </div>
+  <%= paginate @posts %>
 </div>
 <div class="back">
   <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %>
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/script.js"></script>
 <script>
   $(function() {
     $('.menu-trigger').on('click', function(event) {

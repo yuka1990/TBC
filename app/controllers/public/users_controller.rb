@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
 
 
   def mypage
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = @user.posts.page(params[:page]).per(9).order(created_at: :desc)
   end
 
   def edit

@@ -8,7 +8,7 @@ class Admin::PostsController < ApplicationController
     @by_level = params[:level]
     @by_originality = params[:originality]
 
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
     @posts = @posts.search(@keyword) if @keyword.present?
     @posts = @posts.by_genre(@by_genre) if @by_genre.present?
     @posts = @posts.by_home_country(@by_home_country) if @by_home_country.present?

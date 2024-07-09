@@ -3,9 +3,9 @@ class Admin::GroupsController < ApplicationController
   
   def index
     if params[:keyword].present?
-      @groups = Group.where('groups.name LIKE :keyword OR groups.introduction LIKE :keyword', keyword: "%#{params[:keyword]}%")
+      @groups = Group.page(params[:page]).per(20).order(created_at: :desc).where('groups.name LIKE :keyword OR groups.introduction LIKE :keyword', keyword: "%#{params[:keyword]}%")
     else
-    @groups = Group.all
+    @groups = Group.page(params[:page]).per(20).order(created_at: :desc)
     end
   end
   
