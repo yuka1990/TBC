@@ -11,7 +11,7 @@ class Public::PermitsController < ApplicationController
   def destroy
     permit = current_user.permits.find_by(group_id: params[:group_id])
     permit.destroy
-    redirect_to request.referer, alert: "Application has been cancelled."
+    redirect_to request.referer, alert: "application has been cancelled."
   end
   
   

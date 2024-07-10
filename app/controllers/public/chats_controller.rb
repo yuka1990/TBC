@@ -2,7 +2,6 @@ class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
   before_action :block_non_related_users, only: [:index]
 
-
   def create
     group = Group.find(params[:group_id])
     @chat = current_user.chats.new(chat_params)
@@ -21,13 +20,11 @@ class Public::ChatsController < ApplicationController
     @chat = Chat.new
   end
 
-
   def destroy
     @chat = Chat.find(params[:id])
     @chat.destroy
     redirect_to request.referer
   end
-
 
   private
 

@@ -7,31 +7,7 @@
 </div>
 <div class='container'>
   <div class="row">
-    <div id="search-menu">
-      <div class ="search-box">
-        <div class ="search-box-content">
-          <h2>Search</h2>
-          <h5>Sort by</h5>
-          <%= link_to "Newest", posts_path(order: "latest") %></br>
-          <%= link_to "Oldest", posts_path(order: "oldest") %></br>
-          <%= link_to "Popularity", posts_path(order: "most_favorite") %></br>
-          <h5>Browse By</h5>
-          <%= form_with local: true, method: :get do |f| %>
-            <%= f.label :Genre %></br>
-            <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Select Genre--"} %></br>
-            <%= f.label :Country %></br>
-            <%= f.collection_select :home_country_id, HomeCountry.all, :id, :name, { include_blank: "--Select Country--"} %></br>
-            <%= f.label :Level %></br>
-            <%= f.select :level, Post.levels.keys,  { include_blank: "--Select Level--"} %></br>
-            <%= f.label :originality %></br>
-            <%= f.select :originality, Post.originalities.keys,  { include_blank: "--Select Originality--"} %></br>
-            <%= f.label :Keyword %></br>
-            <%= f.text_field :keyword, placeholder: "--input keyword--" %></br></br>
-            <%= f.submit "Search" ,class:"search-submit",class:"btn_search" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    <%= render 'public/posts/search' %>
     <div class = 'items-box'>
       <div class="box">
       <% @posts.each do |post| %>
@@ -42,7 +18,9 @@
             <% end %>
           </div>
           <div class="card-content">
-            <h1 class="card-title"><%= post.title %></h1>
+            <h1 class="card-title">
+              <%= post.title %>
+            </h1>
             <p class="card-text">
               <%= post.genre.name %></br>
               Level: <%= post.level %></br>
@@ -52,18 +30,19 @@
                 <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>&nbsp;
               <% end %>
               <i class="fa-solid fa-heart"></i>&nbsp;<%= post.favorites.count %>
+            </p>
           </div>
         </li>
       <% end %>
       </div>
     </div>
   </div>
+   <%= paginate @posts %>
 </div>
 <div class="back">
   <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %>
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/script.js"></script>
+
 <script>
   $(function() {
     $('.menu-trigger').on('click', function(event) {

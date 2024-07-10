@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :home_countries, only: [:index, :create, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :groups, only: [:index, :destroy, :show]
+    resources :groups, only: [:index, :destroy, :show] do
+      resources :chats, only: [:index, :destroy]
+    end
   end
 
   devise_for :users,skip: [:passwords], controllers: {
@@ -41,6 +43,7 @@ Rails.application.routes.draw do
       resource :group_user, only: [:create, :destroy]
       resources :chats, only: [:index, :create, :destroy]
     end
+    resources :notifications, only: [:update]
   end
   devise_scope :user do
     post "users/guest_sign_in" , to: "public/sessions#guest_sign_in"

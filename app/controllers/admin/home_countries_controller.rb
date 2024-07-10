@@ -2,10 +2,9 @@ class Admin::HomeCountriesController < ApplicationController
   before_action :authenticate_admin!
   before_action :ensure_home_country, only: [:edit, :update]
   
-  
   def index
     @home_country = HomeCountry.new
-    @home_countries = HomeCountry.all
+    @home_countries = HomeCountry.page(params[:page]).per(20)
   end
   
   def create
@@ -13,7 +12,7 @@ class Admin::HomeCountriesController < ApplicationController
     if @home_country.save
       redirect_to admin_home_countries_path, notice: "Successfully saved."
     else
-      @home_countries = HomeCountry.all
+      @home_countries = HomeCountry.page(params[:page]).per(20)
       flash.now[:alert] = "Failed to save."
       render :index
     end

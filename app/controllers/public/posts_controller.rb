@@ -3,7 +3,6 @@ class Public::PostsController < ApplicationController
   before_action :ensure_post, only: [:edit, :update, :show, :destroy]
   before_action :is_matching_login_user, only: [:edit, :update]
 
-
   def new
     @post = Post.new
   end
@@ -26,7 +25,7 @@ class Public::PostsController < ApplicationController
     @by_level = params[:level]
     @by_originality = params[:originality]
 
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
     @posts = @posts.search(@keyword) if @keyword.present?
     @posts = @posts.by_genre(@by_genre) if @by_genre.present?
     @posts = @posts.by_home_country(@by_home_country) if @by_home_country.present?
@@ -35,26 +34,7 @@ class Public::PostsController < ApplicationController
     @posts = @posts.latest if params[:order] == "latest"
     @posts = @posts.oldest if params[:order] == "oldest"
     @posts = @posts.most_favorite if params[:order] == "most_favorite"
-
   end
-
-  #def index
-    #@genres = Genre.all
-    #if params[:genre_id].present?
-      #@genre = @genres.find(params[:genre_id])
-      #@posts = @genre.posts
-    #elsif params[:keyword].present?
-      #@posts = Post.joins(user: :home_country).where('posts.title LIKE :keyword OR posts.ingredient LIKE :keyword OR home_countries.name LIKE :keyword', keyword: "%#{params[:keyword]}%")
-      #if @posts.empty?
-        #flash.now[:notice] = "No results found"
-      #end
-    #else
-      #@posts = Post.all
-      #@posts = @posts.latest if params[:order] == "latest"
-      #@posts = @posts.oldest if params[:order] == "oldest"
-      #@posts = @posts.most_favorite if params[:order] == "most_favorite"
-    #end
-  #end
 
   def show
     @comment = Comment.new
@@ -81,8 +61,6 @@ class Public::PostsController < ApplicationController
     @keyword = search_params[:keyword]
     @posts = Post.search(@keyword)
   end
-
-
 
   private
 

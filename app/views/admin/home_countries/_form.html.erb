@@ -1,0 +1,7 @@
+<%= form_with model: home_country, url: url do |f| %>
+  <%= f.label :image, "Flag image" %>
+  <%= f.file_field :image,  accept:'image/*' %></br></br>
+  <%= f.label :name %>
+  <%= f.text_field :name %></br></br>
+  <%= f.submit submit,class:"btn btn-success" %>
+<% end %>

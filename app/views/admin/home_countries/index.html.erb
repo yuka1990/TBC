@@ -3,13 +3,7 @@
   <h1 class="page-title-long">COUNTRY</h1>
   <div class="row">
     <div class="col-md-6 my-5">
-      <%= form_with model: @home_country, url: admin_home_countries_path, method: :post do |f| %>
-        <%= f.label :image, "Flag image" %>
-        <%= f.file_field :image,  accept:'image/*' %></br></br>
-        <%= f.label :name %>
-        <%= f.text_field :name %></br></br>
-        <%= f.submit 'New Registration',class:"btn btn-success" %>
-      <% end %>
+      <%= render 'form', home_country: @home_country , url: admin_home_countries_path, submit: 'New Registration' %>
     </div>
     <div class="col-md-6">
       <table class="table table table-responsive-md">
@@ -30,6 +24,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= paginate @home_countries %>
     </div>
     <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>
   </div>

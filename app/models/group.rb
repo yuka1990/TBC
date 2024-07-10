@@ -5,7 +5,6 @@ class Group < ApplicationRecord
   has_many :chats, dependent: :destroy
   has_many :permits, dependent: :destroy
 
-
   validates :name, presence: true
   validates :introduction, presence: true
 

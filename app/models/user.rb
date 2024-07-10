@@ -12,9 +12,8 @@ class User < ApplicationRecord
   belongs_to :home_country
   has_many :chats, dependent: :destroy
   has_many :permits, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   
-
-
   validates :name, presence: true
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -34,8 +33,6 @@ class User < ApplicationRecord
     end
   end
   
-  
-
   before_update :delete_associated_records, if: -> { is_active_changed? && !is_active }
   
   def delete_associated_records
@@ -45,6 +42,7 @@ class User < ApplicationRecord
       groups.destroy_all
       group_users.destroy_all
       Group.where(owner_id: id).destroy_all
+      chats.destroy_all
   end
   
 end
