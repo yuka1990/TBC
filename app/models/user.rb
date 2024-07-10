@@ -14,8 +14,6 @@ class User < ApplicationRecord
   has_many :permits, dependent: :destroy
   has_many :notifications, dependent: :destroy
   
-
-
   validates :name, presence: true
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -35,8 +33,6 @@ class User < ApplicationRecord
     end
   end
   
-  
-
   before_update :delete_associated_records, if: -> { is_active_changed? && !is_active }
   
   def delete_associated_records

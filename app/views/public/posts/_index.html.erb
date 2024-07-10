@@ -3,12 +3,14 @@
     <% posts.each do |post| %>
       <li class="card">
         <div class="card-img">
-        <%= link_to post_path(post) do %>
-          <%= image_tag post.get_image, size: "199x130" %>
-        <% end %>
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.get_image, size: "199x130" %>
+          <% end %>
         </div>
         <div class="card-content">
-          <h1 class="card-title"><%= post.title %></h1>
+          <h1 class="card-title">
+            <%= post.title %>
+          </h1>
           <p class="card-text">
           <%= post.genre.name %></br>
           Level: <%= post.level %></br>
@@ -20,6 +22,7 @@
           <span id="favorite_<%= post.id %>" class="red-link">
             <%= render "public/favorites/favorite", post: post %>
           </span>
+          </p>
         </div>
       </li>
     <% end %>

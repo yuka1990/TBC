@@ -3,7 +3,6 @@ class Public::PostsController < ApplicationController
   before_action :ensure_post, only: [:edit, :update, :show, :destroy]
   before_action :is_matching_login_user, only: [:edit, :update]
 
-
   def new
     @post = Post.new
   end
@@ -35,7 +34,6 @@ class Public::PostsController < ApplicationController
     @posts = @posts.latest if params[:order] == "latest"
     @posts = @posts.oldest if params[:order] == "oldest"
     @posts = @posts.most_favorite if params[:order] == "most_favorite"
-
   end
 
   def show
@@ -63,8 +61,6 @@ class Public::PostsController < ApplicationController
     @keyword = search_params[:keyword]
     @posts = Post.search(@keyword)
   end
-
-
 
   private
 

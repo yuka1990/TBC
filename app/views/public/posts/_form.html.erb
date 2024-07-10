@@ -3,7 +3,7 @@
     <table>
       <tbody>
         <tr>
-          <th><%= f.label :Genre %></th>
+          <th><%= f.label :genre_id %></th>
           <td> <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--Please select--"} %></br></td>
         </tr>
         <tr>
@@ -23,7 +23,7 @@
           <td><%= f.text_field :title %></td>
         </tr>
         <tr>
-          <th><%= f.label :body, "explain" %></th>
+          <th><%= f.label :body, "Explain" %></th>
           <td><%= f.text_area :body %></td>
         </tr>
         <tr>

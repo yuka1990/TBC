@@ -2,7 +2,6 @@ class Admin::HomeCountriesController < ApplicationController
   before_action :authenticate_admin!
   before_action :ensure_home_country, only: [:edit, :update]
   
-  
   def index
     @home_country = HomeCountry.new
     @home_countries = HomeCountry.page(params[:page]).per(20)

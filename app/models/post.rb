@@ -16,10 +16,8 @@ class Post < ApplicationRecord
   validates :originality, presence: true
   validates :image, presence: true
   
-  
   enum level: { Beginner: 0, Intermediate: 1, Advanced: 2 }
   enum originality: { Local_cuisine: 0, Original: 1, }
-  
   
   def get_image
     unless image.attached?
@@ -46,8 +44,5 @@ class Post < ApplicationRecord
     .group("posts.id")
     .order(favorites_count: :desc)
   }
-  
-  
-  
   
 end

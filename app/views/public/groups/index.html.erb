@@ -11,7 +11,9 @@
       <div class="col">
         <% @groups.each do |group| %>
         <div class="list-group">
-          <div class="box-title"><%= group.name %></div>
+          <div class="box-title">
+            <%= group.name %>
+          </div>
             <ul>
             　<li><strong>Organizer:<%= group.owner_nickname %></strong></li>
             　<li class="under-border"><i class="fa-solid fa-users"></i>Members: <%= group.group_users.count %></li>

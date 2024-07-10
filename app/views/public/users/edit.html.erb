@@ -19,7 +19,7 @@
             <td><%= f.email_field :email, autocomplete: "email" %></td>
           </tr>
           <tr>
-            <th><%= f.label :HomeCountry %></th>
+            <th><%= f.label :home_country_id %></th>
             <td><%= f.collection_select :home_country_id, HomeCountry.all, :id, :name, { include_blank: "--Please select--"} %></td>
           </tr>
         </tbody>

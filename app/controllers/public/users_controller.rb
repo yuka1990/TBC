@@ -4,7 +4,6 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :check_guest_user, only: [:edit, :update, :withdraw]
 
-
   def mypage
     @posts = @user.posts.page(params[:page]).per(9).order(created_at: :desc)
   end

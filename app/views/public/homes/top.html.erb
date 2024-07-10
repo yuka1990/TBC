@@ -5,7 +5,7 @@
         <%= image_tag("TBCtop.png") %>
       </div>
       <div class="top_title">
-        <h2><%= link_to "Let's start the journey" ,new_user_registration_path %></h2>
+        <h2><%= link_to "Let's start the journey" ,new_user_registration_path, data: {"turbolinks" => false} %></h2>
       </div>
       <div class="swiper">
         <div class="swiper-wrapper">
@@ -54,7 +54,8 @@
       </div>
     </div>
   </section>
-  <script>
+  
+<script>
   const swiper = new Swiper(".swiper", {
   loop: true, // ループ有効
   slidesPerView: 3, // 一度に表示する枚数

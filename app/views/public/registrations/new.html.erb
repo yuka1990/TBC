@@ -14,14 +14,14 @@
             </tr>
             <tr>
               <th><%= f.label :nickname %></th>
-              <td><%= f.text_field :nickname, autocomplete: "nickname" %></td>
+              <td><%= f.text_field :nickname, autocomplete: "name" %></td>
             </tr>
             <tr>
               <th><%= f.label :email %></th>
               <td><%= f.email_field :email, autocomplete: "email" %></td>
             </tr>
             <tr>
-              <th><%= f.label :HomeCountry %></th>
+              <th><%= f.label :home_country_id %></th>
               <td><%= f.collection_select :home_country_id, HomeCountry.all, :id, :name, { include_blank: "--Please select--"} %></td>
             </tr>
             <tr>

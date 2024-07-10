@@ -7,13 +7,12 @@ class Public::CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = post.id
-    @comment.score = Language.get_data(comment_params[:body]) 
+    @comment.score = Language.get_data(comment_params[:body])
     if @comment.save
     else
       flash.now[:alert] = "Failed to save."
     end
   end
-
 
   def index
     @post = Post.find(params[:post_id])
@@ -40,7 +39,6 @@ class Public::CommentsController < ApplicationController
     @comment.destroy
     redirect_to request.referer
   end
-  
   
   private
   

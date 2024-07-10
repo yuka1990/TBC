@@ -7,7 +7,7 @@
 </div>
 <div class='container'>
   <div class="row">
-   <%= render 'public/posts/search' %>
+    <%= render 'public/posts/search' %>
     <div class = 'items-box'>
       <div class="box">
       <% @posts.each do |post| %>
@@ -18,7 +18,9 @@
             <% end %>
           </div>
           <div class="card-content">
-            <h1 class="card-title"><%= post.title %></h1>
+            <h1 class="card-title">
+              <%= post.title %>
+            </h1>
             <p class="card-text">
               <%= post.genre.name %></br>
               Level: <%= post.level %></br>
@@ -28,6 +30,7 @@
                 <i class="fa-regular fa-comment"></i>&nbsp;<%= post.comments.count %>&nbsp;
               <% end %>
               <i class="fa-solid fa-heart"></i>&nbsp;<%= post.favorites.count %>
+            </p>
           </div>
         </li>
       <% end %>
@@ -39,6 +42,7 @@
 <div class="back">
   <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %>
 </div>
+
 <script>
   $(function() {
     $('.menu-trigger').on('click', function(event) {

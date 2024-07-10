@@ -9,9 +9,13 @@
           <% if chat.created_at.to_date != current_date %>
             <% current_date = chat.created_at.to_date %>
               <% if current_date == Date.today %>
-                <div class="date-divider"><p>Today</p></div>
+                <div class="date-divider">
+                  <p>Today</p>
+                </div>
               <% elsif current_date == Date.today - 1.day %>
-                <div class="date-divider"><p>Yesterday</p></div>
+                <div class="date-divider">
+                  <p>Yesterday</p>
+                </div>
               <% else %>
                 <div class="date-divider">
                   <p><%= current_date.strftime('%Y/%m/%d') %></p>

@@ -2,19 +2,22 @@
 <h1 class="page-title">RECIPES</h1>
 <div id="search-icon">
   <%= link_to("#", class: "menu-trigger button") do %>
-    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+    <span>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </span>
   <% end %>
 </div>
 <div class='container'>
   <div class="row">
-   <%= render 'search' %>
-   <%= render 'index', posts: @posts %>
+    <%= render 'search' %>
+    <%= render 'index', posts: @posts %>
   </div>
   <%= paginate @posts %>
 </div>
 <div class="back">
   <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %>
 </div>
+
 <script>
   $(function() {
     $('.menu-trigger').on('click', function(event) {
