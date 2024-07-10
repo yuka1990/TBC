@@ -12,7 +12,7 @@ class Admin::HomeCountriesController < ApplicationController
     if @home_country.save
       redirect_to admin_home_countries_path, notice: "Successfully saved."
     else
-      @home_countries = HomeCountry.all
+      @home_countries = HomeCountry.page(params[:page]).per(20)
       flash.now[:alert] = "Failed to save."
       render :index
     end

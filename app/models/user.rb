@@ -42,6 +42,7 @@ class User < ApplicationRecord
       groups.destroy_all
       group_users.destroy_all
       Group.where(owner_id: id).destroy_all
+      chats.destroy_all
   end
   
 end
