@@ -18,7 +18,7 @@
           <li></br></li>
           <li>
             <div class="link-button">
-              　<%= link_to 'destroy', admin_group_path(@group), data: { confirm: 'Do you really want to delete it?' }, method: :delete %>
+                <%= link_to 'destroy', admin_group_path(@group), data: { confirm: 'Do you really want to delete it?' }, method: :delete %>
             </div>
           </li>
         </ul>
@@ -27,11 +27,11 @@
         <h1>Members:<%= @group.group_users.count %></h1>
           <div class="member-list">
           <% @group.users.each do |user| %>
-　　        <div>
-　　          <i class="fa-solid fa-user-large"></i><%= user.nickname %>
-　　        </div>
-        　<% end %>
-        　</div>
+            <div>
+              <i class="fa-solid fa-user-large"></i><%= user.nickname %>
+            </div>
+          <% end %>
+          </div>
       </div>
       </br>
       <%= link_to 'BACK', 'javascript:history.back()' ,class:"btn-back" %></br></br>

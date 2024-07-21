@@ -2,11 +2,11 @@
 <div class="container">
   <h1 class="page-title">TOURS</h1>
     <div class="search_form-2">
-  　　<%= form_with local: true, method: :get do |f| %>
-      　<%= f.text_field :keyword, placeholder: "--input keyword--" %>
-      　<%= f.submit "Search" ,class:"search-submit",class:"btn_search" %>
-    　<% end %>
-  　</div>
+      <%= form_with local: true, method: :get do |f| %>
+        <%= f.text_field :keyword, placeholder: "--input keyword--" %>
+        <%= f.submit "Search" ,class:"search-submit",class:"btn_search" %>
+      <% end %>
+    </div>
     <div class="row">
       <div class="col">
         <% @groups.each do |group| %>
@@ -15,10 +15,10 @@
             <%= group.name %>
           </div>
             <ul>
-            　<li><strong>Organizer:<%= group.owner_nickname %></strong></li>
-            　<li class="under-border"><i class="fa-solid fa-users"></i>Members: <%= group.group_users.count %></li>
-            　<li><%= safe_join(word_wrap(group.introduction).split("\n"),tag(:br)) %></li>
-            　<li>
+              <li><strong>Organizer:<%= group.owner_nickname %></strong></li>
+              <li class="under-border"><i class="fa-solid fa-users"></i>Members: <%= group.group_users.count %></li>
+              <li><%= safe_join(word_wrap(group.introduction).split("\n"),tag(:br)) %></li>
+              <li>
               <div class="link-button">
                 <% if group.is_owned_by?(current_user) %>
                   <%= link_to "Approval", permits_path(group) %>
@@ -26,7 +26,7 @@
                   /&nbsp;<%= link_to 'Edit', edit_group_path(group) %>
                   /&nbsp;<%= link_to 'destroy', group_path(group), data: { confirm: 'Do you really want to delete it?' }, method: :delete %>
                   </br>
-                　<p>Unapproved Number:<%= content_tag(:span, group.permits.count, class: 'red-text') %></p>
+                  <p>Unapproved Number:<%= content_tag(:span, group.permits.count, class: 'red-text') %></p>
                 <% elsif group.includesUser?(current_user)%>
                   &nbsp;<%= link_to 'Show', group %></br></br>
                   <%= link_to 'Leave this group', group_group_user_path(group), method: :delete, class: "btn-leave" %>

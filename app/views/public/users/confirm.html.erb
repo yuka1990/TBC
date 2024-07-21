@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto">
-    　<h1 class="text-center">Are you sure you want to cancel your membership?</h1>
-    　</br></br>
+      <h1 class="text-center">Are you sure you want to cancel your membership?</h1>
+      </br></br>
       <h2 class="text-center">
         Once you cancel your membership,you will no longer be able to view</br>
         your registration information or bookmark list.</br>
@@ -10,8 +10,8 @@
       </br></br>
     </div>
     <div class="mx-auto d-flex">
-    　<%= link_to "KEEP", my_page_path, :class => "btn btn-primary ms-3 btn-lg mr-5" %>
-    　<%= link_to "CANCEL", withdraw_path, method: :patch, :class => "btn btn-danger ms-3 btn-lg ml-5", data: { confirm: "Are you sure you want to cancel your membership?" }  %>
+      <%= link_to "KEEP", my_page_path, :class => "btn btn-primary ms-3 btn-lg mr-5" %>
+      <%= link_to "CANCEL", withdraw_path, method: :patch, :class => "btn btn-danger ms-3 btn-lg ml-5", data: { confirm: "Are you sure you want to cancel your membership?" }  %>
     </div>
   </div>
 </div>
